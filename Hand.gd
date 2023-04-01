@@ -2,7 +2,7 @@ extends Area2D
 
 var is_hand_up : bool = false
 
-var card_scene = preload("res://card.tscn")
+var card_scene = preload("res://Card.tscn")
 var Card = preload("res://Card.gd")
 
 

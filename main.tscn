@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://blpnp4sbfqk78"]
+
+[ext_resource type="Script" path="res://Hand.gd" id="1_7847x"]
+[ext_resource type="Texture2D" uid="uid://deq1b0vch08j0" path="res://assets/placed_holder_card_back.png" id="1_gd2gp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_huf05"]
+size = Vector2(128, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pig5r"]
+size = Vector2(1000, 270)
+
+[node name="Main" type="Node2D"]
+
+[node name="Deck" type="Area2D" parent="."]
+position = Vector2(1185, 599)
+
+[node name="Sprite2D" type="Sprite2D" parent="Deck"]
+texture = ExtResource("1_gd2gp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Deck"]
+shape = SubResource("RectangleShape2D_huf05")
+
+[node name="Hand" type="Area2D" parent="."]
+position = Vector2(600, 720)
+script = ExtResource("1_7847x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hand"]
+shape = SubResource("RectangleShape2D_pig5r")
+
+[connection signal="input_event" from="Deck" to="Hand" method="_on_deck_input_event"]
+[connection signal="mouse_entered" from="Hand" to="Hand" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Hand" to="Hand" method="_on_mouse_exited"]

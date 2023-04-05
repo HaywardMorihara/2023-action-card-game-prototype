@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dikl6yqyjpknd"]
+
+[ext_resource type="Texture2D" uid="uid://deq1b0vch08j0" path="res://assets/placed_holder_card_back.png" id="1_fhhml"]
+[ext_resource type="Script" path="res://action_card_game_library/Deck.gd" id="1_v0jll"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_huf05"]
+size = Vector2(128, 192)
+
+[node name="Deck" type="Area2D"]
+position = Vector2(1185, 599)
+script = ExtResource("1_v0jll")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fhhml")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_huf05")

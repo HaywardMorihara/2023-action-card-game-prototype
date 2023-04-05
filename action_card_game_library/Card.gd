@@ -2,6 +2,9 @@ extends Area2D
 
 signal card_placed(card, position)
 
+# TODO Not actually sure that we want this...might want to map it in Global
+@export var id : ActionCardGameGlobal.CARD_TYPES
+
 var dragging = false
 var mouse_over = false
 var initial_position : Vector2

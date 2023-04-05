@@ -1,13 +1,15 @@
 extends Area2D
 
+signal card_played(card, position)
+
 var is_hand_up : bool = false
 
-var card_scene = preload("res://Card.tscn")
-var Card = preload("res://Card.gd")
 
-
-func add_card():
-	var new_card = card_scene.instantiate()
+func add_card(card_id : ActionCardGameGlobal.CARD_TYPES):
+	# TODO How to translate this into what card should be instantiated?
+	
+	var new_card = ActionCardGameGlobal.card_type_to_card_scene[card_id].instantiate()
+#	var new_card = card_scene.instantiate()
 	new_card.card_placed.connect(_on_card_card_placed)
 	new_card.add_to_group("cards_in_hand")
 	add_child(new_card)
@@ -48,8 +50,8 @@ func _on_card_card_placed(card, position):
 		card.remove_from_group("cards_in_hand")
 		card.play()
 		reset_card_positions()
+		card_played.emit(card, position)
 
 
-func _on_deck_input_event(viewport, event, shape_idx):
-	if event.is_action_pressed("deck_draw"):
-		add_card()
+func _on_deck_card_drawn(card_id):
+	add_card(card_id)

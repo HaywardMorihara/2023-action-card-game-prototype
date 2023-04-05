@@ -1,32 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://blpnp4sbfqk78"]
+[gd_scene load_steps=5 format=3 uid="uid://dtsx6hmyda2j8"]
 
-[ext_resource type="Texture2D" uid="uid://deq1b0vch08j0" path="res://assets/placed_holder_card_back.png" id="1_inhom"]
-[ext_resource type="Script" path="res://Hand.gd" id="2_wg45w"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_huf05"]
-size = Vector2(128, 192)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pig5r"]
-size = Vector2(1000, 270)
+[ext_resource type="Script" path="res://Main.gd" id="1_i30q2"]
+[ext_resource type="PackedScene" uid="uid://dikl6yqyjpknd" path="res://action_card_game_library/Deck.tscn" id="1_og2kh"]
+[ext_resource type="PackedScene" uid="uid://chy24xce4urq0" path="res://action_card_game_library/Hand.tscn" id="2_gb8ka"]
+[ext_resource type="Script" path="res://CardHandler.gd" id="3_vx0b2"]
 
 [node name="Main" type="Node2D"]
+script = ExtResource("1_i30q2")
 
-[node name="Deck" type="Area2D" parent="."]
-position = Vector2(1185, 599)
+[node name="Deck" parent="." instance=ExtResource("1_og2kh")]
 
-[node name="Sprite2D" type="Sprite2D" parent="Deck"]
-texture = ExtResource("1_inhom")
+[node name="Hand" parent="." instance=ExtResource("2_gb8ka")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Deck"]
-shape = SubResource("RectangleShape2D_huf05")
+[node name="CardHandler" type="Node2D" parent="."]
+script = ExtResource("3_vx0b2")
 
-[node name="Hand" type="Area2D" parent="."]
-position = Vector2(600, 720)
-script = ExtResource("2_wg45w")
+[node name="World" type="Node2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hand"]
-shape = SubResource("RectangleShape2D_pig5r")
-
-[connection signal="input_event" from="Deck" to="Hand" method="_on_deck_input_event"]
-[connection signal="mouse_entered" from="Hand" to="Hand" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Hand" to="Hand" method="_on_mouse_exited"]
+[connection signal="card_drawn" from="Deck" to="Hand" method="_on_deck_card_drawn"]
+[connection signal="input_event" from="Deck" to="Deck" method="_on_input_event"]
+[connection signal="card_played" from="Hand" to="CardHandler" method="_on_hand_card_played"]

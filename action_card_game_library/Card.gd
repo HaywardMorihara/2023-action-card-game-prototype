@@ -2,9 +2,7 @@ extends Area2D
 
 signal card_placed(card, position)
 
-# TODO Not actually sure that we want this...might want to map it in Global
-@export var id : ActionCardGameGlobal.CARD_TYPES
-
+var id : ActionCardGameGlobal.CardId
 var dragging = false
 var mouse_over = false
 var initial_position : Vector2
@@ -40,7 +38,9 @@ func _input(event):
 
 func _on_mouse_entered():
 	mouse_over = true
+	position.y -= 10
 
 
 func _on_mouse_exited():
 	mouse_over = false
+	position.y += 10

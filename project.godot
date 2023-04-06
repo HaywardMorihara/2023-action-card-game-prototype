@@ -13,11 +13,11 @@ config_version=5
 config/name="2023-action-card-game-prototype"
 run/main_scene="res://Main.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="res://icon.png"
 
 [autoload]
 
-ActionCardGameGlobal="*res://ActionCardGameGlobal.gd"
+ActionCardGameGlobal="*res://action_card_game_library_impl/ActionCardGameGlobal.gd"
 
 [display]
 

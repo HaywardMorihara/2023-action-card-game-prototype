@@ -5,13 +5,14 @@ signal card_played(card, position)
 var is_hand_up : bool = false
 
 
-func add_card(card_id : ActionCardGameGlobal.CARD_TYPES):
+func add_card(card_id : ActionCardGameGlobal.CardId):
 	# TODO How to translate this into what card should be instantiated?
 	
-	var new_card = ActionCardGameGlobal.card_type_to_card_scene[card_id].instantiate()
-#	var new_card = card_scene.instantiate()
+	var new_card_scene = ActionCardGameGlobal.card_id_to_card_scene[card_id]
+	var new_card = new_card_scene.instantiate()
 	new_card.card_placed.connect(_on_card_card_placed)
 	new_card.add_to_group("cards_in_hand")
+	new_card.id = card_id
 	add_child(new_card)
 	reset_card_positions()
 
@@ -20,7 +21,9 @@ func reset_card_positions():
 	var cards_in_hand = get_tree().get_nodes_in_group("cards_in_hand")
 	var num_cards_in_hand = cards_in_hand.size()
 	for i in range(num_cards_in_hand):
-		cards_in_hand[i].position.x = - (hand_width / 2) + (hand_width / (num_cards_in_hand + 1)) * (i + 1)
+		var new_pos = cards_in_hand[i].position
+		new_pos.x = - (hand_width / 2) + (hand_width / (num_cards_in_hand + 1)) * (i + 1)
+		cards_in_hand[i].set_initial_position(new_pos)
 
 
 func _ready():

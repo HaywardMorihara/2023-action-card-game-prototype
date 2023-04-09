@@ -1,0 +1,17 @@
+Size of individual frames for the character is 40x26
+
+Frames 1-4  : Idle
+Frames 5-12 : Walk Down 
+Frames 13-20: Walk Left
+Frames 21-28: Walk Right
+Frames 29-36: Walk Up
+Frames 37-40: Run Down
+Frames 41-44: Run Left
+Frames 45-48: Run Right
+Frames 49-52: Run Up
+Frames 53-57: Attack Down
+Frames 58-62: Attack Left
+Frames 63-67: Attack Right
+Frames 68-72: Attack Up
+Frames 73-77: Faint Right
+Frames 78-82: Faint Left

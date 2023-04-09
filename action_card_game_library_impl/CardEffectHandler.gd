@@ -9,3 +9,7 @@ func _on_hand_card_played(card, position):
 			print("Two!")
 		ActionCardGameGlobal.CardId.THREE:
 			print("Three!")
+
+
+func _on_player_player_draw_card():
+	$Cards/Deck.draw_next_card()

@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://dfl1afxxyu13j" path="res://assets/peaceful_pixels_chapter00/Character_Animations/character00_spritesheet.png" id="3_dbk67"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ry8g2"]
+radius = 6.0
+height = 16.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wvrvw"]
 atlas = ExtResource("2_msstl")
@@ -265,7 +267,7 @@ animations = [{
 "speed": 20.0
 }]
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
 script = ExtResource("1_m6pf8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

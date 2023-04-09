@@ -4,6 +4,7 @@ signal card_drawn(card_id : ActionCardGameGlobal.CardId)
 
 var deck_contents : Array[ActionCardGameGlobal.CardId]
 
+@export var is_click_to_draw : bool = false
 
 func _ready():
 	# TODO Replace
@@ -41,5 +42,6 @@ func draw_next_card():
 	
 
 func _on_input_event(viewport, event, shape_idx):
-	if deck_contents.size() > 0 && event.is_action_pressed("deck_draw"):
-		draw_next_card()
+	if is_click_to_draw:
+		if deck_contents.size() > 0 && event.is_action_pressed("deck_draw"):
+			draw_next_card()

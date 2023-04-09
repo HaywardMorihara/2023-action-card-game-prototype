@@ -1,22 +1,37 @@
-[gd_scene load_steps=5 format=3 uid="uid://cai4ppl0aou0r"]
+[gd_scene load_steps=7 format=3 uid="uid://cai4ppl0aou0r"]
 
 [ext_resource type="Script" path="res://Main.gd" id="1_i30q2"]
 [ext_resource type="PackedScene" uid="uid://dikl6yqyjpknd" path="res://action_card_game_library/Deck.tscn" id="1_og2kh"]
 [ext_resource type="PackedScene" uid="uid://chy24xce4urq0" path="res://action_card_game_library/Hand.tscn" id="2_gb8ka"]
+[ext_resource type="PackedScene" uid="uid://d14u0khtguyid" path="res://world/objects/Tree1.tscn" id="2_rt11a"]
+[ext_resource type="PackedScene" uid="uid://cmjtup4qxnl38" path="res://player/Player.tscn" id="3_8hxhk"]
 [ext_resource type="Script" path="res://action_card_game_library_impl/CardEffectHandler.gd" id="4_l3ca5"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_i30q2")
 
-[node name="Deck" parent="." instance=ExtResource("1_og2kh")]
+[node name="World" type="Node2D" parent="."]
+y_sort_enabled = true
 
-[node name="Hand" parent="." instance=ExtResource("2_gb8ka")]
+[node name="Tree1" parent="World" instance=ExtResource("2_rt11a")]
+position = Vector2(242, 140)
+
+[node name="Player" parent="World" instance=ExtResource("3_8hxhk")]
+position = Vector2(294, 181)
+motion_mode = 1
+
+[node name="Cards" type="CanvasLayer" parent="."]
+scale = Vector2(0.5, 0.5)
+transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
+
+[node name="Deck" parent="Cards" instance=ExtResource("1_og2kh")]
+position = Vector2(1188, 656)
+
+[node name="Hand" parent="Cards" instance=ExtResource("2_gb8ka")]
 
 [node name="CardEffectHandler" type="Node2D" parent="."]
 script = ExtResource("4_l3ca5")
 
-[node name="World" type="Node2D" parent="."]
-
-[connection signal="card_drawn" from="Deck" to="Hand" method="_on_deck_card_drawn"]
-[connection signal="input_event" from="Deck" to="Deck" method="_on_input_event"]
-[connection signal="card_played" from="Hand" to="CardEffectHandler" method="_on_hand_card_played"]
+[connection signal="card_drawn" from="Cards/Deck" to="Cards/Hand" method="_on_deck_card_drawn"]
+[connection signal="input_event" from="Cards/Deck" to="Cards/Deck" method="_on_input_event"]
+[connection signal="card_played" from="Cards/Hand" to="CardEffectHandler" method="_on_hand_card_played"]

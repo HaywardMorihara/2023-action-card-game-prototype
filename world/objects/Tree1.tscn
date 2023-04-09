@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://d14u0khtguyid"]
+
+[ext_resource type="Texture2D" uid="uid://bxnvrcm8w023e" path="res://assets/peaceful_pixels_chapter00/assets_and_tiles/tree_1.png" id="1_v8qy0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kacro"]
+radius = 14.0
+height = 44.0
+
+[node name="Tree1" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_v8qy0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_kacro")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3]
+[gd_scene load_steps=4 format=3 uid="uid://05nvc3bq3wwk"]
 
 [ext_resource type="Script" path="res://action_card_game_library/Card.gd" id="1_y307t"]
 [ext_resource type="Texture2D" uid="uid://74lm1qggi667" path="res://assets/palceholder_card_art.png" id="2_prfnn"]

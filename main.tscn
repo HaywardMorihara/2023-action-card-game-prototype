@@ -1,6 +1,5 @@
-[gd_scene load_steps=11 format=3 uid="uid://cai4ppl0aou0r"]
+[gd_scene load_steps=14 format=3 uid="uid://xw4awcjp2txc"]
 
-[ext_resource type="Script" path="res://Main.gd" id="1_i30q2"]
 [ext_resource type="PackedScene" uid="uid://dikl6yqyjpknd" path="res://action_card_game_library/Deck.tscn" id="1_og2kh"]
 [ext_resource type="PackedScene" uid="uid://chy24xce4urq0" path="res://action_card_game_library/Hand.tscn" id="2_gb8ka"]
 [ext_resource type="PackedScene" uid="uid://d14u0khtguyid" path="res://world/objects/Tree1.tscn" id="2_rt11a"]
@@ -8,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://3q7iaf307t5w" path="res://assets/peaceful_pixels_chapter00/assets_and_tiles/tileset.png" id="4_a7jgr"]
 [ext_resource type="Script" path="res://action_card_game_library_impl/CardEffectHandler.gd" id="4_l3ca5"]
 [ext_resource type="PackedScene" uid="uid://b5aq477ootmg5" path="res://world/pickups/DrawPickup.tscn" id="5_du532"]
+[ext_resource type="Script" path="res://ui/CardUI.gd" id="6_a6k1l"]
+[ext_resource type="Script" path="res://HealthUI.gd" id="9_g5rah"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xmfpn"]
 texture = ExtResource("4_a7jgr")
@@ -313,8 +314,13 @@ texture = ExtResource("4_a7jgr")
 [sub_resource type="TileSet" id="TileSet_8dcwx"]
 sources/0 = SubResource("TileSetAtlasSource_xmfpn")
 
+[sub_resource type="SystemFont" id="SystemFont_m1grw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_iuw7h"]
+font = SubResource("SystemFont_m1grw")
+font_color = Color(0, 0, 0, 1)
+
 [node name="Main" type="Node2D"]
-script = ExtResource("1_i30q2")
 
 [node name="CardEffectHandler" type="Node2D" parent="."]
 script = ExtResource("4_l3ca5")
@@ -377,23 +383,49 @@ position = Vector2(108, 391)
 [node name="DrawPickup7" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_du532")]
 position = Vector2(582, 197)
 
-[node name="Cards" type="CanvasLayer" parent="CardEffectHandler"]
+[node name="CardUI" type="CanvasLayer" parent="CardEffectHandler"]
 scale = Vector2(0.5, 0.5)
 transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
+script = ExtResource("6_a6k1l")
 
-[node name="Deck" parent="CardEffectHandler/Cards" instance=ExtResource("1_og2kh")]
+[node name="Deck" parent="CardEffectHandler/CardUI" instance=ExtResource("1_og2kh")]
 position = Vector2(1188, 656)
 
-[node name="Hand" parent="CardEffectHandler/Cards" instance=ExtResource("2_gb8ka")]
+[node name="Hand" parent="CardEffectHandler/CardUI" instance=ExtResource("2_gb8ka")]
 
-[node name="Sprite2D" type="ColorRect" parent="CardEffectHandler/Cards"]
-offset_left = 1188.0
-offset_top = 508.0
-offset_right = 1198.0
-offset_bottom = 518.0
-color = Color(1, 0, 0.0941176, 1)
+[node name="HealthUI" type="Control" parent="CardEffectHandler/CardUI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("9_g5rah")
+
+[node name="MaxHealthBar" type="ColorRect" parent="CardEffectHandler/CardUI/HealthUI"]
+layout_mode = 0
+offset_left = 1106.0
+offset_top = 518.0
+offset_right = 1266.0
+offset_bottom = 534.0
+color = Color(0.541176, 0.541176, 0.541176, 1)
+
+[node name="HealthBar" type="ColorRect" parent="CardEffectHandler/CardUI/HealthUI"]
+layout_mode = 0
+offset_left = 1106.0
+offset_top = 518.0
+offset_right = 1266.0
+offset_bottom = 534.0
+color = Color(0, 1, 0.219608, 1)
+
+[node name="HealthLabel" type="Label" parent="CardEffectHandler/CardUI/HealthUI"]
+layout_mode = 0
+offset_left = 1158.0
+offset_top = 476.0
+offset_right = 1210.0
+offset_bottom = 502.0
+text = "40 / 40"
+label_settings = SubResource("LabelSettings_iuw7h")
 
 [connection signal="player_draw_card" from="CardEffectHandler/World/Player" to="CardEffectHandler" method="_on_player_player_draw_card"]
-[connection signal="card_drawn" from="CardEffectHandler/Cards/Deck" to="CardEffectHandler/Cards/Hand" method="_on_deck_card_drawn"]
-[connection signal="input_event" from="CardEffectHandler/Cards/Deck" to="CardEffectHandler/Cards/Deck" method="_on_input_event"]
-[connection signal="card_played" from="CardEffectHandler/Cards/Hand" to="CardEffectHandler" method="_on_hand_card_played"]
+[connection signal="card_drawn" from="CardEffectHandler/CardUI/Deck" to="CardEffectHandler/CardUI/Hand" method="_on_deck_card_drawn"]
+[connection signal="input_event" from="CardEffectHandler/CardUI/Deck" to="CardEffectHandler/CardUI/Deck" method="_on_input_event"]
+[connection signal="card_played" from="CardEffectHandler/CardUI/Hand" to="CardEffectHandler" method="_on_hand_card_played"]

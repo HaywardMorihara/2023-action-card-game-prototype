@@ -12,4 +12,4 @@ func _on_hand_card_played(card, position):
 
 
 func _on_player_player_draw_card():
-	$Cards/Deck.draw_next_card()
+	$CardUI.draw_next_card()

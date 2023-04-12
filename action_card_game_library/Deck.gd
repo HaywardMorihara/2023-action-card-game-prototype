@@ -3,6 +3,7 @@ extends Area2D
 signal card_drawn(card_id : ActionCardGameGlobal.CardId)
 
 var current_contents : Array[ActionCardGameGlobal.CardId]
+var discard_contents : Array[ActionCardGameGlobal.CardId]
 var total_cards : int
 
 @export var is_click_to_draw : bool = false
@@ -42,6 +43,13 @@ func draw_next_card():
 	if current_contents.size() == 0:
 		visible = false
 	
+	
+func discard_from_top(num_of_cards : int):
+	var next_card_id = current_contents.pop_front()
+	discard_contents.push_front(next_card_id)
+	if current_contents.size() == 0:
+		visible = false
+
 
 func _on_input_event(viewport, event, shape_idx):
 	if is_click_to_draw:

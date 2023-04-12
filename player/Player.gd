@@ -1,16 +1,21 @@
 extends CharacterBody2D
 
 signal player_draw_card
+signal player_damage(amount : int)
 
 @export var speed = 100
 
-@onready var animation = get_node("AnimatedSprite2D")
+@onready var animation : AnimatedSprite2D = get_node("AnimatedSprite2D")
 
 
 func pickup(item):
 	if item.is_in_group("DrawPickup"):
 		player_draw_card.emit()
 
+
+func damage(amount : int):
+	player_damage.emit(amount)
+	
 
 func _physics_process(delta):
 	velocity = _get_input_direction() * speed

@@ -18,6 +18,7 @@ config/icon="res://icon.png"
 [autoload]
 
 ActionCardGameGlobal="*res://action_card_game_library_impl/ActionCardGameGlobal.gd"
+PlayerSettings="*res://PlayerSettings.gd"
 
 [display]
 

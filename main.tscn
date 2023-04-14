@@ -402,6 +402,7 @@ position = Vector2(376, 278)
 position = Vector2(95, 6)
 
 [node name="CardUI" type="CanvasLayer" parent="CardEffectHandler"]
+process_mode = 3
 scale = Vector2(0.5, 0.5)
 transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
 script = ExtResource("6_a6k1l")
@@ -448,3 +449,4 @@ label_settings = SubResource("LabelSettings_iuw7h")
 [connection signal="card_drawn" from="CardEffectHandler/CardUI/Deck" to="CardEffectHandler/CardUI/Hand" method="_on_deck_card_drawn"]
 [connection signal="input_event" from="CardEffectHandler/CardUI/Deck" to="CardEffectHandler/CardUI/Deck" method="_on_input_event"]
 [connection signal="card_played" from="CardEffectHandler/CardUI/Hand" to="CardEffectHandler" method="_on_hand_card_played"]
+[connection signal="hand_is_up_toggled" from="CardEffectHandler/CardUI/Hand" to="CardEffectHandler" method="_on_hand_hand_is_up_toggled"]

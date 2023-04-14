@@ -1,6 +1,7 @@
 extends Area2D
 
 signal card_placed(card, position)
+signal card_being_held(is_card_held)
 
 var id : ActionCardGameGlobal.CardId
 var dragging = false
@@ -31,9 +32,11 @@ func _input(event):
 		var mouse_pos = get_global_mouse_position()
 		if event.is_action_pressed("card_select"):
 			dragging = true
+			card_being_held.emit(dragging)
 		elif event.is_action_released("card_select"):
 			dragging = false
 			card_placed.emit(self, mouse_pos)
+			card_being_held.emit(dragging)
 
 
 func _on_mouse_entered():

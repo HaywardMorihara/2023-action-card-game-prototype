@@ -53,8 +53,6 @@ func _on_mouse_exited():
 
 
 func _on_card_card_placed(card, position):
-	
-	
 	if position.y > self.position.y:
 		card.return_to_initial_position()
 	else:

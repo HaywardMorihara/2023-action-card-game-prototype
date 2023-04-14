@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cj4oryfwaunx7"]
+[gd_scene load_steps=17 format=3 uid="uid://cj4oryfwaunx7"]
 
 [ext_resource type="PackedScene" uid="uid://dikl6yqyjpknd" path="res://action_card_game_library/Deck.tscn" id="1_og2kh"]
 [ext_resource type="PackedScene" uid="uid://chy24xce4urq0" path="res://action_card_game_library/Hand.tscn" id="2_gb8ka"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://ui/CardUI.gd" id="6_a6k1l"]
 [ext_resource type="PackedScene" uid="uid://cljxfwb82pig6" path="res://npcs/enemies/Blob.tscn" id="6_ej6qh"]
 [ext_resource type="Script" path="res://ui/HealthUI.gd" id="10_2nmwd"]
+[ext_resource type="PackedScene" uid="uid://dexohf5ajlghx" path="res://action_card_game_library/DiscardPile.tscn" id="11_ko1bt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xmfpn"]
 texture = ExtResource("4_a7jgr")
@@ -412,6 +413,9 @@ position = Vector2(1188, 656)
 
 [node name="Hand" parent="CardEffectHandler/CardUI" instance=ExtResource("2_gb8ka")]
 
+[node name="DiscardPile" parent="CardEffectHandler/CardUI" instance=ExtResource("11_ko1bt")]
+position = Vector2(104, 692)
+
 [node name="HealthUI" type="Control" parent="CardEffectHandler/CardUI"]
 layout_mode = 3
 anchors_preset = 0
@@ -444,9 +448,18 @@ offset_bottom = 502.0
 text = "40 / 40"
 label_settings = SubResource("LabelSettings_iuw7h")
 
+[node name="DiscardLabel" type="Label" parent="CardEffectHandler/CardUI/HealthUI"]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 552.0
+offset_right = 126.0
+offset_bottom = 575.0
+
 [connection signal="player_damage" from="CardEffectHandler/World/Player" to="CardEffectHandler" method="_on_player_player_damage"]
 [connection signal="player_draw_card" from="CardEffectHandler/World/Player" to="CardEffectHandler" method="_on_player_player_draw_card"]
 [connection signal="card_drawn" from="CardEffectHandler/CardUI/Deck" to="CardEffectHandler/CardUI/Hand" method="_on_deck_card_drawn"]
+[connection signal="deck_discard" from="CardEffectHandler/CardUI/Deck" to="CardEffectHandler/CardUI" method="_on_deck_deck_discard"]
 [connection signal="input_event" from="CardEffectHandler/CardUI/Deck" to="CardEffectHandler/CardUI/Deck" method="_on_input_event"]
 [connection signal="card_played" from="CardEffectHandler/CardUI/Hand" to="CardEffectHandler" method="_on_hand_card_played"]
+[connection signal="card_played" from="CardEffectHandler/CardUI/Hand" to="CardEffectHandler/CardUI" method="_on_hand_card_played"]
 [connection signal="hand_is_up_toggled" from="CardEffectHandler/CardUI/Hand" to="CardEffectHandler" method="_on_hand_hand_is_up_toggled"]

@@ -1,6 +1,7 @@
 extends Control
 
 var current_card_count : int
+var current_discard_count : int
 var max_card_count : int
 var max_bar_width : float
 
@@ -13,13 +14,15 @@ func update_max(max : int):
 	update()
 
 
-func update_current(current : int):
+func update_current(current : int, discard_count : int):
 	current_card_count = current
+	current_discard_count = discard_count
 	update()
 
 
 func update():
 	$HealthLabel.text = "%s / %s" % [str(current_card_count), str(max_card_count)]
+	$DiscardLabel.text = "%s" % str(current_discard_count)
 	
 	var card_count_percentage = float(current_card_count) / float(max_card_count)
 	$HealthBar.size.x = max_bar_width * card_count_percentage

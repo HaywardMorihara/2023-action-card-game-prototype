@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cj4oryfwaunx7"]
+[gd_scene load_steps=18 format=3 uid="uid://cj4oryfwaunx7"]
 
 [ext_resource type="PackedScene" uid="uid://dikl6yqyjpknd" path="res://action_card_game_library/Deck.tscn" id="1_og2kh"]
 [ext_resource type="PackedScene" uid="uid://chy24xce4urq0" path="res://action_card_game_library/Hand.tscn" id="2_gb8ka"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://world/pickups/Pickups.gd" id="5_wdb57"]
 [ext_resource type="Script" path="res://ui/CardUI.gd" id="6_a6k1l"]
 [ext_resource type="PackedScene" uid="uid://cljxfwb82pig6" path="res://npcs/enemies/Blob.tscn" id="6_ej6qh"]
+[ext_resource type="PackedScene" uid="uid://4od71sgu03p7" path="res://world/HealingStation.tscn" id="8_tr8lk"]
 [ext_resource type="Script" path="res://ui/HealthUI.gd" id="10_2nmwd"]
 [ext_resource type="PackedScene" uid="uid://dexohf5ajlghx" path="res://action_card_game_library/DiscardPile.tscn" id="11_ko1bt"]
 
@@ -402,6 +403,9 @@ position = Vector2(376, 278)
 [node name="Blob4" parent="CardEffectHandler/World/Enemies" groups=["Enemies"] instance=ExtResource("6_ej6qh")]
 position = Vector2(95, 6)
 
+[node name="HealingStation" parent="CardEffectHandler/World" instance=ExtResource("8_tr8lk")]
+position = Vector2(117, 237)
+
 [node name="CardUI" type="CanvasLayer" parent="CardEffectHandler"]
 process_mode = 3
 scale = Vector2(0.5, 0.5)
@@ -455,11 +459,44 @@ offset_top = 552.0
 offset_right = 126.0
 offset_bottom = 575.0
 
+[node name="Popup" type="Popup" parent="CardEffectHandler/CardUI"]
+position = Vector2i(150, 100)
+size = Vector2i(300, 200)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CardEffectHandler/CardUI/Popup"]
+offset_right = 40.0
+offset_bottom = 40.0
+alignment = 1
+
+[node name="Label" type="Label" parent="CardEffectHandler/CardUI/Popup/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Would you like to heal? 
+
+All cards from your hand and
+discard pile will be suffled back
+into your deck and you will draw
+5 new cards."
+horizontal_alignment = 1
+
+[node name="YesHealButton" type="Button" parent="CardEffectHandler/CardUI/Popup/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Yes"
+
+[node name="NoHealButton" type="Button" parent="CardEffectHandler/CardUI/Popup/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "No"
+
 [connection signal="player_damage" from="CardEffectHandler/World/Player" to="CardEffectHandler" method="_on_player_player_damage"]
 [connection signal="player_draw_card" from="CardEffectHandler/World/Player" to="CardEffectHandler" method="_on_player_player_draw_card"]
+[connection signal="healing_station_entered_by_player" from="CardEffectHandler/World/HealingStation" to="CardEffectHandler/CardUI" method="_on_healing_station_healing_station_entered_by_player"]
 [connection signal="card_drawn" from="CardEffectHandler/CardUI/Deck" to="CardEffectHandler/CardUI/Hand" method="_on_deck_card_drawn"]
 [connection signal="deck_discard" from="CardEffectHandler/CardUI/Deck" to="CardEffectHandler/CardUI" method="_on_deck_deck_discard"]
 [connection signal="input_event" from="CardEffectHandler/CardUI/Deck" to="CardEffectHandler/CardUI/Deck" method="_on_input_event"]
 [connection signal="card_played" from="CardEffectHandler/CardUI/Hand" to="CardEffectHandler" method="_on_hand_card_played"]
 [connection signal="card_played" from="CardEffectHandler/CardUI/Hand" to="CardEffectHandler/CardUI" method="_on_hand_card_played"]
 [connection signal="hand_is_up_toggled" from="CardEffectHandler/CardUI/Hand" to="CardEffectHandler" method="_on_hand_hand_is_up_toggled"]
+[connection signal="pressed" from="CardEffectHandler/CardUI/Popup/VBoxContainer/YesHealButton" to="CardEffectHandler/CardUI" method="_on_yes_heal_button_pressed"]
+[connection signal="pressed" from="CardEffectHandler/CardUI/Popup/VBoxContainer/NoHealButton" to="CardEffectHandler/CardUI" method="_on_no_heal_button_pressed"]

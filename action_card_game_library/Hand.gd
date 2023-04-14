@@ -30,6 +30,15 @@ func reset_card_positions():
 		cards_in_hand[i].set_initial_position(new_pos)
 
 
+func remove_all() -> Array[ActionCardGameGlobal.CardId]:
+	var cards_from_hand : Array[ActionCardGameGlobal.CardId] = []
+	for card in get_tree().get_nodes_in_group("cards_in_hand"):
+		cards_from_hand.push_front(card.id)
+		card.remove_from_group("cards_in_hand")
+		card.queue_free()
+	return cards_from_hand
+	
+
 func _ready():
 	for card in get_tree().get_nodes_in_group("cards"):
 		card.card_placed.connect(_on_card_card_placed)

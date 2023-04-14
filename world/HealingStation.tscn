@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://4od71sgu03p7"]
+
+[ext_resource type="Texture2D" uid="uid://djkcosjkvbfp4" path="res://assets/peaceful_pixels_chapter00/assets_and_tiles/bed_vertical.png" id="1_jsuns"]
+[ext_resource type="Script" path="res://world/HealingStation.gd" id="1_s2yvu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wqcc6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ggxt"]
+size = Vector2(48, 64)
+
+[node name="HealingStation" type="StaticBody2D"]
+script = ExtResource("1_s2yvu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_jsuns")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_wqcc6")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_0ggxt")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

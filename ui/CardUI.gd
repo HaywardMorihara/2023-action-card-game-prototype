@@ -55,3 +55,10 @@ func _on_yes_heal_button_pressed():
 func _on_no_heal_button_pressed():
 	$Popup.hide()
 	get_tree().paused = false
+
+
+func _on_player_player_new_card(cardId):
+	Deck.total_cards += 1
+	Deck.add_card_to_bottom_of_deck(cardId)
+	HealthUI.update_max(Deck.total_cards)
+	HealthUI.update_current(Deck.current_contents.size(), DiscardPile.contents.size())

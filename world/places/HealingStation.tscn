@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://4od71sgu03p7"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Texture2D" uid="uid://djkcosjkvbfp4" path="res://assets/peaceful_pixels_chapter00/assets_and_tiles/bed_vertical.png" id="1_jsuns"]
-[ext_resource type="Script" path="res://world/HealingStation.gd" id="1_s2yvu"]
+[ext_resource type="Script" path="res://world/places/HealingStation.gd" id="1_s2yvu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wqcc6"]
 

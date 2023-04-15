@@ -1,6 +1,6 @@
-[gd_scene load_steps=27 format=3 uid="uid://cljxfwb82pig6"]
+[gd_scene load_steps=27 format=3]
 
-[ext_resource type="Script" path="res://npcs/enemies/Blob.gd" id="1_1rjua"]
+[ext_resource type="Script" path="res://world/npcs/enemies/Blob.gd" id="1_1rjua"]
 [ext_resource type="Texture2D" uid="uid://sfhgdf8s8h4a" path="res://assets/peaceful_pixels_chapter00/Character_Animations/slime_spritesheet.png" id="1_4tc7r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qjapn"]

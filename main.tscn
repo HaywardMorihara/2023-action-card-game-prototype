@@ -1,16 +1,17 @@
-[gd_scene load_steps=18 format=3 uid="uid://cj4oryfwaunx7"]
+[gd_scene load_steps=19 format=3 uid="uid://c3drbnmbj4qx5"]
 
 [ext_resource type="PackedScene" uid="uid://dikl6yqyjpknd" path="res://action_card_game_library/Deck.tscn" id="1_og2kh"]
 [ext_resource type="PackedScene" uid="uid://chy24xce4urq0" path="res://action_card_game_library/Hand.tscn" id="2_gb8ka"]
 [ext_resource type="PackedScene" uid="uid://d14u0khtguyid" path="res://world/objects/Tree1.tscn" id="2_rt11a"]
-[ext_resource type="PackedScene" uid="uid://cmjtup4qxnl38" path="res://player/Player.tscn" id="3_8hxhk"]
+[ext_resource type="PackedScene" uid="uid://b5hprpiv7wjwx" path="res://world/player/Player.tscn" id="3_8hxhk"]
 [ext_resource type="Texture2D" uid="uid://3q7iaf307t5w" path="res://assets/peaceful_pixels_chapter00/assets_and_tiles/tileset.png" id="4_a7jgr"]
 [ext_resource type="Script" path="res://action_card_game_library_impl/CardEffectHandler.gd" id="4_l3ca5"]
-[ext_resource type="PackedScene" uid="uid://b5aq477ootmg5" path="res://world/pickups/DrawPickup.tscn" id="5_du532"]
-[ext_resource type="Script" path="res://world/pickups/Pickups.gd" id="5_wdb57"]
+[ext_resource type="PackedScene" uid="uid://dl3dbspur8fbm" path="res://world/pickups/DrawPickup.tscn" id="5_du532"]
+[ext_resource type="PackedScene" uid="uid://dm52wsxafc3yg" path="res://world/pickups/NewCardPickup.tscn" id="5_e8ga7"]
 [ext_resource type="Script" path="res://ui/CardUI.gd" id="6_a6k1l"]
-[ext_resource type="PackedScene" uid="uid://cljxfwb82pig6" path="res://npcs/enemies/Blob.tscn" id="6_ej6qh"]
-[ext_resource type="PackedScene" uid="uid://4od71sgu03p7" path="res://world/HealingStation.tscn" id="8_tr8lk"]
+[ext_resource type="PackedScene" path="res://world/npcs/enemies/Blob.tscn" id="6_ej6qh"]
+[ext_resource type="Script" path="res://world/npcs/enemies/EnemiesManager.gd" id="6_m4i2h"]
+[ext_resource type="PackedScene" path="res://world/places/HealingStation.tscn" id="8_tr8lk"]
 [ext_resource type="Script" path="res://ui/HealthUI.gd" id="10_2nmwd"]
 [ext_resource type="PackedScene" uid="uid://dexohf5ajlghx" path="res://action_card_game_library/DiscardPile.tscn" id="11_ko1bt"]
 
@@ -365,31 +366,20 @@ position = Vector2(767, 144)
 
 [node name="Pickups" type="Node2D" parent="CardEffectHandler/World"]
 y_sort_enabled = true
-script = ExtResource("5_wdb57")
+
+[node name="NewCardPickup" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
+position = Vector2(246, 297)
 
 [node name="DrawPickup" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_du532")]
-position = Vector2(179, 139)
+position = Vector2(135, 155)
 
-[node name="DrawPickup2" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_du532")]
-position = Vector2(322, 164)
-
-[node name="DrawPickup3" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_du532")]
-position = Vector2(520, 78)
-
-[node name="DrawPickup4" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_du532")]
-position = Vector2(308, 316)
-
-[node name="DrawPickup5" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_du532")]
-position = Vector2(-31, 213)
-
-[node name="DrawPickup6" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_du532")]
-position = Vector2(108, 391)
-
-[node name="DrawPickup7" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_du532")]
-position = Vector2(582, 197)
+[node name="NewCardPickup2" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
+position = Vector2(170, 256)
+cardId = 1
 
 [node name="Enemies" type="Node2D" parent="CardEffectHandler/World"]
 y_sort_enabled = true
+script = ExtResource("6_m4i2h")
 
 [node name="Blob" parent="CardEffectHandler/World/Enemies" groups=["Enemies"] instance=ExtResource("6_ej6qh")]
 position = Vector2(358, 129)
@@ -491,6 +481,7 @@ text = "No"
 
 [connection signal="player_damage" from="CardEffectHandler/World/Player" to="CardEffectHandler" method="_on_player_player_damage"]
 [connection signal="player_draw_card" from="CardEffectHandler/World/Player" to="CardEffectHandler" method="_on_player_player_draw_card"]
+[connection signal="player_new_card" from="CardEffectHandler/World/Player" to="CardEffectHandler/CardUI" method="_on_player_player_new_card"]
 [connection signal="healing_station_entered_by_player" from="CardEffectHandler/World/HealingStation" to="CardEffectHandler/CardUI" method="_on_healing_station_healing_station_entered_by_player"]
 [connection signal="card_drawn" from="CardEffectHandler/CardUI/Deck" to="CardEffectHandler/CardUI/Hand" method="_on_deck_card_drawn"]
 [connection signal="deck_discard" from="CardEffectHandler/CardUI/Deck" to="CardEffectHandler/CardUI" method="_on_deck_deck_discard"]

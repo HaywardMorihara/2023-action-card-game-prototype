@@ -2,15 +2,18 @@ extends CharacterBody2D
 
 signal player_draw_card
 signal player_damage(amount : int)
+signal player_new_card(cardId : ActionCardGameGlobal.CardId)
 
 @export var speed = 100
 
 @onready var animation : AnimatedSprite2D = get_node("AnimatedSprite2D")
 
 
-func pickup(item):
-	if item.is_in_group("DrawPickup"):
+func pickup(pickup):
+	if pickup.is_in_group("DrawPickup"):
 		player_draw_card.emit()
+	elif pickup.is_in_group("NewCardPickup"):
+		player_new_card.emit(pickup.cardId)
 
 
 func damage(amount : int):

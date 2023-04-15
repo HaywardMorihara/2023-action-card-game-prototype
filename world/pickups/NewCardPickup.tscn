@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dl3dbspur8fbm"]
+[gd_scene load_steps=8 format=3 uid="uid://dm52wsxafc3yg"]
 
-[ext_resource type="PackedScene" uid="uid://b5aq477ootmg5" path="res://world/pickups/Pickup.tscn" id="1_5nwyi"]
-[ext_resource type="Texture2D" uid="uid://cpli7l10k04nv" path="res://assets/draw_pickup.png" id="1_nbukk"]
+[ext_resource type="PackedScene" uid="uid://b5aq477ootmg5" path="res://world/pickups/Pickup.tscn" id="1_pe6d2"]
+[ext_resource type="Script" path="res://world/pickups/NewCardPickup.gd" id="2_70nes"]
+[ext_resource type="Texture2D" uid="uid://bn302u10xiy4e" path="res://assets/new_card_pickup.png" id="2_kfmfb"]
 
 [sub_resource type="Animation" id="Animation_5suyp"]
 resource_name = "Idle"
@@ -44,10 +45,12 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j75kq"]
 size = Vector2(10, 10)
 
-[node name="DrawPickup" groups=["DrawPickup"] instance=ExtResource("1_5nwyi")]
+[node name="NewCardPickup" groups=["NewCardPickup"] instance=ExtResource("1_pe6d2")]
+script = ExtResource("2_70nes")
+cardId = 0
 
 [node name="Sprite2D" parent="." index="0" groups=["DrawPickup"]]
-texture = ExtResource("1_nbukk")
+texture = ExtResource("2_kfmfb")
 hframes = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite2D" index="0"]

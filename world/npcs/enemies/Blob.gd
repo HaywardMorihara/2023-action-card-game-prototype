@@ -35,7 +35,7 @@ func _physics_process(delta):
 
 func _animate():
 	if is_queued_destroy:
-		animation.play("DestroyedRight")
+		animation.play("DestroyedRight")	
 	elif velocity.is_zero_approx():
 		animation.play("IdleRight")
 	else:
@@ -55,6 +55,7 @@ func _decide_direction() -> Vector2:
 
 func queue_destroy():
 	is_queued_destroy = true
+	animation.play("DestroyedRight")
 	if randf_range(0, 1.0) < draw_drop_probability:
 		var pickup = draw_pickup_scene.instantiate()
 		pickup.global_position = global_position

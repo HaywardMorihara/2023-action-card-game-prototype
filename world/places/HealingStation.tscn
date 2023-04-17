@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3]
+[gd_scene load_steps=5 format=3 uid="uid://dl6ia4xhm2n5n"]
 
 [ext_resource type="Texture2D" uid="uid://djkcosjkvbfp4" path="res://assets/peaceful_pixels_chapter00/assets_and_tiles/bed_vertical.png" id="1_jsuns"]
 [ext_resource type="Script" path="res://world/places/HealingStation.gd" id="1_s2yvu"]
@@ -9,6 +9,8 @@
 size = Vector2(48, 64)
 
 [node name="HealingStation" type="StaticBody2D"]
+collision_layer = 9
+collision_mask = 31
 script = ExtResource("1_s2yvu")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

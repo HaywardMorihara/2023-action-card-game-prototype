@@ -6,10 +6,12 @@ enum CardId {
 	ONE,
 	TWO,
 	THREE,
+	FIREBALL,
 }
 
 var card_id_to_card_scene = {
 	CardId.ONE : preload("cards/Card1.tscn"),
 	CardId.TWO : preload("cards/Card2.tscn"),
 	CardId.THREE : preload("cards/Card3.tscn"),
+	CardId.FIREBALL : preload("cards/FireballCard.tscn")
 }

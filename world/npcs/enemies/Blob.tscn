@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3]
+[gd_scene load_steps=27 format=3 uid="uid://jgl22r8v5pfk"]
 
 [ext_resource type="Script" path="res://world/npcs/enemies/Blob.gd" id="1_1rjua"]
 [ext_resource type="Texture2D" uid="uid://sfhgdf8s8h4a" path="res://assets/peaceful_pixels_chapter00/Character_Animations/slime_spritesheet.png" id="1_4tc7r"]
@@ -184,7 +184,10 @@ animations = [{
 radius = 7.0
 height = 16.0
 
-[node name="Blob" type="CharacterBody2D"]
+[node name="Blob" type="CharacterBody2D" groups=["Enemies"]]
+collision_layer = 5
+collision_mask = 31
+motion_mode = 1
 script = ExtResource("1_1rjua")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://brpfimrjn8tuq"]
+
+[ext_resource type="Texture2D" uid="uid://dw1b8c4umgpi4" path="res://assets/fireball_particle_red.png" id="1_kpos6"]
+[ext_resource type="Script" path="res://world/effects/Fireball.gd" id="1_lbqct"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_aeehc"]
+
+[node name="Fireball" type="CharacterBody2D"]
+collision_layer = 16
+collision_mask = 12
+motion_mode = 1
+script = ExtResource("1_lbqct")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_aeehc")
+
+[node name="TailCPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 100
+texture = ExtResource("1_kpos6")
+direction = Vector2(-1, 0)
+spread = 20.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 10.0
+initial_velocity_max = 100.0
+
+[node name="BodyCPUParticles2D" type="CPUParticles2D" parent="."]
+amount = 100
+texture = ExtResource("1_kpos6")
+emission_shape = 1
+emission_sphere_radius = 8.0
+direction = Vector2(0, 0)
+spread = 20.0
+gravity = Vector2(0, 0)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

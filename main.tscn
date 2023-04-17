@@ -9,9 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://dl3dbspur8fbm" path="res://world/pickups/DrawPickup.tscn" id="5_du532"]
 [ext_resource type="PackedScene" uid="uid://dm52wsxafc3yg" path="res://world/pickups/NewCardPickup.tscn" id="5_e8ga7"]
 [ext_resource type="Script" path="res://ui/CardUI.gd" id="6_a6k1l"]
-[ext_resource type="PackedScene" path="res://world/npcs/enemies/Blob.tscn" id="6_ej6qh"]
+[ext_resource type="PackedScene" uid="uid://jgl22r8v5pfk" path="res://world/npcs/enemies/Blob.tscn" id="6_ej6qh"]
 [ext_resource type="Script" path="res://world/npcs/enemies/EnemiesManager.gd" id="6_m4i2h"]
-[ext_resource type="PackedScene" path="res://world/places/HealingStation.tscn" id="8_tr8lk"]
+[ext_resource type="PackedScene" uid="uid://dl6ia4xhm2n5n" path="res://world/places/HealingStation.tscn" id="8_tr8lk"]
 [ext_resource type="Script" path="res://ui/HealthUI.gd" id="10_2nmwd"]
 [ext_resource type="PackedScene" uid="uid://dexohf5ajlghx" path="res://action_card_game_library/DiscardPile.tscn" id="11_ko1bt"]
 

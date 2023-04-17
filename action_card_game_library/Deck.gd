@@ -15,6 +15,10 @@ func _ready():
 		ActionCardGameGlobal.CardId.TWO, 
 		ActionCardGameGlobal.CardId.THREE,
 		ActionCardGameGlobal.CardId.THREE,
+		ActionCardGameGlobal.CardId.FIREBALL,
+		ActionCardGameGlobal.CardId.FIREBALL,
+		ActionCardGameGlobal.CardId.FIREBALL,
+		ActionCardGameGlobal.CardId.FIREBALL,
 	]
 	##
 	shuffle()

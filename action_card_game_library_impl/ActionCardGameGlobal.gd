@@ -15,3 +15,36 @@ var card_id_to_card_scene = {
 	CardId.THREE : preload("cards/Card3.tscn"),
 	CardId.FIREBALL : preload("cards/FireballCard.tscn")
 }
+
+var starting_hand_count = 5
+
+var starting_deck : Array[CardId] = [
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+]

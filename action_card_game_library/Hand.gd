@@ -8,8 +8,6 @@ var is_card_being_held : bool = false
 
 
 func add_card(card_id : ActionCardGameGlobal.CardId):
-	# TODO How to translate this into what card should be instantiated?
-	
 	var new_card_scene = ActionCardGameGlobal.card_id_to_card_scene[card_id]
 	var new_card = new_card_scene.instantiate()
 	new_card.card_placed.connect(_on_card_card_placed)
@@ -45,20 +43,26 @@ func _ready():
 		card.card_being_held.connect(_on_card_card_being_held)
 
 
+func _move_hand_up(up := true):
+	is_hand_up = up
+	if is_hand_up:
+		position.y = 720 - 135
+	else:
+		position.y = 720
+	hand_is_up_toggled.emit(is_hand_up)
+
 func _on_mouse_entered():
 	var cards_in_hand = get_tree().get_nodes_in_group("cards_in_hand")
 	var num_cards_in_hand = cards_in_hand.size()
-	if num_cards_in_hand > 0:
-		is_hand_up = true
-		position.y = 720 - 135
-		hand_is_up_toggled.emit(is_hand_up)
+	if num_cards_in_hand == 0:
+		return
+	_move_hand_up(true)
 
 
 func _on_mouse_exited():
-	if not is_card_being_held:
-		is_hand_up = false
-		position.y = 720
-		hand_is_up_toggled.emit(is_hand_up)
+	if is_card_being_held:
+		return
+	_move_hand_up(false)
 
 
 func _on_card_card_placed(card, position):
@@ -69,10 +73,7 @@ func _on_card_card_placed(card, position):
 		card.play()
 		reset_card_positions()
 		card_played.emit(card, position)
-	
-	is_hand_up = false
-	position.y = 720
-	hand_is_up_toggled.emit(is_hand_up)
+	_move_hand_up(false)
 
 
 func _on_card_card_being_held(is_card_held):

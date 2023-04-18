@@ -9,20 +9,14 @@ var total_cards : int
 @export var is_click_to_draw : bool = false
 
 func _ready():
-	# TODO Replace
-	current_contents = [
-		ActionCardGameGlobal.CardId.ONE, 
-		ActionCardGameGlobal.CardId.TWO, 
-		ActionCardGameGlobal.CardId.THREE,
-		ActionCardGameGlobal.CardId.THREE,
-		ActionCardGameGlobal.CardId.FIREBALL,
-		ActionCardGameGlobal.CardId.FIREBALL,
-		ActionCardGameGlobal.CardId.FIREBALL,
-		ActionCardGameGlobal.CardId.FIREBALL,
-	]
-	##
+	if ActionCardGameGlobal.starting_deck:
+		current_contents = ActionCardGameGlobal.starting_deck.duplicate()
 	shuffle()
 	total_cards = current_contents.size()
+	if ActionCardGameGlobal.starting_hand_count:
+		for i in ActionCardGameGlobal.starting_hand_count:
+			draw_next_card()
+
 
 func shuffle():
 	randomize()

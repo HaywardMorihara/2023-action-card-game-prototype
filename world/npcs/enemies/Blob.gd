@@ -6,10 +6,12 @@ signal blob_drop(pickup)
 @export var detection_radius = 100
 @export var damage_to_player = 1
 @export var draw_drop_probability : float = 0.25
+@export var new_card_drop_probability : float = 0.1
 
 @onready var animation : AnimatedSprite2D = get_node("AnimatedSprite2D")
 
 var draw_pickup_scene = preload("res://world/pickups/DrawPickup.tscn")
+var new_card_pickup_scene = preload("res://world/pickups/NewCardPickup.tscn")
 
 var is_queued_destroy := false
 
@@ -57,6 +59,10 @@ func queue_destroy():
 	is_queued_destroy = true
 	animation.play("DestroyedRight")
 	if randf_range(0, 1.0) < draw_drop_probability:
+		var pickup = draw_pickup_scene.instantiate()
+		pickup.global_position = global_position
+		blob_drop.emit(pickup)
+	if randf_range(0, 1.0) < new_card_drop_probability:
 		var pickup = draw_pickup_scene.instantiate()
 		pickup.global_position = global_position
 		blob_drop.emit(pickup)

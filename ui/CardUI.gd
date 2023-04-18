@@ -43,7 +43,7 @@ func _on_yes_heal_button_pressed():
 	var cards_from_hand = Hand.remove_all()
 	for cardId in cards_from_hand:
 		Deck.add_card_to_front_of_deck(cardId)
-	for n in 5:
+	for n in ActionCardGameGlobal.starting_hand_count:
 		if Deck.current_contents.size() <= 1:
 			break
 		Deck.draw_next_card()

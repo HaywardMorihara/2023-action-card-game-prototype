@@ -341,7 +341,6 @@ layer_0/tile_data = PackedInt32Array(196611, 65536, 1, 262147, 65536, 1, 327683,
 [node name="Player" parent="CardEffectHandler/World" instance=ExtResource("3_8hxhk")]
 y_sort_enabled = true
 position = Vector2(294, 181)
-motion_mode = 1
 
 [node name="Objects" type="Node2D" parent="CardEffectHandler/World"]
 y_sort_enabled = true
@@ -381,16 +380,16 @@ cardId = 1
 y_sort_enabled = true
 script = ExtResource("6_m4i2h")
 
-[node name="Blob" parent="CardEffectHandler/World/Enemies" groups=["Enemies"] instance=ExtResource("6_ej6qh")]
+[node name="Blob" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
 position = Vector2(358, 129)
 
-[node name="Blob2" parent="CardEffectHandler/World/Enemies" groups=["Enemies"] instance=ExtResource("6_ej6qh")]
+[node name="Blob2" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
 position = Vector2(583, 258)
 
-[node name="Blob3" parent="CardEffectHandler/World/Enemies" groups=["Enemies"] instance=ExtResource("6_ej6qh")]
+[node name="Blob3" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
 position = Vector2(376, 278)
 
-[node name="Blob4" parent="CardEffectHandler/World/Enemies" groups=["Enemies"] instance=ExtResource("6_ej6qh")]
+[node name="Blob4" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
 position = Vector2(95, 6)
 
 [node name="HealingStation" parent="CardEffectHandler/World" instance=ExtResource("8_tr8lk")]

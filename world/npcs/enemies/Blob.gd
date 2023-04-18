@@ -3,10 +3,10 @@ extends CharacterBody2D
 signal blob_drop(pickup)
 
 @export var speed = 50
-@export var detection_radius = 100
+@export var detection_radius = 200
 @export var damage_to_player = 1
 @export var draw_drop_probability : float = 0.25
-@export var new_card_drop_probability : float = 0.1
+@export var new_card_drop_probability : float = 0.25
 
 @onready var animation : AnimatedSprite2D = get_node("AnimatedSprite2D")
 

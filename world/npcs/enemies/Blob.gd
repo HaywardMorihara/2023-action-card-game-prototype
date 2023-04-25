@@ -1,11 +1,12 @@
 extends CharacterBody2D
 
 signal blob_drop(pickup)
+signal blob_destroyed
 
 @export var speed = 50
 @export var detection_radius = 200
 @export var damage_to_player = 1
-@export var draw_drop_probability : float = 0.25
+@export var draw_drop_probability : float = 0.5
 @export var new_card_drop_probability : float = 0.1
 
 @onready var animation : AnimatedSprite2D = get_node("AnimatedSprite2D")
@@ -71,3 +72,4 @@ func queue_destroy():
 func _on_animated_sprite_2d_animation_finished():
 	if is_queued_destroy and animation.get_animation() == "DestroyedRight":
 		queue_free()
+		blob_destroyed.emit()

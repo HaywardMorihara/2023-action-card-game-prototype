@@ -43,6 +43,8 @@ func draw_next_card():
 	
 	
 func discard_from_top(num_of_cards : int):
+	if current_contents.size() == 0:
+		return
 	var next_card_id = current_contents.pop_front()
 	deck_discard.emit(next_card_id)
 	if current_contents.size() == 0:

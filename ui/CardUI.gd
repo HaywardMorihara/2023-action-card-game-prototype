@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+signal deck_is_empty
+
 @onready var Deck := get_node("Deck")
 @onready var Hand := get_node("Hand")
 @onready var DiscardPile := get_node("DiscardPile")
@@ -17,6 +19,8 @@ func draw_next_card():
 	
 func discard_from_deck(num_of_cards : int):
 	Deck.discard_from_top(num_of_cards)
+	if Deck.current_contents.size() == 0:
+		deck_is_empty.emit()
 	HealthUI.update_current(Deck.current_contents.size(), DiscardPile.contents.size())
 
 

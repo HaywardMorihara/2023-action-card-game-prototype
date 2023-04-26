@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbg4atggpqgvl"]
+
+[ext_resource type="Script" path="res://world/places/DrawSpawnPoint.gd" id="1_o70nh"]
+
+[node name="DrawSpawnPoint" type="Node2D" groups=["DrawSpawnPoints"]]
+script = ExtResource("1_o70nh")

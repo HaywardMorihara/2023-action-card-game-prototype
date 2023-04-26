@@ -21,7 +21,8 @@ func _process(delta : float):
 			enemy_destroyed.emit()
 			current_enemy_count = actual_enemy_group_count
 			expected_enemy_count = actual_enemy_group_count
-		
+
+
 func _on_Enemy_drop(pickup):
 	# TODO This should become a child of Pickups, not Enemies
 	add_child(pickup)

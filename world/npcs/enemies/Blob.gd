@@ -24,13 +24,15 @@ func _ready():
 func _physics_process(delta):
 	if is_queued_destroy:
 		return
+	# TODO Needs to be acceleration so there can be an actual bounce
 	velocity = _decide_direction() * speed
 	# https://docs.godotengine.org/en/stable/tutorials/physics/using_character_body_2d.html#which-movement-method-to-use
 	var collision = move_and_collide(velocity * delta)
 	if collision:
+		# https://docs.godotengine.org/en/stable/tutorials/physics/using_character_body_2d.html
 		if collision.get_collider().is_in_group("Player"):
 			collision.get_collider().damage(1)
-			queue_destroy()
+			velocity = velocity.bounce(collision.get_normal()) * 2
 		else:
 			velocity.slide(collision.get_normal())
 	_animate()

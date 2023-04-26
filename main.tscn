@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c3drbnmbj4qx5"]
+[gd_scene load_steps=22 format=3 uid="uid://c3drbnmbj4qx5"]
 
 [ext_resource type="PackedScene" uid="uid://dikl6yqyjpknd" path="res://action_card_game_library/Deck.tscn" id="1_og2kh"]
 [ext_resource type="Script" path="res://Main.gd" id="1_x4ye3"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://b5hprpiv7wjwx" path="res://world/player/Player.tscn" id="3_8hxhk"]
 [ext_resource type="Texture2D" uid="uid://3q7iaf307t5w" path="res://assets/peaceful_pixels_chapter00/assets_and_tiles/tileset.png" id="4_a7jgr"]
 [ext_resource type="Script" path="res://action_card_game_library_impl/CardEffectHandler.gd" id="4_l3ca5"]
-[ext_resource type="PackedScene" uid="uid://dl3dbspur8fbm" path="res://world/pickups/DrawPickup.tscn" id="5_du532"]
 [ext_resource type="PackedScene" uid="uid://dm52wsxafc3yg" path="res://world/pickups/NewCardPickup.tscn" id="5_e8ga7"]
 [ext_resource type="Script" path="res://world/pickups/PickupsManager.gd" id="6_2e4kp"]
 [ext_resource type="Script" path="res://ui/CardUI.gd" id="6_a6k1l"]
@@ -1040,9 +1039,6 @@ script = ExtResource("6_2e4kp")
 
 [node name="NewCardPickup" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
 position = Vector2(246, 297)
-
-[node name="DrawPickup" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_du532")]
-position = Vector2(135, 155)
 
 [node name="NewCardPickup2" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
 position = Vector2(170, 256)

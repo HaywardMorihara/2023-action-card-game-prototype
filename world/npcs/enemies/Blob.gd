@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 signal blob_drop(pickup)
-signal blob_destroyed
+signal blob_queued_destroy
 
 @export var speed = 50
 @export var detection_radius = 200
@@ -72,4 +72,4 @@ func queue_destroy():
 func _on_animated_sprite_2d_animation_finished():
 	if is_queued_destroy and animation.get_animation() == "DestroyedRight":
 		queue_free()
-		blob_destroyed.emit()
+		blob_queued_destroy.emit()

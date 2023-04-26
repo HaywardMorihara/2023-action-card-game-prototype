@@ -1052,6 +1052,9 @@ script = ExtResource("6_m4i2h")
 [node name="Blob" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
 position = Vector2(358, 129)
 
+[node name="Blob2" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(450, 87)
+
 [node name="HealingStation" parent="CardEffectHandler/World" instance=ExtResource("8_tr8lk")]
 position = Vector2(117, 237)
 

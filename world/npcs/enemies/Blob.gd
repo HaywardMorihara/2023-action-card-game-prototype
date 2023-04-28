@@ -26,7 +26,7 @@ func _ready():
 func _physics_process(delta):
 	if is_queued_destroy:
 		return
-	# Other way to do this would be acceleration...
+	# Implementing acceleration would make this feel more natural
 	if not is_bounced:
 		velocity = _decide_direction() * speed
 	# https://docs.godotengine.org/en/stable/tutorials/physics/using_character_body_2d.html#which-movement-method-to-use

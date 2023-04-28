@@ -10,11 +10,13 @@ signal blob_queued_destroy
 @export var new_card_drop_probability : float = 0.1
 
 @onready var animation : AnimatedSprite2D = get_node("AnimatedSprite2D")
+@onready var bounce_timer : Timer = get_node("BouceTimer")
 
 var draw_pickup_scene = preload("res://world/pickups/DrawPickup.tscn")
 var new_card_pickup_scene = preload("res://world/pickups/NewCardPickup.tscn")
 
 var is_queued_destroy := false
+var is_bounced := false
 
 
 func _ready():
@@ -24,14 +26,18 @@ func _ready():
 func _physics_process(delta):
 	if is_queued_destroy:
 		return
-	# TODO Needs to be acceleration so there can be an actual bounce
-	velocity = _decide_direction() * speed
+	# Other way to do this would be acceleration...
+	if not is_bounced:
+		velocity = _decide_direction() * speed
 	# https://docs.godotengine.org/en/stable/tutorials/physics/using_character_body_2d.html#which-movement-method-to-use
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		# https://docs.godotengine.org/en/stable/tutorials/physics/using_character_body_2d.html
 		if collision.get_collider().is_in_group("Player"):
-			collision.get_collider().damage(1)
+			
+			collision.get_collider().damage(damage_to_player)
+			is_bounced = true
+			bounce_timer.start()
 			velocity = velocity.bounce(collision.get_normal()) * 2
 		else:
 			velocity.slide(collision.get_normal())
@@ -75,3 +81,7 @@ func _on_animated_sprite_2d_animation_finished():
 	if is_queued_destroy and animation.get_animation() == "DestroyedRight":
 		queue_free()
 		blob_queued_destroy.emit()
+
+
+func _on_bouce_timer_timeout():
+	is_bounced = false

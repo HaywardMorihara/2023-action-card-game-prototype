@@ -47,7 +47,7 @@ size = Vector2(10, 10)
 
 [node name="NewCardPickup" groups=["NewCardPickup"] instance=ExtResource("1_pe6d2")]
 script = ExtResource("2_70nes")
-cardId = 0
+cardId = 3
 
 [node name="Sprite2D" parent="." index="0" groups=["DrawPickup"]]
 texture = ExtResource("2_kfmfb")

@@ -45,12 +45,12 @@ func _on_no_heal_button_pressed():
 	$Popup.hide()
 	get_tree().paused = false
 
-func _on_player_player_new_card(cardId : ActionCardGameGlobal.CardId, pos : Vector2):
+func _on_player_player_new_card(cardId : ActionCardGameGlobal.CardId):
 	Deck.total_cards += 1
 	Deck.add_card_to_bottom_of_deck(cardId)
 	HealthUI.update_max(Deck.total_cards)
 	HealthUI.update_current(Deck.current_contents.size(), DiscardPile.contents.size())
-	_card_movement_animation(cardId, pos, Deck.global_position)
+	_card_movement_animation(cardId, $Center.position, Deck.global_position)
 
 func _on_starting_hand_delay_timer_timeout():
 	if ActionCardGameGlobal.starting_hand_count:
@@ -61,10 +61,9 @@ func _on_starting_hand_delay_timer_timeout():
 			
 func _card_movement_animation(card_id : ActionCardGameGlobal.CardId, from_global_pos : Vector2, to_global_pos : Vector2):
 	var card_for_animation = ActionCardGameGlobal.card_id_to_card_scene[card_id].instantiate()
-	card_for_animation.global_position = from_global_pos
+	card_for_animation.position = from_global_pos
 	add_child(card_for_animation)
 	card_for_animation.move_to(to_global_pos, card_tween_duration, true)
-
 
 func _on_heal_timer_timeout():
 	var next_discard_card_id = DiscardPile.pop_front()

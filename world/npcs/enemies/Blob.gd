@@ -6,6 +6,7 @@ signal blob_queued_destroy
 @export var speed = 50
 @export var detection_radius = 200
 @export var damage_to_player = 1
+@export var collision_bounce : float = 3.0
 @export var draw_drop_probability : float = 0.25
 @export var heal_drop_probability : float = 0.25
 
@@ -38,7 +39,7 @@ func _physics_process(delta):
 			collision.get_collider().damage(damage_to_player)
 			is_bounced = true
 			bounce_timer.start()
-			velocity = velocity.bounce(collision.get_normal()) * 2
+			velocity = velocity.bounce(collision.get_normal()) * collision_bounce
 		else:
 			velocity.slide(collision.get_normal())
 	_animate()

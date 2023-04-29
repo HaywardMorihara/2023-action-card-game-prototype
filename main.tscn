@@ -1668,6 +1668,9 @@ offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("16_em577")
 
+[node name="Center" type="Marker2D" parent="CardEffectHandler/CardUI"]
+position = Vector2(320, 180)
+
 [node name="Popup" type="Popup" parent="CardEffectHandler/CardUI"]
 position = Vector2i(150, 100)
 size = Vector2i(300, 200)

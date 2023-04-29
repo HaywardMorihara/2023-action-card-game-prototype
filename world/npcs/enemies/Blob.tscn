@@ -160,7 +160,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"HopRight",
-"speed": 10.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -193,8 +193,9 @@ speed = 105
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vvp1k")
-animation = &"DestroyedRight"
+animation = &"HopRight"
 autoplay = "IdleRight"
+frame_progress = 0.824573
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 4)

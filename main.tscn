@@ -1593,11 +1593,9 @@ position = Vector2(1605, -807)
 position = Vector2(1454, -801)
 
 [node name="HealingStation" parent="CardEffectHandler/World" instance=ExtResource("8_tr8lk")]
-visible = false
 position = Vector2(304, 154)
 
 [node name="HealingStation2" parent="CardEffectHandler/World" instance=ExtResource("8_tr8lk")]
-visible = false
 position = Vector2(1298, -569)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="CardEffectHandler/World"]

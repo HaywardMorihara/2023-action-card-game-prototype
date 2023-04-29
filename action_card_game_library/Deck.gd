@@ -4,6 +4,7 @@ signal card_drawn(card_id : ActionCardGameGlobal.CardId)
 signal deck_discard(card_id : ActionCardGameGlobal.CardId)
 
 @export var is_click_to_draw : bool = false
+@export var draw_tween_duration : float = 0.1
 
 @onready var bottom_card : Sprite2D = get_node("Card1")
 @onready var middle_card : Sprite2D = get_node("Card2")
@@ -38,12 +39,16 @@ func add_card_to_front_of_deck(card_id : ActionCardGameGlobal.CardId):
 	current_contents.push_front(card_id)
 	update_visibility()
 
-func draw_next_card():
+func draw_next_card(to_position = null):
 	var next_card_id = current_contents.pop_front()
 	card_drawn.emit(next_card_id)
 	if current_contents.size() == 0:
 		visible = false
 	update_visibility()
+	if to_position:
+		var next_card = ActionCardGameGlobal.card_id_to_card_scene[next_card_id].instantiate()
+		add_child(next_card)
+		next_card.move_to(to_position, draw_tween_duration, true)
 	
 func discard_from_top(num_of_cards : int):
 	if current_contents.size() == 0:

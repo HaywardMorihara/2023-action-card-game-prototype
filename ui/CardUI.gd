@@ -13,9 +13,8 @@ func _ready():
 
 
 func draw_next_card():
-	Deck.draw_next_card()
+	Deck.draw_next_card(Hand.global_position)
 	HealthUI.update_current(Deck.current_contents.size(), DiscardPile.contents.size())
-	
 	
 func discard_from_deck(num_of_cards : int):
 	Deck.discard_from_top(num_of_cards)

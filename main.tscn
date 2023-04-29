@@ -1078,6 +1078,12 @@ position = Vector2(104, 692)
 
 [node name="Hand" parent="CardEffectHandler/CardUI" instance=ExtResource("2_gb8ka")]
 
+[node name="CardPreview" parent="CardEffectHandler/CardUI" instance=ExtResource("18_tur63")]
+offset_left = 390.0
+offset_top = -172.0
+offset_right = 1350.0
+offset_bottom = 169.0
+
 [node name="HealthUI" type="Control" parent="CardEffectHandler/CardUI"]
 layout_mode = 3
 anchors_preset = 0
@@ -1151,12 +1157,6 @@ text = "Yes"
 layout_mode = 2
 size_flags_horizontal = 4
 text = "No"
-
-[node name="CardPreview" parent="CardEffectHandler/CardUI" instance=ExtResource("18_tur63")]
-offset_left = 390.0
-offset_top = -172.0
-offset_right = 1350.0
-offset_bottom = 169.0
 
 [connection signal="player_damage" from="CardEffectHandler/World/Player" to="CardEffectHandler" method="_on_player_player_damage"]
 [connection signal="player_draw_card" from="CardEffectHandler/World/Player" to="CardEffectHandler" method="_on_player_player_draw_card"]

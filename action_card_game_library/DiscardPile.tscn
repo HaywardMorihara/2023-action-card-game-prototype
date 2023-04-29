@@ -6,5 +6,13 @@
 [node name="DiscardPile" type="Node2D"]
 script = ExtResource("1_gexgb")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="BottomCard" type="Sprite2D" parent="."]
+position = Vector2(23, 23)
+texture = ExtResource("2_nc7pm")
+
+[node name="MiddleCard" type="Sprite2D" parent="."]
+position = Vector2(11, 14)
+texture = ExtResource("2_nc7pm")
+
+[node name="TopCard" type="Sprite2D" parent="."]
 texture = ExtResource("2_nc7pm")

@@ -2,6 +2,8 @@ extends CanvasLayer
 
 signal deck_is_empty
 
+@export var card_tween_duration : float = 0.1
+
 @onready var Deck := get_node("Deck")
 @onready var Hand := get_node("Hand")
 @onready var DiscardPile := get_node("DiscardPile")
@@ -28,6 +30,7 @@ func _on_deck_deck_discard(card_id):
 func _on_hand_card_played(card, position):
 	DiscardPile.add(card.id)
 	HealthUI.update_current(Deck.current_contents.size(), DiscardPile.contents.size())
+	_card_movement_animation(card.id, position, DiscardPile.global_position)
 
 func _on_healing_station_healing_station_entered_by_player():
 	$Popup.show()
@@ -62,3 +65,9 @@ func _on_starting_hand_delay_timer_timeout():
 		if num_cards_in_hand < ActionCardGameGlobal.starting_hand_count:
 			draw_next_card()
 			$StartingHandDelayTimer.start()
+			
+func _card_movement_animation(card_id : ActionCardGameGlobal.CardId, from_global_pos : Vector2, to_global_pos : Vector2):
+	var card_for_animation = ActionCardGameGlobal.card_id_to_card_scene[card_id].instantiate()
+	card_for_animation.global_position = from_global_pos
+	add_child(card_for_animation)
+	card_for_animation.move_to(to_global_pos, card_tween_duration, true)

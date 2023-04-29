@@ -6,14 +6,14 @@ signal blob_queued_destroy
 @export var speed = 50
 @export var detection_radius = 200
 @export var damage_to_player = 1
-@export var draw_drop_probability : float = 0.5
-@export var new_card_drop_probability : float = 0.1
+@export var draw_drop_probability : float = 0.25
+@export var heal_drop_probability : float = 0.25
 
 @onready var animation : AnimatedSprite2D = get_node("AnimatedSprite2D")
 @onready var bounce_timer : Timer = get_node("BouceTimer")
 
 var draw_pickup_scene = preload("res://world/pickups/DrawPickup.tscn")
-var new_card_pickup_scene = preload("res://world/pickups/NewCardPickup.tscn")
+var heal_pickup_scene = preload("res://world/pickups/HealPickup.tscn")
 
 var is_queued_destroy := false
 var is_bounced := false
@@ -67,14 +67,19 @@ func _decide_direction() -> Vector2:
 func queue_destroy():
 	is_queued_destroy = true
 	animation.play("DestroyedRight")
+	var draw_pickup
+	var heal_pickup
 	if randf_range(0, 1.0) < draw_drop_probability:
-		var pickup = draw_pickup_scene.instantiate()
-		pickup.global_position = global_position
-		blob_drop.emit(pickup)
-	if randf_range(0, 1.0) < new_card_drop_probability:
-		var pickup = draw_pickup_scene.instantiate()
-		pickup.global_position = global_position
-		blob_drop.emit(pickup)
+		draw_pickup = draw_pickup_scene.instantiate()
+		draw_pickup.global_position = global_position
+		blob_drop.emit(draw_pickup)
+	if randf_range(0, 1.0) < heal_drop_probability:
+		heal_pickup = heal_pickup_scene.instantiate()
+		heal_pickup.global_position = global_position
+		blob_drop.emit(heal_pickup)
+	if draw_pickup and heal_pickup:
+		draw_pickup.global_position -= Vector2(8, 0)
+		heal_pickup.global_position += Vector2(8, 0)
 
 
 func _on_animated_sprite_2d_animation_finished():

@@ -3,6 +3,7 @@ extends CharacterBody2D
 signal player_draw_card
 signal player_damage(amount : int)
 signal player_new_card(cardId : ActionCardGameGlobal.CardId, global_pos : Vector2)
+signal player_heal(amount : int)
 
 @export var speed = 100
 
@@ -14,6 +15,8 @@ func pickup(pickup):
 		player_draw_card.emit()
 	elif pickup.is_in_group("NewCardPickup"):
 		player_new_card.emit(pickup.cardId, global_position)
+	elif pickup.is_in_group("HealPickup"):
+		player_heal.emit(1)
 
 
 func damage(amount : int):

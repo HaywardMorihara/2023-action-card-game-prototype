@@ -1593,9 +1593,11 @@ position = Vector2(1605, -807)
 position = Vector2(1454, -801)
 
 [node name="HealingStation" parent="CardEffectHandler/World" instance=ExtResource("8_tr8lk")]
+visible = false
 position = Vector2(304, 154)
 
 [node name="HealingStation2" parent="CardEffectHandler/World" instance=ExtResource("8_tr8lk")]
+visible = false
 position = Vector2(1298, -569)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="CardEffectHandler/World"]
@@ -1709,6 +1711,7 @@ one_shot = true
 
 [connection signal="player_damage" from="CardEffectHandler/World/Player" to="CardEffectHandler" method="_on_player_player_damage"]
 [connection signal="player_draw_card" from="CardEffectHandler/World/Player" to="CardEffectHandler" method="_on_player_player_draw_card"]
+[connection signal="player_heal" from="CardEffectHandler/World/Player" to="CardEffectHandler/CardUI" method="_on_player_player_heal"]
 [connection signal="player_new_card" from="CardEffectHandler/World/Player" to="CardEffectHandler/CardUI" method="_on_player_player_new_card"]
 [connection signal="enemy_destroyed" from="CardEffectHandler/World/Enemies" to="." method="_on_enemies_enemy_destroyed"]
 [connection signal="healing_station_entered_by_player" from="CardEffectHandler/World/HealingStation" to="CardEffectHandler/World/Pickups" method="_on_healing_station_healing_station_entered_by_player"]

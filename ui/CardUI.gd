@@ -88,3 +88,11 @@ func _on_heal_timer_timeout():
 	Deck.shuffle()
 	$StartingHandDelayTimer.start()
 	get_tree().paused = false
+
+
+func _on_player_player_heal(amount):
+	var next_discard_card_id = DiscardPile.pop_front()
+	if next_discard_card_id:
+		_card_movement_animation(next_discard_card_id, DiscardPile.global_position, Deck.global_position)
+		Deck.add_card_to_front_of_deck(next_discard_card_id)
+		HealthUI.update_current(Deck.current_contents.size(), DiscardPile.contents.size())

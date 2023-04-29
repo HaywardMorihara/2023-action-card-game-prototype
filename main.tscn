@@ -1186,7 +1186,7 @@ position = Vector2(808, -498)
 position = Vector2(1893, -644)
 
 [node name="DrawSpawnPoint" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(518, 188)
+position = Vector2(704, 159)
 
 [node name="DrawSpawnPoint2" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
 position = Vector2(521, -90)

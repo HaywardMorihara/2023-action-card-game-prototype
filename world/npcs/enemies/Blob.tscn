@@ -189,6 +189,7 @@ collision_layer = 5
 collision_mask = 31
 motion_mode = 1
 script = ExtResource("1_1rjua")
+speed = 105
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_vvp1k")

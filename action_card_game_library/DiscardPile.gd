@@ -14,17 +14,13 @@ func add(cardId : ActionCardGameGlobal.CardId):
 	contents.push_front(cardId)
 	update_visibility()
 
-
 func remove_all() -> Array[ActionCardGameGlobal.CardId]:
 	var to_be_returned = contents
 	contents = []
 	update_visibility()
 	return to_be_returned
 
-
 func update_visibility():
-	
-	
 	match contents.size():
 		2:
 			var bottom_card_scene = ActionCardGameGlobal.card_id_to_card_scene[contents[1]].instantiate()

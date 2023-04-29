@@ -43,11 +43,9 @@ func draw_next_card(to_position = null):
 		visible = false
 	update_visibility()
 	if to_position:
-		var next_card = ActionCardGameGlobal.card_id_to_card_scene[next_card_id].instantiate()
-		add_child(next_card)
-		next_card.move_to(to_position, draw_tween_duration, true)
+		_card_movement_animation(next_card_id, to_position)
 	
-func discard_from_top(num_of_cards : int):
+func discard_from_top(num_of_cards : int, to_position = null):
 	if current_contents.size() == 0:
 		return
 	var next_card_id = current_contents.pop_front()
@@ -55,6 +53,8 @@ func discard_from_top(num_of_cards : int):
 	if current_contents.size() == 0:
 		visible = false
 	update_visibility()
+	if to_position:
+		_card_movement_animation(next_card_id, to_position)
 
 func update_visibility():
 	match current_contents.size():
@@ -75,6 +75,10 @@ func update_visibility():
 			middle_card.visible = true	
 			top_card.visible = true	
 	
+func _card_movement_animation(card_id : ActionCardGameGlobal.CardId, to_global_pos : Vector2):
+	var card_for_animation = ActionCardGameGlobal.card_id_to_card_scene[card_id].instantiate()
+	add_child(card_for_animation)
+	card_for_animation.move_to(to_global_pos, draw_tween_duration, true)
 
 func _on_input_event(viewport, event, shape_idx):
 	if is_click_to_draw:

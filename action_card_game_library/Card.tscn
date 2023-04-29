@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://74lm1qggi667" path="res://assets/palceholder_card_art.png" id="2_prfnn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qpmqv"]
-size = Vector2(128, 192)
+size = Vector2(64, 96)
 
 [node name="Card" type="Area2D" groups=["cards"]]
 script = ExtResource("1_y307t")

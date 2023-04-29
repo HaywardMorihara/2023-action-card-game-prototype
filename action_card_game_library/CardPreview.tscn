@@ -1,39 +1,35 @@
 [gd_scene load_steps=3 format=3 uid="uid://bnyw7xdhldwog"]
 
 [ext_resource type="Script" path="res://action_card_game_library/CardPreview.gd" id="1_aw0vt"]
-[ext_resource type="Texture2D" uid="uid://74lm1qggi667" path="res://assets/palceholder_card_art.png" id="2_xep3n"]
+[ext_resource type="Texture2D" uid="uid://p3f2n6ntcjvs" path="res://assets/card_template.png" id="2_13w8p"]
 
-[node name="CardPreview" type="Control"]
-layout_mode = 3
-anchors_preset = 0
+[node name="CardPreview" type="VBoxContainer"]
+clip_contents = true
+layout_direction = 1
+offset_right = 75.0
+offset_bottom = 468.0
 size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("1_aw0vt")
 
 [node name="Image" type="TextureRect" parent="."]
-layout_mode = 1
-offset_right = 135.0
-offset_bottom = 192.0
-texture = ExtResource("2_xep3n")
+layout_mode = 2
+texture = ExtResource("2_13w8p")
 stretch_mode = 3
 
 [node name="Title" type="Label" parent="."]
+custom_minimum_size = Vector2(75, 20)
 layout_mode = 2
-offset_left = 36.0
-offset_top = 210.0
-offset_right = 72.0
-offset_bottom = 237.0
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 17
+theme_override_font_sizes/font_size = 12
 text = "Title"
+horizontal_alignment = 1
+autowrap_mode = 2
 
 [node name="Description" type="Label" parent="."]
-custom_minimum_size = Vector2(150, 0)
+clip_contents = true
+custom_minimum_size = Vector2(50, 150)
 layout_mode = 2
-offset_left = -2.0
-offset_top = 242.0
-offset_right = 148.0
-offset_bottom = 356.0
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 11
+theme_override_font_sizes/font_size = 7
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-autowrap_mode = 3
+autowrap_mode = 2

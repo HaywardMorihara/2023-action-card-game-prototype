@@ -4,9 +4,17 @@ signal card_played(card , position)
 signal hand_is_up_toggled(is_hand_up : bool)
 signal card_in_hand_is_being_looked_at(is_being_looked_at : bool, card : Card)
 
+@export var hand_up_y := 50
+
+var at_rest_y : float
 var is_hand_up : bool = false
 var is_card_being_held : bool = false
 
+func _ready():
+	at_rest_y = position.y
+	for card in get_tree().get_nodes_in_group("cards"):
+		card.card_placed.connect(_on_card_card_placed)
+		card.card_being_held.connect(_on_card_card_being_held)
 
 func add_card(card_id : ActionCardGameGlobal.CardId):
 	var new_card_scene = ActionCardGameGlobal.card_id_to_card_scene[card_id]
@@ -37,20 +45,14 @@ func remove_all() -> Array[ActionCardGameGlobal.CardId]:
 		card.remove_from_group("cards_in_hand")
 		card.queue_free()
 	return cards_from_hand
-	
-
-func _ready():
-	for card in get_tree().get_nodes_in_group("cards"):
-		card.card_placed.connect(_on_card_card_placed)
-		card.card_being_held.connect(_on_card_card_being_held)
 
 
 func _move_hand_up(up := true):
 	is_hand_up = up
 	if is_hand_up:
-		position.y = 720 - 135
+		position.y = at_rest_y - hand_up_y
 	else:
-		position.y = 720
+		position.y = at_rest_y
 	hand_is_up_toggled.emit(is_hand_up)
 
 func _on_mouse_entered():

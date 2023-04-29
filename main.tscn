@@ -1073,10 +1073,10 @@ script = ExtResource("6_a6k1l")
 [node name="Deck" parent="CardEffectHandler/CardUI" instance=ExtResource("1_og2kh")]
 position = Vector2(1188, 656)
 
-[node name="Hand" parent="CardEffectHandler/CardUI" instance=ExtResource("2_gb8ka")]
-
 [node name="DiscardPile" parent="CardEffectHandler/CardUI" instance=ExtResource("11_ko1bt")]
 position = Vector2(104, 692)
+
+[node name="Hand" parent="CardEffectHandler/CardUI" instance=ExtResource("2_gb8ka")]
 
 [node name="HealthUI" type="Control" parent="CardEffectHandler/CardUI"]
 layout_mode = 3

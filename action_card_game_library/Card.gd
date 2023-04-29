@@ -1,13 +1,16 @@
-extends Area2D
+class_name Card extends Area2D
 
 signal card_placed(card, position)
 signal card_being_held(is_card_held)
+signal card_being_looked_at(is_being_looked_at : bool, card : Card)
+
+@export var title : String
+@export var description : String
 
 var id : ActionCardGameGlobal.CardId
 var dragging = false
 var mouse_over = false
 var initial_position : Vector2
-
 
 func play():
 	queue_free()
@@ -42,8 +45,10 @@ func _input(event):
 func _on_mouse_entered():
 	mouse_over = true
 	position.y -= 10
+	card_being_looked_at.emit(true, self)
 
 
 func _on_mouse_exited():
 	mouse_over = false
 	position.y += 10
+	card_being_looked_at.emit(false, null)

@@ -3,3 +3,5 @@
 [ext_resource type="PackedScene" uid="uid://05nvc3bq3wwk" path="res://action_card_game_library/Card.tscn" id="1_5folr"]
 
 [node name="Card" instance=ExtResource("1_5folr")]
+title = "Fireball"
+description = "Shoots in the direction of your mouse, damaging enemies on contact."

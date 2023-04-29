@@ -2,6 +2,7 @@ extends Area2D
 
 signal card_played(card , position)
 signal hand_is_up_toggled(is_hand_up : bool)
+signal card_in_hand_is_being_looked_at(is_being_looked_at : bool, card : Card)
 
 var is_hand_up : bool = false
 var is_card_being_held : bool = false
@@ -12,6 +13,7 @@ func add_card(card_id : ActionCardGameGlobal.CardId):
 	var new_card = new_card_scene.instantiate()
 	new_card.card_placed.connect(_on_card_card_placed)
 	new_card.card_being_held.connect(_on_card_card_being_held)
+	new_card.card_being_looked_at.connect(_on_card_card_being_looked_at)
 	new_card.add_to_group("cards_in_hand")
 	new_card.id = card_id
 	add_child(new_card)
@@ -78,6 +80,10 @@ func _on_card_card_placed(card, position):
 
 func _on_card_card_being_held(is_card_held):
 	is_card_being_held = is_card_held
+
+
+func _on_card_card_being_looked_at(is_being_looked_at : bool, card : Card):
+	card_in_hand_is_being_looked_at.emit(is_being_looked_at, card)
 
 
 func _on_deck_card_drawn(card_id):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c3drbnmbj4qx5"]
+[gd_scene load_steps=23 format=3 uid="uid://c3drbnmbj4qx5"]
 
 [ext_resource type="PackedScene" uid="uid://dikl6yqyjpknd" path="res://action_card_game_library/Deck.tscn" id="1_og2kh"]
 [ext_resource type="Script" path="res://Main.gd" id="1_x4ye3"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dbg4atggpqgvl" path="res://world/places/DrawSpawnPoint.tscn" id="10_e4nmw"]
 [ext_resource type="PackedScene" uid="uid://dexohf5ajlghx" path="res://action_card_game_library/DiscardPile.tscn" id="11_ko1bt"]
 [ext_resource type="Script" path="res://ui/EnemyCountLabel.gd" id="16_em577"]
+[ext_resource type="PackedScene" uid="uid://bnyw7xdhldwog" path="res://action_card_game_library/CardPreview.tscn" id="18_tur63"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xmfpn"]
 texture = ExtResource("4_a7jgr")
@@ -1151,6 +1152,12 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "No"
 
+[node name="CardPreview" parent="CardEffectHandler/CardUI" instance=ExtResource("18_tur63")]
+offset_left = 390.0
+offset_top = -172.0
+offset_right = 1350.0
+offset_bottom = 169.0
+
 [connection signal="player_damage" from="CardEffectHandler/World/Player" to="CardEffectHandler" method="_on_player_player_damage"]
 [connection signal="player_draw_card" from="CardEffectHandler/World/Player" to="CardEffectHandler" method="_on_player_player_draw_card"]
 [connection signal="player_new_card" from="CardEffectHandler/World/Player" to="CardEffectHandler/CardUI" method="_on_player_player_new_card"]
@@ -1161,6 +1168,7 @@ text = "No"
 [connection signal="card_drawn" from="CardEffectHandler/CardUI/Deck" to="CardEffectHandler/CardUI/Hand" method="_on_deck_card_drawn"]
 [connection signal="deck_discard" from="CardEffectHandler/CardUI/Deck" to="CardEffectHandler/CardUI" method="_on_deck_deck_discard"]
 [connection signal="input_event" from="CardEffectHandler/CardUI/Deck" to="CardEffectHandler/CardUI/Deck" method="_on_input_event"]
+[connection signal="card_in_hand_is_being_looked_at" from="CardEffectHandler/CardUI/Hand" to="CardEffectHandler/CardUI/CardPreview" method="_on_hand_card_in_hand_is_being_looked_at"]
 [connection signal="card_played" from="CardEffectHandler/CardUI/Hand" to="CardEffectHandler" method="_on_hand_card_played"]
 [connection signal="card_played" from="CardEffectHandler/CardUI/Hand" to="CardEffectHandler/CardUI" method="_on_hand_card_played"]
 [connection signal="hand_is_up_toggled" from="CardEffectHandler/CardUI/Hand" to="CardEffectHandler" method="_on_hand_hand_is_up_toggled"]

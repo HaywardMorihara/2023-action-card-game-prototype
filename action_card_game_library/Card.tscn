@@ -8,6 +8,8 @@ size = Vector2(128, 192)
 
 [node name="Card" type="Area2D" groups=["cards"]]
 script = ExtResource("1_y307t")
+title = "Title"
+description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_prfnn")

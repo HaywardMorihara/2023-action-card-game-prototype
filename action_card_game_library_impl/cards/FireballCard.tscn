@@ -5,7 +5,7 @@
 
 [node name="Card" instance=ExtResource("1_5folr")]
 title = "Fireball"
-description = "Shoots in the direction of your mouse, damaging enemies on contact."
+description = "Shoots in the direction of where you place this card."
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_ycoc6")

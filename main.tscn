@@ -1064,6 +1064,8 @@ position = Vector2(22, 148)
 [node name="HealingStation" parent="CardEffectHandler/World" instance=ExtResource("8_tr8lk")]
 position = Vector2(117, 237)
 
+[node name="CanvasModulate" type="CanvasModulate" parent="CardEffectHandler/World"]
+
 [node name="CardUI" type="CanvasLayer" parent="CardEffectHandler"]
 process_mode = 3
 scale = Vector2(0.5, 0.5)
@@ -1077,6 +1079,7 @@ position = Vector2(1190, 648)
 position = Vector2(76, 616)
 
 [node name="Hand" parent="CardEffectHandler/CardUI" instance=ExtResource("2_gb8ka")]
+position = Vector2(638, 694)
 
 [node name="CardPreview" parent="CardEffectHandler/CardUI" instance=ExtResource("18_tur63")]
 offset_left = 390.0

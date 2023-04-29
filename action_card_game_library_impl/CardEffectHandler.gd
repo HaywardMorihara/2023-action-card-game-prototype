@@ -22,15 +22,16 @@ func _on_hand_card_played(card, position):
 			fireball.start(player_position, angle)
 			World.add_child(fireball)
 
-
 func _on_player_player_draw_card():
 	CardUI.draw_next_card()
-
 
 func _on_player_player_damage(amount):
 	CardUI.discard_from_deck(amount)
 
-
 func _on_hand_hand_is_up_toggled(is_hand_up : bool):
 	if PlayerSettings.pause_when_hand_up:
 		get_tree().paused = is_hand_up
+		if is_hand_up:
+			$World/CanvasModulate.color = Color.DIM_GRAY
+		else:
+			$World/CanvasModulate.color = Color.WHITE

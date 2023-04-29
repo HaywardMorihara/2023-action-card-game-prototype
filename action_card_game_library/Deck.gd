@@ -21,6 +21,7 @@ func _ready():
 	update_visibility()
 
 func shuffle():
+	$AnimationPlayer.play("shuffle")
 	randomize()
 	current_contents.shuffle()
 

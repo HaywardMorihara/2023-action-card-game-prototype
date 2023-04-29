@@ -1,5 +1,6 @@
 extends Control
 
+@onready var image : TextureRect = get_node("Image")
 @onready var title : Label = get_node("Title")
 @onready var description : Label = get_node("Description")
 
@@ -9,9 +10,11 @@ func _ready():
 
 func set_card(card : Card):
 	if card:
+		image.texture = card.get_node("Sprite2D").texture
 		title.text = card.title
 		description.text = card.description
 	else:
+		image.texture = null
 		title.text = ""
 		description.text = ""
 

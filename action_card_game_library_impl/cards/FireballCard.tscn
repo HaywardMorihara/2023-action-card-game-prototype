@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://c3rxme3tw2udb"]
+[gd_scene load_steps=3 format=3 uid="uid://c3rxme3tw2udb"]
 
 [ext_resource type="PackedScene" uid="uid://05nvc3bq3wwk" path="res://action_card_game_library/Card.tscn" id="1_5folr"]
+[ext_resource type="Texture2D" uid="uid://dpdg2hm5r16b3" path="res://assets/card_art/fireball_card.png" id="2_ycoc6"]
 
 [node name="Card" instance=ExtResource("1_5folr")]
 title = "Fireball"
 description = "Shoots in the direction of your mouse, damaging enemies on contact."
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_ycoc6")

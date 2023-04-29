@@ -19,7 +19,7 @@ size_flags_horizontal = 4
 script = ExtResource("1_aw0vt")
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Image" type="TextureRect" parent="."]
 layout_mode = 2
 texture = ExtResource("2_xep3n")
 stretch_mode = 3

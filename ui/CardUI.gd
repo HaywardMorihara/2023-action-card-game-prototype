@@ -11,7 +11,6 @@ func _ready():
 	HealthUI.update_max(Deck.total_cards)
 	HealthUI.update_current(Deck.current_contents.size(), DiscardPile.contents.size())
 
-
 func draw_next_card():
 	Deck.draw_next_card(Hand.global_position)
 	HealthUI.update_current(Deck.current_contents.size(), DiscardPile.contents.size())
@@ -46,10 +45,7 @@ func _on_yes_heal_button_pressed():
 	var cards_from_hand = Hand.remove_all()
 	for cardId in cards_from_hand:
 		Deck.add_card_to_front_of_deck(cardId)
-	for n in ActionCardGameGlobal.starting_hand_count:
-		if Deck.current_contents.size() <= 1:
-			break
-		Deck.draw_next_card()
+	$StartingHandDelayTimer.start()
 	HealthUI.update_current(Deck.current_contents.size(), DiscardPile.contents.size())
 	$Popup.hide()
 	get_tree().paused = false
@@ -65,3 +61,11 @@ func _on_player_player_new_card(cardId):
 	Deck.add_card_to_bottom_of_deck(cardId)
 	HealthUI.update_max(Deck.total_cards)
 	HealthUI.update_current(Deck.current_contents.size(), DiscardPile.contents.size())
+
+
+func _on_starting_hand_delay_timer_timeout():
+	if ActionCardGameGlobal.starting_hand_count:
+		var num_cards_in_hand := get_tree().get_nodes_in_group("cards_in_hand").size()
+		if num_cards_in_hand < ActionCardGameGlobal.starting_hand_count:
+			draw_next_card()
+			$StartingHandDelayTimer.start()

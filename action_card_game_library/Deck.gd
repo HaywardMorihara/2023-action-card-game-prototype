@@ -18,9 +18,6 @@ func _ready():
 		current_contents = ActionCardGameGlobal.starting_deck.duplicate()
 	shuffle()
 	total_cards = current_contents.size()
-	if ActionCardGameGlobal.starting_hand_count:
-		for i in ActionCardGameGlobal.starting_hand_count:
-			draw_next_card()
 	update_visibility()
 
 func shuffle():

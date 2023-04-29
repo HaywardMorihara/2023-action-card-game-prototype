@@ -1049,17 +1049,17 @@ cardId = 1
 position = Vector2(306, 94)
 
 [node name="DrawSpawnPoint2" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(132, 351)
+position = Vector2(202, 288)
 
 [node name="Enemies" type="Node2D" parent="CardEffectHandler/World"]
 y_sort_enabled = true
 script = ExtResource("6_m4i2h")
 
 [node name="Blob" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
-position = Vector2(358, 129)
+position = Vector2(467, 48)
 
 [node name="Blob2" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
-position = Vector2(450, 87)
+position = Vector2(22, 148)
 
 [node name="HealingStation" parent="CardEffectHandler/World" instance=ExtResource("8_tr8lk")]
 position = Vector2(117, 237)
@@ -1071,10 +1071,10 @@ transform = Transform2D(0.5, 0, 0, 0.5, 0, 0)
 script = ExtResource("6_a6k1l")
 
 [node name="Deck" parent="CardEffectHandler/CardUI" instance=ExtResource("1_og2kh")]
-position = Vector2(1188, 656)
+position = Vector2(1190, 648)
 
 [node name="DiscardPile" parent="CardEffectHandler/CardUI" instance=ExtResource("11_ko1bt")]
-position = Vector2(104, 692)
+position = Vector2(76, 616)
 
 [node name="Hand" parent="CardEffectHandler/CardUI" instance=ExtResource("2_gb8ka")]
 
@@ -1118,10 +1118,10 @@ label_settings = SubResource("LabelSettings_iuw7h")
 
 [node name="DiscardLabel" type="Label" parent="CardEffectHandler/CardUI/HealthUI"]
 layout_mode = 0
-offset_left = 86.0
-offset_top = 552.0
-offset_right = 126.0
-offset_bottom = 575.0
+offset_left = 70.0
+offset_top = 504.0
+offset_right = 110.0
+offset_bottom = 527.0
 
 [node name="EnemyCountLabel" type="Label" parent="CardEffectHandler/CardUI"]
 offset_right = 40.0
@@ -1158,6 +1158,11 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "No"
 
+[node name="StartingHandDelayTimer" type="Timer" parent="CardEffectHandler/CardUI"]
+wait_time = 0.1
+one_shot = true
+autostart = true
+
 [connection signal="player_damage" from="CardEffectHandler/World/Player" to="CardEffectHandler" method="_on_player_player_damage"]
 [connection signal="player_draw_card" from="CardEffectHandler/World/Player" to="CardEffectHandler" method="_on_player_player_draw_card"]
 [connection signal="player_new_card" from="CardEffectHandler/World/Player" to="CardEffectHandler/CardUI" method="_on_player_player_new_card"]
@@ -1174,3 +1179,4 @@ text = "No"
 [connection signal="hand_is_up_toggled" from="CardEffectHandler/CardUI/Hand" to="CardEffectHandler" method="_on_hand_hand_is_up_toggled"]
 [connection signal="pressed" from="CardEffectHandler/CardUI/Popup/VBoxContainer/YesHealButton" to="CardEffectHandler/CardUI" method="_on_yes_heal_button_pressed"]
 [connection signal="pressed" from="CardEffectHandler/CardUI/Popup/VBoxContainer/NoHealButton" to="CardEffectHandler/CardUI" method="_on_no_heal_button_pressed"]
+[connection signal="timeout" from="CardEffectHandler/CardUI/StartingHandDelayTimer" to="CardEffectHandler/CardUI" method="_on_starting_hand_delay_timer_timeout"]

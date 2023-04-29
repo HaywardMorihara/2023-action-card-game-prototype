@@ -8,6 +8,7 @@ signal deck_is_empty
 @onready var Hand := get_node("Hand")
 @onready var DiscardPile := get_node("DiscardPile")
 @onready var HealthUI := get_node("HealthUI")
+@onready var HealTimer := get_node("HealTimer")
 
 func _ready():
 	HealthUI.update_max(Deck.total_cards)
@@ -37,17 +38,8 @@ func _on_healing_station_healing_station_entered_by_player():
 	get_tree().paused = true
 
 func _on_yes_heal_button_pressed():
-	var cards_from_discard_pile = DiscardPile.remove_all()
-	for cardId in cards_from_discard_pile:
-		Deck.add_card_to_front_of_deck(cardId)
-	Deck.shuffle()
-	var cards_from_hand = Hand.remove_all()
-	for cardId in cards_from_hand:
-		Deck.add_card_to_front_of_deck(cardId)
-	$StartingHandDelayTimer.start()
-	HealthUI.update_current(Deck.current_contents.size(), DiscardPile.contents.size())
 	$Popup.hide()
-	get_tree().paused = false
+	HealTimer.start()
 
 func _on_no_heal_button_pressed():
 	$Popup.hide()
@@ -71,3 +63,42 @@ func _card_movement_animation(card_id : ActionCardGameGlobal.CardId, from_global
 	card_for_animation.global_position = from_global_pos
 	add_child(card_for_animation)
 	card_for_animation.move_to(to_global_pos, card_tween_duration, true)
+
+
+func _on_heal_timer_timeout():
+	var next_discard_card_id = DiscardPile.pop_front()
+	if next_discard_card_id:
+		_card_movement_animation(next_discard_card_id, DiscardPile.global_position, Deck.global_position)
+		Deck.add_card_to_front_of_deck(next_discard_card_id)
+		HealthUI.update_current(Deck.current_contents.size(), DiscardPile.contents.size())
+		HealTimer.start()
+		return
+		
+#	var cards_from_discard_pile = DiscardPile.remove_all()
+#	for cardId in cards_from_discard_pile:
+#		Deck.add_card_to_front_of_deck(cardId)
+	
+	var next_card_in_hand = get_tree().get_first_node_in_group("cards_in_hand")
+	if next_card_in_hand:
+		_card_movement_animation(next_card_in_hand.id, Hand.global_position, Deck.global_position)
+		next_card_in_hand.remove_from_group("cards_in_hand")
+		next_card_in_hand.queue_free()
+		Deck.add_card_to_front_of_deck(next_card_in_hand.id)
+		HealthUI.update_current(Deck.current_contents.size(), DiscardPile.contents.size())
+		HealTimer.start()
+		return
+#	var cards_from_hand : Array[ActionCardGameGlobal.CardId] = []
+#	for card in get_tree().get_nodes_in_group("cards_in_hand"):
+#		cards_from_hand.push_front(card.id)
+#		card.remove_from_group("cards_in_hand")
+#		card.queue_free()
+#	return cards_from_hand
+#
+#	var cards_from_hand = Hand.remove_all()
+#	for cardId in cards_from_hand:
+#		Deck.add_card_to_front_of_deck(cardId)
+
+
+	Deck.shuffle()
+	$StartingHandDelayTimer.start()
+	get_tree().paused = false

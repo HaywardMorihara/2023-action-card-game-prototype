@@ -14,6 +14,11 @@ func add(cardId : ActionCardGameGlobal.CardId):
 	contents.push_front(cardId)
 	update_visibility()
 
+func pop_front():
+	var top_card = contents.pop_front()
+	update_visibility()
+	return top_card
+
 func remove_all() -> Array[ActionCardGameGlobal.CardId]:
 	var to_be_returned = contents
 	contents = []

@@ -88,11 +88,14 @@ func _on_heal_timer_timeout():
 	$StartingHandDelayTimer.start()
 	get_tree().paused = false
 
+func heal_from_bottom_of_deck(amount : int):
+	for i in amount:
+		var next_discard_card_id = DiscardPile.pop_back()
+		if next_discard_card_id:
+			_card_movement_animation(next_discard_card_id, DiscardPile.global_position, Deck.global_position)
+			Deck.add_card_to_front_of_deck(next_discard_card_id)
+			Deck.shuffle()
+			HealthUI.update_current(Deck.current_contents.size(), DiscardPile.contents.size())
 
 func _on_player_player_heal(amount):
-	var next_discard_card_id = DiscardPile.pop_back()
-	if next_discard_card_id:
-		_card_movement_animation(next_discard_card_id, DiscardPile.global_position, Deck.global_position)
-		Deck.add_card_to_front_of_deck(next_discard_card_id)
-		Deck.shuffle()
-		HealthUI.update_current(Deck.current_contents.size(), DiscardPile.contents.size())
+	heal_from_bottom_of_deck(amount)

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://8by54v8y6djc"]
+
+[ext_resource type="PackedScene" uid="uid://05nvc3bq3wwk" path="res://action_card_game_library/Card.tscn" id="1_ukgua"]
+[ext_resource type="Texture2D" uid="uid://bwbl3scdcplxt" path="res://assets/card_art/potion_heal_card.png" id="2_wltpn"]
+
+[node name="PotionHealCard" instance=ExtResource("1_ukgua")]
+title = "Potion"
+description = "Returns the bottom 2 cards from your Discard Pile to your Deck. Your Deck is then Shuffled."
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_wltpn")

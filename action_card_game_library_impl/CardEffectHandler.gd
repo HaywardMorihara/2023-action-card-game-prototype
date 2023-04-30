@@ -7,12 +7,6 @@ var fireball_scene = preload("res://world/effects/Fireball.tscn")
 
 func _on_hand_card_played(card, position):
 	match card.id:
-		ActionCardGameGlobal.CardId.ONE:
-			print("One!")
-		ActionCardGameGlobal.CardId.TWO:
-			print("Two!")
-		ActionCardGameGlobal.CardId.THREE:
-			print("Three!")
 		ActionCardGameGlobal.CardId.FIREBALL:
 			var fireball = fireball_scene.instantiate()
 			# _Could_ get Player node from Group...
@@ -21,6 +15,8 @@ func _on_hand_card_played(card, position):
 			var angle = mouse_to_player_pos.angle()
 			fireball.start(player_position, angle)
 			World.add_child(fireball)
+		ActionCardGameGlobal.CardId.POTION_HEAL:
+			CardUI.heal_from_bottom_of_deck(2)
 
 func _on_player_player_draw_card():
 	CardUI.draw_next_card()

@@ -91,7 +91,7 @@ func _on_heal_timer_timeout():
 func heal_from_bottom_of_deck(amount : int):
 	for i in amount:
 		var next_discard_card_id = DiscardPile.pop_back()
-		if next_discard_card_id:
+		if next_discard_card_id != null:
 			_card_movement_animation(next_discard_card_id, DiscardPile.global_position, Deck.global_position)
 			Deck.add_card_to_front_of_deck(next_discard_card_id)
 			Deck.shuffle()

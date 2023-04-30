@@ -17,6 +17,9 @@ func _on_hand_card_played(card, position):
 			World.add_child(fireball)
 		ActionCardGameGlobal.CardId.POTION_HEAL:
 			CardUI.heal_from_bottom_of_deck(2)
+		ActionCardGameGlobal.CardId.INJECTION_DRAW:
+			CardUI.draw_next_card()
+			CardUI.draw_next_card()
 
 func _on_player_player_draw_card():
 	CardUI.draw_next_card()

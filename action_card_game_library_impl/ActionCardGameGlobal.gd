@@ -29,9 +29,6 @@ var card_id_to_card_scene = {
 var starting_hand_count = 5
 
 var starting_deck : Array[CardId] = [
-	CardId.INGREDIENT_1,
-	CardId.INGREDIENT_2,
-	CardId.INGREDIENT_3,
 	CardId.FIREBALL,
 	CardId.FIREBALL,
 	CardId.FIREBALL,
@@ -39,6 +36,8 @@ var starting_deck : Array[CardId] = [
 	CardId.FIREBALL,
 	CardId.FIREBALL,
 	CardId.FIREBALL,
+	CardId.THUNDERBOLT_ATTACK,
+	CardId.THUNDERBOLT_ATTACK,
 	CardId.THUNDERBOLT_ATTACK,
 	CardId.THUNDERBOLT_ATTACK,
 	CardId.REGROUP_SHUFFLE,
@@ -47,7 +46,5 @@ var starting_deck : Array[CardId] = [
 	CardId.POTION_HEAL,
 	CardId.POTION_HEAL,
 	CardId.BANISH_REMOVAL,
-	CardId.INGREDIENT_2,
-	CardId.INGREDIENT_3,
 	
 ]

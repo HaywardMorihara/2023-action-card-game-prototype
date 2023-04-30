@@ -212,6 +212,11 @@ radius = 100.0
 height = 388.0
 
 [node name="Thunderbolt" type="Node2D"]
+self_modulate = Color(1, 0.945098, 0.937255, 1)
+top_level = true
+light_mask = 2
+visibility_layer = 2
+z_index = 1
 script = ExtResource("1_ajayq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

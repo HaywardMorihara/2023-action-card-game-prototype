@@ -38,11 +38,12 @@ func _on_hand_card_played(card, position):
 		ActionCardGameGlobal.CardId.THUNDERBOLT_ATTACK:
 			CardUINode.discard_your_hand()
 			is_canvas_changed_for_card_effect = true
-			var tween = create_tween().tween_property($World/CanvasModulate, "color", Color.DARK_GRAY, 1)
+			# TODO How do I get this to not effec tthe Thunderbolt??? Then I could make it darker
+			var tween = create_tween().tween_property($World/CanvasModulate, "color", Color.DARK_SLATE_BLUE, 1)
 			var thunderbolt = thunderbolt_scene.instantiate()
 			thunderbolt.global_position = get_global_mouse_position()
 			thunderbolt.thunderbolt_strike_finished.connect(_on_thunderbolt_strike_finished)
-			World.add_child(thunderbolt)
+			$World.add_child(thunderbolt)
 		ActionCardGameGlobal.CardId.INGREDIENT_1:
 			card_selection_mode = CardSelectionMode.INGREDIENT_SELECTION
 			card_played_for_selection_mode = card.id

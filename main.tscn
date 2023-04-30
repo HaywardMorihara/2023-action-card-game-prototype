@@ -1715,6 +1715,9 @@ autostart = true
 wait_time = 0.05
 one_shot = true
 
+[node name="AnimationDelayTimer" type="Timer" parent="CardEffectHandler/CardUI"]
+wait_time = 0.1
+
 [connection signal="player_damage" from="CardEffectHandler/World/Player" to="CardEffectHandler" method="_on_player_player_damage"]
 [connection signal="player_draw_card" from="CardEffectHandler/World/Player" to="CardEffectHandler" method="_on_player_player_draw_card"]
 [connection signal="player_heal" from="CardEffectHandler/World/Player" to="CardEffectHandler/CardUI" method="_on_player_player_heal"]
@@ -1732,3 +1735,4 @@ one_shot = true
 [connection signal="pressed" from="CardEffectHandler/CardUI/Popup/VBoxContainer/NoHealButton" to="CardEffectHandler/CardUI" method="_on_no_heal_button_pressed"]
 [connection signal="timeout" from="CardEffectHandler/CardUI/StartingHandDelayTimer" to="CardEffectHandler/CardUI" method="_on_starting_hand_delay_timer_timeout"]
 [connection signal="timeout" from="CardEffectHandler/CardUI/HealTimer" to="CardEffectHandler/CardUI" method="_on_heal_timer_timeout"]
+[connection signal="timeout" from="CardEffectHandler/CardUI/AnimationDelayTimer" to="CardEffectHandler/CardUI" method="_on_animation_delay_timer_timeout"]

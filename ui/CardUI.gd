@@ -1,4 +1,4 @@
-extends CanvasLayer
+class_name CardUI extends CanvasLayer
 
 signal deck_is_empty
 
@@ -9,6 +9,12 @@ signal deck_is_empty
 @onready var DiscardPile := get_node("DiscardPile")
 @onready var HealthUI := get_node("HealthUI")
 @onready var HealTimer := get_node("HealTimer")
+
+enum CurrentAnimation {
+	NONE,
+	REGROUP,
+}
+var current_animation : CurrentAnimation = CurrentAnimation.NONE
 
 func _ready():
 	HealthUI.update_max(Deck.total_cards)
@@ -88,6 +94,10 @@ func _on_heal_timer_timeout():
 	$StartingHandDelayTimer.start()
 	get_tree().paused = false
 
+func shuffle_hand_into_deck_and_draw_starting_hand():
+	current_animation = CurrentAnimation.REGROUP
+	$AnimationDelayTimer.start()
+
 func heal_from_bottom_of_deck(amount : int):
 	for i in amount:
 		var next_discard_card_id = DiscardPile.pop_back()
@@ -99,3 +109,20 @@ func heal_from_bottom_of_deck(amount : int):
 
 func _on_player_player_heal(amount):
 	heal_from_bottom_of_deck(amount)
+
+
+func _on_animation_delay_timer_timeout():
+	match current_animation:
+		CurrentAnimation.REGROUP:
+			var next_card_in_hand = get_tree().get_first_node_in_group("cards_in_hand")
+			if next_card_in_hand:
+				_card_movement_animation(next_card_in_hand.id, Hand.global_position, Deck.global_position)
+				next_card_in_hand.remove_from_group("cards_in_hand")
+				next_card_in_hand.queue_free()
+				Deck.add_card_to_front_of_deck(next_card_in_hand.id)
+				HealthUI.update_current(Deck.current_contents.size(), DiscardPile.contents.size())
+				$AnimationDelayTimer.start()
+				return
+			Deck.shuffle()
+			$StartingHandDelayTimer.start()
+			current_animation = CurrentAnimation.NONE

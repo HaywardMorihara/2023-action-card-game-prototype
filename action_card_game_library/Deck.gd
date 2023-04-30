@@ -38,6 +38,8 @@ func add_card_to_front_of_deck(card_id : ActionCardGameGlobal.CardId):
 	update_visibility()
 
 func draw_next_card(to_position = null):
+	if current_contents.size() == 0:
+		return
 	var next_card_id = current_contents.pop_front()
 	card_drawn.emit(next_card_id)
 	if current_contents.size() == 0:

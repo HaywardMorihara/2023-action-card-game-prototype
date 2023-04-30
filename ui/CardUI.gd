@@ -66,7 +66,7 @@ func _card_movement_animation(card_id : ActionCardGameGlobal.CardId, from_global
 	card_for_animation.move_to(to_global_pos, card_tween_duration, true)
 
 func _on_heal_timer_timeout():
-	var next_discard_card_id = DiscardPile.pop_front()
+	var next_discard_card_id = DiscardPile.pop_back()
 	if next_discard_card_id:
 		_card_movement_animation(next_discard_card_id, DiscardPile.global_position, Deck.global_position)
 		Deck.add_card_to_front_of_deck(next_discard_card_id)
@@ -90,8 +90,9 @@ func _on_heal_timer_timeout():
 
 
 func _on_player_player_heal(amount):
-	var next_discard_card_id = DiscardPile.pop_front()
+	var next_discard_card_id = DiscardPile.pop_back()
 	if next_discard_card_id:
 		_card_movement_animation(next_discard_card_id, DiscardPile.global_position, Deck.global_position)
 		Deck.add_card_to_front_of_deck(next_discard_card_id)
+		Deck.shuffle()
 		HealthUI.update_current(Deck.current_contents.size(), DiscardPile.contents.size())

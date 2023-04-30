@@ -14,8 +14,8 @@ func add(cardId : ActionCardGameGlobal.CardId):
 	contents.push_front(cardId)
 	update_visibility()
 
-func pop_front():
-	var top_card = contents.pop_front()
+func pop_back():
+	var top_card = contents.pop_back()
 	update_visibility()
 	return top_card
 

@@ -6,7 +6,7 @@
 [node name="CardPreview" type="VBoxContainer"]
 clip_contents = true
 layout_direction = 1
-offset_right = 75.0
+offset_right = 105.0
 offset_bottom = 468.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -21,7 +21,7 @@ stretch_mode = 3
 custom_minimum_size = Vector2(75, 20)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 12
+theme_override_font_sizes/font_size = 10
 text = "Title"
 horizontal_alignment = 1
 autowrap_mode = 2

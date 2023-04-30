@@ -9,9 +9,11 @@ var thunderbolt_scene = preload("res://world/effects/Thunderbolt.tscn")
 var is_in_card_selection_mode := false
 var is_canvas_changed_for_card_effect := false
 var card_selection_mode := CardSelectionMode.NONE
+var card_played_for_selection_mode : ActionCardGameGlobal.CardId
 enum CardSelectionMode {
 	NONE,
 	REMOVE_FROM_PLAY,
+	INGREDIENT_SELECTION,
 }
 
 func _on_hand_card_played(card, position):
@@ -36,11 +38,23 @@ func _on_hand_card_played(card, position):
 		ActionCardGameGlobal.CardId.THUNDERBOLT_ATTACK:
 			CardUINode.discard_your_hand()
 			is_canvas_changed_for_card_effect = true
-			modulate_canvas(Color.BLACK)
+			var tween = create_tween().tween_property($World/CanvasModulate, "color", Color.DARK_GRAY, 1)
 			var thunderbolt = thunderbolt_scene.instantiate()
 			thunderbolt.global_position = get_global_mouse_position()
 			thunderbolt.thunderbolt_strike_finished.connect(_on_thunderbolt_strike_finished)
 			World.add_child(thunderbolt)
+		ActionCardGameGlobal.CardId.INGREDIENT_1:
+			card_selection_mode = CardSelectionMode.INGREDIENT_SELECTION
+			card_played_for_selection_mode = card.id
+			enter_card_selection_mode()
+		ActionCardGameGlobal.CardId.INGREDIENT_2:
+			card_selection_mode = CardSelectionMode.INGREDIENT_SELECTION
+			card_played_for_selection_mode = card.id
+			enter_card_selection_mode()
+		ActionCardGameGlobal.CardId.INGREDIENT_3:
+			card_selection_mode = CardSelectionMode.INGREDIENT_SELECTION
+			card_played_for_selection_mode = card.id
+			enter_card_selection_mode()
 
 func enter_card_selection_mode():
 	get_tree().paused = true
@@ -51,6 +65,8 @@ func enter_card_selection_mode():
 	match card_selection_mode:
 		CardSelectionMode.REMOVE_FROM_PLAY:
 			CardUINode.set_toast("Select a Card to remove from play.")
+		CardSelectionMode.INGREDIENT_SELECTION:
+			CardUINode.set_toast("Select another Ingredient to mix with. Both Cards will be removed from play.")
 
 func exit_card_selection_mode():
 	get_tree().paused = false
@@ -75,10 +91,52 @@ func _on_hand_hand_is_up_toggled(is_hand_up : bool):
 		else:
 			modulate_canvas(Color.WHITE)
 
-func _on_hand_card_in_hand_is_selected(card):
+func _on_hand_card_in_hand_is_selected(card : Card):
 	match card_selection_mode:
 		CardSelectionMode.REMOVE_FROM_PLAY:
 			card.remove_from_play()
+		CardSelectionMode.INGREDIENT_SELECTION:
+			match card_played_for_selection_mode:
+				ActionCardGameGlobal.CardId.INGREDIENT_1:
+					match card.id:
+						ActionCardGameGlobal.CardId.INGREDIENT_2:
+							ingredients_1_2_effect()
+							remove_ingredients_from_play(card)
+						ActionCardGameGlobal.CardId.INGREDIENT_3:
+							var Deck = CardUINode.get_node("Deck")
+							if Deck.current_contents.size() > 5:
+								CardUINode.set_toast("%s is not valid - must have <= 5 Cards in your Deck." % card.id, 2.0)
+								return
+							else:
+								ingredients_1_3_effect()
+								remove_ingredients_from_play(card)
+						_:
+							CardUINode.set_toast("%s is not valid." % card.title, 2.0)
+				ActionCardGameGlobal.CardId.INGREDIENT_2:
+					match card.id:
+						ActionCardGameGlobal.CardId.INGREDIENT_1:
+							ingredients_1_2_effect()
+							remove_ingredients_from_play(card)
+						ActionCardGameGlobal.CardId.INGREDIENT_3:
+							ingredients_2_3_effect()
+							remove_ingredients_from_play(card)
+						_:
+							CardUINode.set_toast("%s is not valid." % card.title, 2.0)
+				ActionCardGameGlobal.CardId.INGREDIENT_3:
+					match card.id:
+						ActionCardGameGlobal.CardId.INGREDIENT_2:
+							ingredients_2_3_effect()
+							remove_ingredients_from_play(card)
+						ActionCardGameGlobal.CardId.INGREDIENT_1:
+							var Deck = CardUINode.get_node("Deck")
+							if Deck.current_contents.size() > 5:
+								CardUINode.set_toast("%s is not valid - must have <= 5 Cards in your Deck." % card.id, 2.0)
+								return
+							else:
+								ingredients_1_3_effect()
+								remove_ingredients_from_play(card)
+						_:
+							CardUINode.set_toast("%s is not valid." % card.title, 2.0)
 	exit_card_selection_mode()
 
 func _on_thunderbolt_strike_finished():
@@ -89,3 +147,25 @@ func modulate_canvas(color : Color):
 	if is_canvas_changed_for_card_effect:
 		return
 	$World/CanvasModulate.color = color
+
+func ingredients_1_2_effect():
+	$World/Player.speed = $World/Player.speed * 1.5
+	
+func ingredients_1_3_effect():
+	var Deck = CardUINode.get_node("Deck")
+	var deck_contents = Deck.current_contents.duplicate()
+	CardUINode.add_new_cards_to_deck(deck_contents)
+	
+func ingredients_2_3_effect():
+	CardUINode.add_new_cards_to_deck([ActionCardGameGlobal.CardId.FIREBALL, ActionCardGameGlobal.CardId.FIREBALL, ActionCardGameGlobal.CardId.FIREBALL, ActionCardGameGlobal.CardId.FIREBALL,ActionCardGameGlobal.CardId.FIREBALL])
+	
+func remove_ingredients_from_play(ingredient_selected_card : Card):
+	var DiscardPile = CardUINode.get_node("DiscardPile")
+	DiscardPile.contents.erase(card_played_for_selection_mode)
+	DiscardPile.update_visibility()
+	var health_ui = CardUINode.get_node("HealthUI")
+	var max_card_count = health_ui.max_card_count
+	var Deck = CardUINode.get_node("Deck")
+	Deck.total_cards -= 1
+	health_ui.update_max(Deck.total_cards)
+	ingredient_selected_card.remove_from_play()

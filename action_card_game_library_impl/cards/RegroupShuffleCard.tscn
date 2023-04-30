@@ -8,4 +8,5 @@ title = "Regroup"
 description = "Shuffles your Hand into your Deck. Then, Draws 5 Cards."
 
 [node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -1)
 texture = ExtResource("2_n58u3")

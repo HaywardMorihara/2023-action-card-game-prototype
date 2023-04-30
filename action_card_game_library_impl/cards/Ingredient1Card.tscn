@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://bft2vabdu8lxi"]
+
+[ext_resource type="PackedScene" uid="uid://05nvc3bq3wwk" path="res://action_card_game_library/Card.tscn" id="1_kbtj5"]
+[ext_resource type="Script" path="res://action_card_game_library_impl/cards/IngredientCard.gd" id="2_gh5xu"]
+[ext_resource type="Texture2D" uid="uid://27v2sqshknxt" path="res://assets/card_art/ingredient_mandrake_root_card.png" id="3_roh8y"]
+
+[node name="Ingredient1Card" instance=ExtResource("1_kbtj5")]
+script = ExtResource("2_gh5xu")
+title = "Ingredient: Mandrake Root"
+description = "Combine with “Dragon’s Blood” to permanently increase your speed 1.25x OR Combine with “Belladonna” to duplicate the contents of your Deck (if ≤ 5 cards. Both Cards will be removed from play."
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("3_roh8y")

@@ -14,8 +14,10 @@ enum CurrentAnimation {
 	NONE,
 	REGROUP,
 	DISCARD_HAND,
+	ADDING_NEW_CARDS_TO_DECK,
 }
 var current_animation : CurrentAnimation = CurrentAnimation.NONE
+var new_cards_to_be_added_to_deck : Array[ActionCardGameGlobal.CardId] = []
 
 func _ready():
 	HealthUI.update_max(Deck.total_cards)
@@ -52,12 +54,15 @@ func _on_no_heal_button_pressed():
 	$Popup.hide()
 	get_tree().paused = false
 
-func _on_player_player_new_card(cardId : ActionCardGameGlobal.CardId):
+func add_new_card_to_deck(cardId : ActionCardGameGlobal.CardId):
 	Deck.total_cards += 1
 	Deck.add_card_to_bottom_of_deck(cardId)
 	HealthUI.update_max(Deck.total_cards)
 	HealthUI.update_current(Deck.current_contents.size(), DiscardPile.contents.size())
 	_card_movement_animation(cardId, $Center.position, Deck.global_position)
+
+func _on_player_player_new_card(cardId : ActionCardGameGlobal.CardId):
+	add_new_card_to_deck(cardId)
 
 func _on_starting_hand_delay_timer_timeout():
 	if ActionCardGameGlobal.starting_hand_count:
@@ -103,6 +108,11 @@ func discard_your_hand():
 	current_animation = CurrentAnimation.DISCARD_HAND
 	$AnimationDelayTimer.start()
 
+func add_new_cards_to_deck(cardIds : Array[ActionCardGameGlobal.CardId]):
+	new_cards_to_be_added_to_deck = cardIds
+	current_animation = CurrentAnimation.ADDING_NEW_CARDS_TO_DECK
+	$AnimationDelayTimer.start()
+
 func heal_from_bottom_of_deck(amount : int):
 	for i in amount:
 		var next_discard_card_id = DiscardPile.pop_back()
@@ -124,7 +134,7 @@ func _on_animation_delay_timer_timeout():
 				next_card_in_hand.remove_from_group("cards_in_hand")
 				next_card_in_hand.queue_free()
 				Deck.add_card_to_front_of_deck(next_card_in_hand.id)
-				HealthUI.update_current(Deck.current_contents.size(), DiscardPile.contents.size())
+				
 				$AnimationDelayTimer.start()
 				return
 			Deck.shuffle()
@@ -141,16 +151,31 @@ func _on_animation_delay_timer_timeout():
 				$AnimationDelayTimer.start()
 				return
 			current_animation = CurrentAnimation.NONE
+		CurrentAnimation.ADDING_NEW_CARDS_TO_DECK:
+			var next_card_to_add_to_deck = new_cards_to_be_added_to_deck.pop_front()
+			if next_card_to_add_to_deck != null:
+				add_new_card_to_deck(next_card_to_add_to_deck)
+				$AnimationDelayTimer.start()
+				return
+			current_animation = CurrentAnimation.NONE
 
 
 func _on_hand_card_in_hand_removed(card):
-	HealthUI.update_max(HealthUI.max_card_count - 1)
+	Deck.total_cards -= 1
+	HealthUI.update_max(Deck.total_cards)
 
-func set_toast(message : String):
+func set_toast(message : String, time_limit = null):
 	$Toast.visible = true
 	$Toast.text = message
+	if time_limit != null:
+		$Toast/ToastTimer.start(time_limit)
 	
 func unset_toast():
 	$Toast.visible = false
 	$Toast.text = ""
 	
+func _on_hand_card_preconditions_not_met(card):
+	set_toast("Card preconditions not met.", 3.0)
+
+func _on_toast_timer_timeout():
+	unset_toast()

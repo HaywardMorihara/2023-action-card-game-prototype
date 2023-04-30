@@ -5,6 +5,7 @@ signal hand_is_up_toggled(is_hand_up : bool)
 signal card_in_hand_is_being_looked_at(is_being_looked_at : bool, card : Card)
 signal card_in_hand_is_selected(card : Card)
 signal card_in_hand_removed(card)
+signal card_preconditions_not_met(card)
 
 @export var hand_up_y := 50
 
@@ -75,10 +76,14 @@ func _on_card_card_placed(card, position):
 	if position.y > self.position.y:
 		card.return_to_initial_position()
 	else:
-		card.remove_from_group("cards_in_hand")
-		card.play()
-		reset_card_positions()
-		card_played.emit(card, position)
+		if not card.check_preconditions():
+			card.return_to_initial_position()
+			card_preconditions_not_met.emit(self)
+		else:
+			card.remove_from_group("cards_in_hand")
+			card.play()
+			reset_card_positions()
+			card_played.emit(card, position)
 	_move_hand_up(false)
 
 func _on_card_card_being_held(is_card_held):

@@ -33,6 +33,9 @@ func move_to(to_global_pos : Vector2, duration : float, destroy_on_arrival := fa
 	var tween = create_tween().tween_property(self, "global_position", to_global_pos, duration)
 	tween.finished.connect(_on_draw_tween_finished)
 
+func check_preconditions() -> bool:
+	return true
+
 func _process(delta):
 	if dragging:
 		global_position = get_global_mouse_position()
@@ -41,7 +44,7 @@ func _input(event):
 	if mouse_over:
 		var mouse_pos = get_global_mouse_position()
 		if is_in_card_selection_mode:
-			if event.is_action_pressed("card_select"):
+			if event.is_action_released("card_select"):
 				card_selected.emit(self)
 		else:
 			if event.is_action_pressed("card_select"):

@@ -7,6 +7,7 @@ enum CardId {
 	POTION_HEAL,
 	INJECTION_DRAW,
 	REGROUP_SHUFFLE,
+	BANISH_REMOVAL,
 }
 
 var card_id_to_card_scene = {
@@ -14,6 +15,7 @@ var card_id_to_card_scene = {
 	CardId.POTION_HEAL : preload("cards/PotionHealCard.tscn"),
 	CardId.INJECTION_DRAW : preload("cards/InjectionDrawCard.tscn"),
 	CardId.REGROUP_SHUFFLE : preload("cards/RegroupShuffleCard.tscn"),
+	CardId.BANISH_REMOVAL : preload("cards/BanishRemovalCard.tscn"),
 }
 
 var starting_hand_count = 5
@@ -28,10 +30,10 @@ var starting_deck : Array[CardId] = [
 	CardId.FIREBALL,
 	CardId.FIREBALL,
 	CardId.FIREBALL,
-	CardId.FIREBALL,
 	CardId.REGROUP_SHUFFLE,
 	CardId.INJECTION_DRAW,
 	CardId.INJECTION_DRAW,
 	CardId.POTION_HEAL,
 	CardId.POTION_HEAL,
+	CardId.BANISH_REMOVAL,
 ]

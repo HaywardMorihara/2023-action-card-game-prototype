@@ -3,6 +3,8 @@ extends Area2D
 signal card_played(card , position)
 signal hand_is_up_toggled(is_hand_up : bool)
 signal card_in_hand_is_being_looked_at(is_being_looked_at : bool, card : Card)
+signal card_in_hand_is_selected(card : Card)
+signal card_in_hand_removed(card)
 
 @export var hand_up_y := 50
 
@@ -22,6 +24,8 @@ func add_card(card_id : ActionCardGameGlobal.CardId):
 	new_card.card_placed.connect(_on_card_card_placed)
 	new_card.card_being_held.connect(_on_card_card_being_held)
 	new_card.card_being_looked_at.connect(_on_card_card_being_looked_at)
+	new_card.card_selected.connect(_on_card_is_selected)
+	new_card.card_removed.connect(_on_card_removed)
 	new_card.add_to_group("cards_in_hand")
 	new_card.id = card_id
 	add_child(new_card)
@@ -62,12 +66,10 @@ func _on_mouse_entered():
 		return
 	_move_hand_up(true)
 
-
 func _on_mouse_exited():
 	if is_card_being_held:
 		return
 	_move_hand_up(false)
-
 
 func _on_card_card_placed(card, position):
 	if position.y > self.position.y:
@@ -79,7 +81,6 @@ func _on_card_card_placed(card, position):
 		card_played.emit(card, position)
 	_move_hand_up(false)
 
-
 func _on_card_card_being_held(is_card_held):
 	is_card_being_held = is_card_held
 
@@ -90,3 +91,11 @@ func _on_card_card_being_looked_at(is_being_looked_at : bool, card : Card):
 
 func _on_deck_card_drawn(card_id):
 	add_card(card_id)
+
+func _on_card_is_selected(card):
+	card_in_hand_is_selected.emit(card)
+	
+func _on_card_removed(card):
+	card_in_hand_removed.emit(card)
+	card.remove_from_group("cards_in_hand")
+	reset_card_positions()

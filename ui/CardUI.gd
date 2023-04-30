@@ -110,7 +110,6 @@ func heal_from_bottom_of_deck(amount : int):
 func _on_player_player_heal(amount):
 	heal_from_bottom_of_deck(amount)
 
-
 func _on_animation_delay_timer_timeout():
 	match current_animation:
 		CurrentAnimation.REGROUP:
@@ -126,3 +125,16 @@ func _on_animation_delay_timer_timeout():
 			Deck.shuffle()
 			$StartingHandDelayTimer.start()
 			current_animation = CurrentAnimation.NONE
+
+
+func _on_hand_card_in_hand_removed(card):
+	HealthUI.update_max(HealthUI.max_card_count - 1)
+
+func set_toast(message : String):
+	$Toast.visible = true
+	$Toast.text = message
+	
+func unset_toast():
+	$Toast.visible = false
+	$Toast.text = ""
+	

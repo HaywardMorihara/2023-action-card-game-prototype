@@ -27,7 +27,6 @@ func update():
 	var card_count_percentage = float(current_card_count) / float(max_card_count)
 	$HealthBar.size.x = max_bar_width * card_count_percentage
 	
-	
 	if card_count_percentage >= 0.51:
 		$HealthBar.color = Color.GREEN
 	if card_count_percentage < 0.51:

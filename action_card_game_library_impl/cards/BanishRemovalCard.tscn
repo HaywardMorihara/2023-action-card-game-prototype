@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6cvk4ddp73e5"]
+
+[ext_resource type="PackedScene" uid="uid://05nvc3bq3wwk" path="res://action_card_game_library/Card.tscn" id="1_bdcv3"]
+[ext_resource type="Texture2D" uid="uid://burpoy8pddju3" path="res://assets/card_art/banish_removal_card.png" id="2_amur4"]
+
+[node name="BanishRemovalCard" instance=ExtResource("1_bdcv3")]
+title = "Banish"
+description = "Remove 1 Card in your Hand from play (it will NOT go to your Discard nor your Deck). "
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_amur4")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c3drbnmbj4qx5"]
+[gd_scene load_steps=22 format=3 uid="uid://c3drbnmbj4qx5"]
 
 [ext_resource type="PackedScene" uid="uid://dikl6yqyjpknd" path="res://action_card_game_library/Deck.tscn" id="1_og2kh"]
 [ext_resource type="Script" path="res://Main.gd" id="1_x4ye3"]
@@ -15,7 +15,6 @@
 [ext_resource type="Script" path="res://ui/HealthUI.gd" id="10_2nmwd"]
 [ext_resource type="PackedScene" uid="uid://dbg4atggpqgvl" path="res://world/places/DrawSpawnPoint.tscn" id="10_e4nmw"]
 [ext_resource type="PackedScene" uid="uid://dexohf5ajlghx" path="res://action_card_game_library/DiscardPile.tscn" id="11_ko1bt"]
-[ext_resource type="PackedScene" uid="uid://c0rsb1yvfh3v0" path="res://world/pickups/HealPickup.tscn" id="12_j2mcg"]
 [ext_resource type="Script" path="res://ui/EnemyCountLabel.gd" id="16_em577"]
 [ext_resource type="PackedScene" uid="uid://bnyw7xdhldwog" path="res://action_card_game_library/CardPreview.tscn" id="18_tur63"]
 
@@ -1296,9 +1295,6 @@ position = Vector2(376, -623)
 [node name="DrawSpawnPoint34" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
 position = Vector2(511, -745)
 
-[node name="HealPickup" parent="CardEffectHandler/World/Pickups" instance=ExtResource("12_j2mcg")]
-position = Vector2(216, 233)
-
 [node name="Enemies" type="Node2D" parent="CardEffectHandler/World"]
 y_sort_enabled = true
 script = ExtResource("6_m4i2h")
@@ -1676,6 +1672,22 @@ script = ExtResource("16_em577")
 [node name="Center" type="Marker2D" parent="CardEffectHandler/CardUI"]
 position = Vector2(320, 180)
 
+[node name="Toast" type="Label" parent="CardEffectHandler/CardUI"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Toast"
+horizontal_alignment = 1
+
 [node name="Popup" type="Popup" parent="CardEffectHandler/CardUI"]
 position = Vector2i(150, 100)
 size = Vector2i(300, 200)
@@ -1728,6 +1740,8 @@ wait_time = 0.1
 [connection signal="deck_discard" from="CardEffectHandler/CardUI/Deck" to="CardEffectHandler/CardUI" method="_on_deck_deck_discard"]
 [connection signal="input_event" from="CardEffectHandler/CardUI/Deck" to="CardEffectHandler/CardUI/Deck" method="_on_input_event"]
 [connection signal="card_in_hand_is_being_looked_at" from="CardEffectHandler/CardUI/Hand" to="CardEffectHandler/CardUI/CardPreview" method="_on_hand_card_in_hand_is_being_looked_at"]
+[connection signal="card_in_hand_is_selected" from="CardEffectHandler/CardUI/Hand" to="CardEffectHandler" method="_on_hand_card_in_hand_is_selected"]
+[connection signal="card_in_hand_removed" from="CardEffectHandler/CardUI/Hand" to="CardEffectHandler/CardUI" method="_on_hand_card_in_hand_removed"]
 [connection signal="card_played" from="CardEffectHandler/CardUI/Hand" to="CardEffectHandler" method="_on_hand_card_played"]
 [connection signal="card_played" from="CardEffectHandler/CardUI/Hand" to="CardEffectHandler/CardUI" method="_on_hand_card_played"]
 [connection signal="hand_is_up_toggled" from="CardEffectHandler/CardUI/Hand" to="CardEffectHandler" method="_on_hand_hand_is_up_toggled"]

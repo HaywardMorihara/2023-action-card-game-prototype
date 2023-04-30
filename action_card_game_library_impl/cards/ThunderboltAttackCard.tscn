@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://wy0alaj323pe"]
+
+[ext_resource type="PackedScene" uid="uid://05nvc3bq3wwk" path="res://action_card_game_library/Card.tscn" id="1_go74a"]
+[ext_resource type="Texture2D" uid="uid://by2vwn1ujvaic" path="res://assets/card_art/thunderbolt_destroy_card.png" id="2_yn3es"]
+
+[node name="ThunderboltAttackCard" instance=ExtResource("1_go74a")]
+title = "Thunderbolt"
+description = "Discard your Hand. Summon a Thunderbolt that destorys all enemies in a large blast radius."
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_yn3es")

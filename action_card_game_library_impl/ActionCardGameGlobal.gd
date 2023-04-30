@@ -8,6 +8,7 @@ enum CardId {
 	INJECTION_DRAW,
 	REGROUP_SHUFFLE,
 	BANISH_REMOVAL,
+	THUNDERBOLT_ATTACK,
 }
 
 var card_id_to_card_scene = {
@@ -16,6 +17,7 @@ var card_id_to_card_scene = {
 	CardId.INJECTION_DRAW : preload("cards/InjectionDrawCard.tscn"),
 	CardId.REGROUP_SHUFFLE : preload("cards/RegroupShuffleCard.tscn"),
 	CardId.BANISH_REMOVAL : preload("cards/BanishRemovalCard.tscn"),
+	CardId.THUNDERBOLT_ATTACK : preload("cards/ThunderboltAttackCard.tscn"), 
 }
 
 var starting_hand_count = 5
@@ -28,8 +30,8 @@ var starting_deck : Array[CardId] = [
 	CardId.FIREBALL,
 	CardId.FIREBALL,
 	CardId.FIREBALL,
-	CardId.FIREBALL,
-	CardId.FIREBALL,
+	CardId.THUNDERBOLT_ATTACK,
+	CardId.THUNDERBOLT_ATTACK,
 	CardId.REGROUP_SHUFFLE,
 	CardId.INJECTION_DRAW,
 	CardId.INJECTION_DRAW,

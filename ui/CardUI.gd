@@ -13,6 +13,7 @@ signal deck_is_empty
 enum CurrentAnimation {
 	NONE,
 	REGROUP,
+	DISCARD_HAND,
 }
 var current_animation : CurrentAnimation = CurrentAnimation.NONE
 
@@ -98,6 +99,10 @@ func shuffle_hand_into_deck_and_draw_starting_hand():
 	current_animation = CurrentAnimation.REGROUP
 	$AnimationDelayTimer.start()
 
+func discard_your_hand():
+	current_animation = CurrentAnimation.DISCARD_HAND
+	$AnimationDelayTimer.start()
+
 func heal_from_bottom_of_deck(amount : int):
 	for i in amount:
 		var next_discard_card_id = DiscardPile.pop_back()
@@ -124,6 +129,17 @@ func _on_animation_delay_timer_timeout():
 				return
 			Deck.shuffle()
 			$StartingHandDelayTimer.start()
+			current_animation = CurrentAnimation.NONE
+		CurrentAnimation.DISCARD_HAND:
+			var next_card_in_hand = get_tree().get_first_node_in_group("cards_in_hand")
+			if next_card_in_hand:
+				DiscardPile.add(next_card_in_hand.id)
+				_card_movement_animation(next_card_in_hand.id, Hand.global_position, DiscardPile.global_position)
+				next_card_in_hand.remove_from_group("cards_in_hand")
+				next_card_in_hand.queue_free()
+				HealthUI.update_current(Deck.current_contents.size(), DiscardPile.contents.size())
+				$AnimationDelayTimer.start()
+				return
 			current_animation = CurrentAnimation.NONE
 
 

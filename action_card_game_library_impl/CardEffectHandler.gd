@@ -4,8 +4,10 @@ extends Node2D
 @onready var World = get_node("World")
 
 var fireball_scene = preload("res://world/effects/Fireball.tscn")
+var thunderbolt_scene = preload("res://world/effects/Thunderbolt.tscn")
 
 var is_in_card_selection_mode := false
+var is_canvas_changed_for_card_effect := false
 var card_selection_mode := CardSelectionMode.NONE
 enum CardSelectionMode {
 	NONE,
@@ -16,7 +18,6 @@ func _on_hand_card_played(card, position):
 	match card.id:
 		ActionCardGameGlobal.CardId.FIREBALL:
 			var fireball = fireball_scene.instantiate()
-			# _Could_ get Player node from Group...
 			var player_position = World.get_node("Player").global_position
 			var mouse_to_player_pos = get_global_mouse_position() - player_position
 			var angle = mouse_to_player_pos.angle()
@@ -32,11 +33,19 @@ func _on_hand_card_played(card, position):
 		ActionCardGameGlobal.CardId.BANISH_REMOVAL:
 			card_selection_mode = CardSelectionMode.REMOVE_FROM_PLAY
 			enter_card_selection_mode()
+		ActionCardGameGlobal.CardId.THUNDERBOLT_ATTACK:
+			CardUINode.discard_your_hand()
+			is_canvas_changed_for_card_effect = true
+			modulate_canvas(Color.BLACK)
+			var thunderbolt = thunderbolt_scene.instantiate()
+			thunderbolt.global_position = get_global_mouse_position()
+			thunderbolt.thunderbolt_strike_finished.connect(_on_thunderbolt_strike_finished)
+			World.add_child(thunderbolt)
 
 func enter_card_selection_mode():
 	get_tree().paused = true
 	is_in_card_selection_mode = true
-	$World/CanvasModulate.color = Color.DIM_GRAY
+	modulate_canvas(Color.DIM_GRAY)
 	for card in get_tree().get_nodes_in_group("cards_in_hand"):
 		card.is_in_card_selection_mode = true
 	match card_selection_mode:
@@ -62,12 +71,21 @@ func _on_hand_hand_is_up_toggled(is_hand_up : bool):
 	if not is_in_card_selection_mode and PlayerSettings.pause_when_hand_up:
 		get_tree().paused = is_hand_up
 		if is_hand_up:
-			$World/CanvasModulate.color = Color.DIM_GRAY
+			modulate_canvas(Color.DIM_GRAY)
 		else:
-			$World/CanvasModulate.color = Color.WHITE
+			modulate_canvas(Color.WHITE)
 
 func _on_hand_card_in_hand_is_selected(card):
 	match card_selection_mode:
 		CardSelectionMode.REMOVE_FROM_PLAY:
 			card.remove_from_play()
 	exit_card_selection_mode()
+
+func _on_thunderbolt_strike_finished():
+	is_canvas_changed_for_card_effect = false
+	modulate_canvas(Color.WHITE)
+
+func modulate_canvas(color : Color):
+	if is_canvas_changed_for_card_effect:
+		return
+	$World/CanvasModulate.color = color

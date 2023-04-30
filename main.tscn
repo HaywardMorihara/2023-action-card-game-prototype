@@ -1008,6 +1008,7 @@ font_size = 8
 font_color = Color(0, 0, 0, 1)
 
 [node name="Main" type="Node2D"]
+position = Vector2(1, 0)
 script = ExtResource("1_x4ye3")
 
 [node name="CardEffectHandler" type="Node2D" parent="."]

@@ -6,16 +6,19 @@ enum CardId {
 	FIREBALL,
 	POTION_HEAL,
 	INJECTION_DRAW,
-	REGROUP_SHUFFLE,
 	BANISH_REMOVAL,
+	
+	REGROUP_SHUFFLE,
 	THUNDERBOLT_ATTACK,
-	INGREDIENT_1,
-	INGREDIENT_2,
-	INGREDIENT_3,
-	DARK_HOLE_DESTROY,
 	FAST_FEET,
 	BERZERKER_DRAW,
 	QUICK_BANDAGE_HEAL,
+	
+	DARK_HOLE_DESTROY,
+	
+	INGREDIENT_1,
+	INGREDIENT_2,
+	INGREDIENT_3,
 }
 
 var card_id_to_card_scene = {
@@ -30,7 +33,8 @@ var card_id_to_card_scene = {
 	CardId.INGREDIENT_3 : preload("cards/Ingredient3Card.tscn"),
 	CardId.DARK_HOLE_DESTROY : preload("cards/DarkHoleDestroyCard.tscn"),
 	CardId.FAST_FEET : preload("cards/FastFeetCard.tscn"),
-	CardId.BERZERKER_DRAW : preload("cards/BerzerkerCard.tscn")
+	CardId.BERZERKER_DRAW : preload("cards/BerzerkerCard.tscn"),
+	CardId.QUICK_BANDAGE_HEAL : preload("cards/QuickBandageHealCard.tscn"),
 }
 
 var starting_hand_count = 5
@@ -51,18 +55,10 @@ var starting_deck : Array[CardId] = [
 	CardId.POTION_HEAL,
 	CardId.BANISH_REMOVAL,
 	CardId.DARK_HOLE_DESTROY,
-#	CardId.INGREDIENT_1,
-#	CardId.INGREDIENT_2,
-#	CardId.INGREDIENT_3,
+	CardId.INGREDIENT_1,
+	CardId.INGREDIENT_2,
+	CardId.INGREDIENT_3,
 	CardId.FAST_FEET,
 	CardId.BERZERKER_DRAW,
-	CardId.BERZERKER_DRAW,
-	CardId.BERZERKER_DRAW,
-	CardId.BERZERKER_DRAW,
-	CardId.BERZERKER_DRAW,
-	CardId.BERZERKER_DRAW,
-	CardId.BERZERKER_DRAW,
-	CardId.BERZERKER_DRAW,
-	CardId.BERZERKER_DRAW,
-	CardId.BERZERKER_DRAW,
+	CardId.QUICK_BANDAGE_HEAL,
 ]

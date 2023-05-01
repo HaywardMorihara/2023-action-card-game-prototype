@@ -17,10 +17,12 @@ enum CurrentAnimation {
 	DISCARD_HAND,
 	ADDING_NEW_CARDS_TO_DECK,
 	DRAWING_CARDS,
+	HEALING,
 }
 var current_animation : CurrentAnimation = CurrentAnimation.NONE
 var new_cards_to_be_added_to_deck : Array[ActionCardGameGlobal.CardId] = []
 var num_cards_to_draw := 0
+var num_cards_to_heal := 0
 
 func _ready():
 	HealthUI.update_max(Deck.total_cards)
@@ -121,6 +123,11 @@ func draw_cards(num : int):
 	current_animation = CurrentAnimation.DRAWING_CARDS
 	$AnimationDelayTimer.start()
 
+func heal(num : int):
+	num_cards_to_heal = min(num, DiscardPile.contents.size())
+	current_animation = CurrentAnimation.HEALING
+	$AnimationDelayTimer.start()
+
 func heal_from_bottom_of_deck(amount : int):
 	for i in amount:
 		var next_discard_card_id = DiscardPile.pop_back()
@@ -172,6 +179,18 @@ func _on_animation_delay_timer_timeout():
 				draw_next_card()
 				$AnimationDelayTimer.start()
 				return
+			current_animation = CurrentAnimation.NONE
+		CurrentAnimation.HEALING:
+			if num_cards_to_heal > 0:
+				num_cards_to_heal -= 1
+				var next_discard_card_id = DiscardPile.pop_back()
+				if next_discard_card_id != null:
+					_card_movement_animation(next_discard_card_id, DiscardPile.global_position, Deck.global_position)
+					Deck.add_card_to_front_of_deck(next_discard_card_id)
+					Deck.shuffle()
+					HealthUI.update_current(Deck.current_contents.size(), DiscardPile.contents.size())
+					$AnimationDelayTimer.start()
+					return
 			current_animation = CurrentAnimation.NONE
 	if current_animation == CurrentAnimation.NONE:
 		card_ui_current_animation_finished.emit()

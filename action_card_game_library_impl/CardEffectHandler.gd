@@ -65,6 +65,8 @@ func _on_hand_card_played(card, position):
 			dark_hole.global_position = get_global_mouse_position()
 			dark_hole.dark_hole_finished.connect(_on_dark_hole_finished)
 			$World.add_child(dark_hole)
+		ActionCardGameGlobal.CardId.FAST_FEET:
+			$World/Player.change_speed($World/Player.speed * 0.25, 5)
 
 func enter_card_selection_mode():
 	get_tree().paused = true
@@ -163,7 +165,8 @@ func modulate_canvas(color : Color):
 	$World/CanvasModulate.color = color
 
 func ingredients_1_2_effect():
-	$World/Player.speed = $World/Player.speed * 1.5
+	$World/Player.default_speed = $World/Player.default_speed * 1.25
+	$World/Player.change_speed($World/Player.speed * 0.25)
 	
 func ingredients_1_3_effect():
 	var Deck = CardUINode.get_node("Deck")

@@ -282,3 +282,16 @@ animation = &"walk_right"
 autoplay = "idle"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="SpeedBostTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -21.0
+offset_top = -172.0
+offset_right = 19.0
+offset_bottom = -149.0
+horizontal_alignment = 1
+
+[connection signal="timeout" from="SpeedBostTimer" to="." method="_on_speed_bost_timer_timeout"]

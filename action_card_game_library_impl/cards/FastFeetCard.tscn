@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://4u2yjd53ld8j"]
+
+[ext_resource type="PackedScene" uid="uid://05nvc3bq3wwk" path="res://action_card_game_library/Card.tscn" id="1_3dpab"]
+[ext_resource type="Texture2D" uid="uid://ceh4djm0qcxnh" path="res://assets/card_art/fast_feet_card.png" id="2_4dtye"]
+
+[node name="FastFeetCard" instance=ExtResource("1_3dpab")]
+title = "Fast Feet"
+description = "For 30 seconds, increases your speed 1.25x."
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_4dtye")

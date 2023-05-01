@@ -5,7 +5,7 @@
 
 [node name="ThunderboltAttackCard" instance=ExtResource("1_go74a")]
 title = "Thunderbolt"
-description = "Discard your Hand. Summon a Thunderbolt that destorys all enemies in a large blast radius."
+description = "Discard the top Card from your Deck. Summon a Thunderbolt that destorys all enemies in a large blast radius."
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_yn3es")

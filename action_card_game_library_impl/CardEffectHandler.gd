@@ -5,6 +5,7 @@ extends Node2D
 
 var fireball_scene = preload("res://world/effects/Fireball.tscn")
 var thunderbolt_scene = preload("res://world/effects/Thunderbolt.tscn")
+var dark_hole_scene = preload("res://world/effects/DarkHoleDestroy.tscn")
 
 var is_in_card_selection_mode := false
 var is_canvas_changed_for_card_effect := false
@@ -36,7 +37,7 @@ func _on_hand_card_played(card, position):
 			card_selection_mode = CardSelectionMode.REMOVE_FROM_PLAY
 			enter_card_selection_mode()
 		ActionCardGameGlobal.CardId.THUNDERBOLT_ATTACK:
-			CardUINode.discard_your_hand()
+			CardUINode.discard_from_deck(1)
 			is_canvas_changed_for_card_effect = true
 			# TODO How do I get this to not effec tthe Thunderbolt??? Then I could make it darker
 			var tween = create_tween().tween_property($World/CanvasModulate, "color", Color.DARK_SLATE_BLUE, 1)
@@ -56,6 +57,14 @@ func _on_hand_card_played(card, position):
 			card_selection_mode = CardSelectionMode.INGREDIENT_SELECTION
 			card_played_for_selection_mode = card.id
 			enter_card_selection_mode()
+		ActionCardGameGlobal.CardId.DARK_HOLE_DESTROY:
+			CardUINode.discard_your_hand()
+			is_canvas_changed_for_card_effect = true
+			var tween = create_tween().tween_property($World/CanvasModulate, "color", Color(0.1,0.1,0.1,0.8), 1)
+			var dark_hole = dark_hole_scene.instantiate()
+			dark_hole.global_position = get_global_mouse_position()
+			dark_hole.dark_hole_finished.connect(_on_dark_hole_finished)
+			$World.add_child(dark_hole)
 
 func enter_card_selection_mode():
 	get_tree().paused = true
@@ -143,6 +152,10 @@ func _on_hand_card_in_hand_is_selected(card : Card):
 func _on_thunderbolt_strike_finished():
 	is_canvas_changed_for_card_effect = false
 	modulate_canvas(Color.WHITE)
+	
+func _on_dark_hole_finished():
+	is_canvas_changed_for_card_effect = false
+	var tween = create_tween().tween_property($World/CanvasModulate, "color", Color.WHITE, 1)
 
 func modulate_canvas(color : Color):
 	if is_canvas_changed_for_card_effect:

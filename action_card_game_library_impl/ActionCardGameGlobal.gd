@@ -12,6 +12,7 @@ enum CardId {
 	INGREDIENT_1,
 	INGREDIENT_2,
 	INGREDIENT_3,
+	DARK_HOLE_DESTROY,
 }
 
 var card_id_to_card_scene = {
@@ -24,6 +25,7 @@ var card_id_to_card_scene = {
 	CardId.INGREDIENT_1 : preload("cards/Ingredient1Card.tscn"),
 	CardId.INGREDIENT_2 : preload("cards/Ingredient2Card.tscn"),
 	CardId.INGREDIENT_3 : preload("cards/Ingredient3Card.tscn"),
+	CardId.DARK_HOLE_DESTROY : preload("cards/DarkHoleDestroyCard.tscn"),
 }
 
 var starting_hand_count = 5
@@ -46,5 +48,11 @@ var starting_deck : Array[CardId] = [
 	CardId.POTION_HEAL,
 	CardId.POTION_HEAL,
 	CardId.BANISH_REMOVAL,
-	
+	CardId.DARK_HOLE_DESTROY,
+	CardId.DARK_HOLE_DESTROY,
+	CardId.DARK_HOLE_DESTROY,
+	CardId.DARK_HOLE_DESTROY,
+	CardId.DARK_HOLE_DESTROY,
+	CardId.DARK_HOLE_DESTROY,
+	CardId.DARK_HOLE_DESTROY,
 ]

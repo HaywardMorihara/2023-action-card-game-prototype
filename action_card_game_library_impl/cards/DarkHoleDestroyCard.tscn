@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7xunymy2lwpy"]
+
+[ext_resource type="PackedScene" uid="uid://05nvc3bq3wwk" path="res://action_card_game_library/Card.tscn" id="1_k1bn0"]
+[ext_resource type="Texture2D" uid="uid://crunowd2gwom4" path="res://assets/card_art/dark_hole_destory_card.png" id="2_0whno"]
+
+[node name="DarkHoleDestoryCard" instance=ExtResource("1_k1bn0")]
+title = "Dark Hole"
+description = "Discards all Cards in your Hand. Summons a black hole where you place the card."
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_0whno")

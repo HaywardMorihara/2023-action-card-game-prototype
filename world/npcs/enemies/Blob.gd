@@ -18,15 +18,18 @@ var heal_pickup_scene = preload("res://world/pickups/HealPickup.tscn")
 
 var is_queued_destroy := false
 var is_bounced := false
-
+var is_disabled := false
 
 func _ready():
 	randomize()
 
-
 func _physics_process(delta):
 	if is_queued_destroy:
 		return
+	if is_disabled:
+		move_and_slide()
+		return
+	
 	# Implementing acceleration would make this feel more natural
 	if not is_bounced:
 		velocity = _decide_direction() * speed
@@ -64,7 +67,6 @@ func _decide_direction() -> Vector2:
 		return Vector2.ZERO
 	return global_position.direction_to(player_pos)
 
-
 func queue_destroy():
 	is_queued_destroy = true
 	animation.play("DestroyedRight")
@@ -82,12 +84,17 @@ func queue_destroy():
 		draw_pickup.global_position -= Vector2(8, 0)
 		heal_pickup.global_position += Vector2(8, 0)
 
-
 func _on_animated_sprite_2d_animation_finished():
 	if is_queued_destroy and animation.get_animation() == "DestroyedRight":
 		queue_free()
 		blob_queued_destroy.emit()
 
-
 func _on_bouce_timer_timeout():
 	is_bounced = false
+
+func disable(seconds : float):
+	is_disabled = true
+	$DisableTimer.start(seconds)
+
+func _on_disable_timer_timeout():
+	is_disabled = false

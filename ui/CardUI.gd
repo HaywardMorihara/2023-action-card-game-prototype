@@ -1,6 +1,7 @@
 class_name CardUI extends CanvasLayer
 
 signal deck_is_empty
+signal card_ui_current_animation_finished
 
 @export var card_tween_duration : float = 0.1
 
@@ -15,9 +16,11 @@ enum CurrentAnimation {
 	REGROUP,
 	DISCARD_HAND,
 	ADDING_NEW_CARDS_TO_DECK,
+	DRAWING_CARDS,
 }
 var current_animation : CurrentAnimation = CurrentAnimation.NONE
 var new_cards_to_be_added_to_deck : Array[ActionCardGameGlobal.CardId] = []
+var num_cards_to_draw := 0
 
 func _ready():
 	HealthUI.update_max(Deck.total_cards)
@@ -113,6 +116,11 @@ func add_new_cards_to_deck(cardIds : Array[ActionCardGameGlobal.CardId]):
 	current_animation = CurrentAnimation.ADDING_NEW_CARDS_TO_DECK
 	$AnimationDelayTimer.start()
 
+func draw_cards(num : int):
+	num_cards_to_draw = num
+	current_animation = CurrentAnimation.DRAWING_CARDS
+	$AnimationDelayTimer.start()
+
 func heal_from_bottom_of_deck(amount : int):
 	for i in amount:
 		var next_discard_card_id = DiscardPile.pop_back()
@@ -158,7 +166,15 @@ func _on_animation_delay_timer_timeout():
 				$AnimationDelayTimer.start()
 				return
 			current_animation = CurrentAnimation.NONE
-
+		CurrentAnimation.DRAWING_CARDS:
+			if num_cards_to_draw > 0:
+				num_cards_to_draw -= 1
+				draw_next_card()
+				$AnimationDelayTimer.start()
+				return
+			current_animation = CurrentAnimation.NONE
+	if current_animation == CurrentAnimation.NONE:
+		card_ui_current_animation_finished.emit()
 
 func _on_hand_card_in_hand_removed(card):
 	Deck.total_cards -= 1

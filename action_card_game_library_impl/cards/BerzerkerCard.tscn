@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci586w0nr15mw"]
+
+[ext_resource type="PackedScene" uid="uid://05nvc3bq3wwk" path="res://action_card_game_library/Card.tscn" id="1_x1c3d"]
+[ext_resource type="Texture2D" uid="uid://c7fppga5njf6" path="res://assets/card_art/berzerker_card.png" id="2_0841w"]
+
+[node name="BerzerkerCard" instance=ExtResource("1_x1c3d")]
+title = "Berzerker"
+description = "Discard your Hand. Draw 7 Cards from your Deck."
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_0841w")

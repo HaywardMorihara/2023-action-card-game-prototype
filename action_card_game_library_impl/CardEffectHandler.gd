@@ -11,6 +11,7 @@ var is_in_card_selection_mode := false
 var is_canvas_changed_for_card_effect := false
 var card_selection_mode := CardSelectionMode.NONE
 var card_played_for_selection_mode : ActionCardGameGlobal.CardId
+var cards_waiting_for_animation_to_finish : Array[ActionCardGameGlobal.CardId]
 enum CardSelectionMode {
 	NONE,
 	REMOVE_FROM_PLAY,
@@ -67,6 +68,9 @@ func _on_hand_card_played(card, position):
 			$World.add_child(dark_hole)
 		ActionCardGameGlobal.CardId.FAST_FEET:
 			$World/Player.change_speed($World/Player.speed * 0.25, 5)
+		ActionCardGameGlobal.CardId.BERZERKER_DRAW:
+			CardUINode.discard_your_hand()
+			cards_waiting_for_animation_to_finish.push_back(card.id)
 
 func enter_card_selection_mode():
 	get_tree().paused = true
@@ -186,3 +190,11 @@ func remove_ingredients_from_play(ingredient_selected_card : Card):
 	Deck.total_cards -= 1
 	health_ui.update_max(Deck.total_cards)
 	ingredient_selected_card.remove_from_play()
+
+
+func _on_card_ui_card_ui_current_animation_finished():
+	var next_card_id = cards_waiting_for_animation_to_finish.pop_front()
+	if next_card_id != null:
+		match next_card_id:
+			ActionCardGameGlobal.CardId.BERZERKER_DRAW:
+				CardUINode.draw_cards(7)

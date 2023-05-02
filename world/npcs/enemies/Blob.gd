@@ -38,11 +38,15 @@ func _physics_process(delta):
 	if collision:
 		# https://docs.godotengine.org/en/stable/tutorials/physics/using_character_body_2d.html
 		if collision.get_collider().is_in_group("Player"):
-			
 			collision.get_collider().damage(damage_to_player)
-			is_bounced = true
-			bounce_timer.start()
-			velocity = velocity.bounce(collision.get_normal()) * collision_bounce
+			
+			# Bounce
+#			is_bounced = true
+#			bounce_timer.start()
+#			velocity = velocity.bounce(collision.get_normal()) * collision_bounce
+
+			# Trying destroy instead of balancing - so the Player has the option to run into a Blog if they run out of cards. At the cost of the top card of their Deck, they destory a Blob and have a 25% chance to Heal/Draw
+			queue_destroy()
 		else:
 			velocity.slide(collision.get_normal())
 	_animate()

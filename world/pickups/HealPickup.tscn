@@ -3,6 +3,21 @@
 [ext_resource type="PackedScene" uid="uid://b5aq477ootmg5" path="res://world/pickups/Pickup.tscn" id="1_dxjm4"]
 [ext_resource type="Texture2D" uid="uid://br1xarktesurb" path="res://assets/heal_pickup.png" id="2_kjdud"]
 
+[sub_resource type="Animation" id="Animation_iuyqn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_1o5v2"]
 resource_name = "idle"
 length = 0.8
@@ -20,21 +35,6 @@ tracks/0/keys = {
 "values": [0, 1, 2, 1]
 }
 
-[sub_resource type="Animation" id="Animation_iuyqn"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f2pu7"]
 _data = {
 "RESET": SubResource("Animation_iuyqn"),
@@ -42,6 +42,7 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_abk65"]
+size = Vector2(8, 8)
 
 [node name="HealPickup" groups=["HealPickup"] instance=ExtResource("1_dxjm4")]
 
@@ -56,4 +57,5 @@ libraries = {
 }
 
 [node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_abk65")

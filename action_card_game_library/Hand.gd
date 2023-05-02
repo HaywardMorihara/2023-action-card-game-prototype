@@ -32,7 +32,6 @@ func add_card(card_id : ActionCardGameGlobal.CardId):
 	add_child(new_card)
 	reset_card_positions()
 
-
 func reset_card_positions():
 	var hand_width = $CollisionShape2D.shape.get_size().x	
 	var cards_in_hand = get_tree().get_nodes_in_group("cards_in_hand")
@@ -42,7 +41,6 @@ func reset_card_positions():
 		new_pos.x = - (hand_width / 2) + (hand_width / (num_cards_in_hand + 1)) * (i + 1)
 		cards_in_hand[i].set_initial_position(new_pos)
 
-
 func remove_all() -> Array[ActionCardGameGlobal.CardId]:
 	var cards_from_hand : Array[ActionCardGameGlobal.CardId] = []
 	for card in get_tree().get_nodes_in_group("cards_in_hand"):
@@ -50,7 +48,6 @@ func remove_all() -> Array[ActionCardGameGlobal.CardId]:
 		card.remove_from_group("cards_in_hand")
 		card.queue_free()
 	return cards_from_hand
-
 
 func _move_hand_up(up := true):
 	is_hand_up = up

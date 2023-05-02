@@ -1156,43 +1156,53 @@ position = Vector2(857, -125)
 y_sort_enabled = true
 script = ExtResource("6_2e4kp")
 
-[node name="NewCardPickup" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
+[node name="FireballNewCardPickup" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
 position = Vector2(752, 184)
-cardId = 1
+cardId = 0
 
-[node name="NewCardPickup2" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
+[node name="InjectionDrawNewCardPickup2" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
 position = Vector2(752, 8)
 cardId = 2
 
-[node name="NewCardPickup3" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
+[node name="PotionHealNewCardPickup3" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
 position = Vector2(168, 2)
-cardId = 0
-
-[node name="NewCardPickup4" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
-position = Vector2(1469, -26)
 cardId = 1
 
-[node name="NewCardPickup5" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
-position = Vector2(1059, 406)
-cardId = 2
+[node name="RegroupNewCardPickup11" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
+position = Vector2(1354, 89)
+cardId = 4
 
-[node name="NewCardPickup6" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
-position = Vector2(1231, -427)
+[node name="ThunderboltAttackNewCardPickup5" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
+position = Vector2(1486, -48)
+cardId = 5
 
-[node name="NewCardPickup7" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
-position = Vector2(178, -219)
-cardId = 1
+[node name="FastFeetNewCardPickup4" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
+position = Vector2(1059, 413)
+cardId = 6
 
-[node name="NewCardPickup8" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
-position = Vector2(168, -800)
-cardId = 2
+[node name="QuickBandageHealNewCardPickup7" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
+position = Vector2(178, -220)
+cardId = 8
 
-[node name="NewCardPickup9" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
+[node name="Ingredient1NewCardPickup9" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
 position = Vector2(808, -498)
+cardId = 10
 
-[node name="NewCardPickup10" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
-position = Vector2(1893, -644)
-cardId = 1
+[node name="Ingredient2NewCardPickup10" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
+position = Vector2(1230, -424)
+cardId = 11
+
+[node name="Ingredient3NewCardPickup12" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
+position = Vector2(1070, 650)
+cardId = 12
+
+[node name="BerzerkerDrawNewCardPickup6" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
+position = Vector2(1850, -637)
+cardId = 7
+
+[node name="DarkHoleDestoryNewCardPickup8" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
+position = Vector2(168, -800)
+cardId = 9
 
 [node name="DrawSpawnPoint35" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
 position = Vector2(437, 158)

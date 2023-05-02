@@ -1157,7 +1157,7 @@ y_sort_enabled = true
 script = ExtResource("6_2e4kp")
 
 [node name="NewCardPickup" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
-position = Vector2(166, 67)
+position = Vector2(1003, 193)
 cardId = 1
 
 [node name="NewCardPickup2" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
@@ -1196,6 +1196,9 @@ cardId = 1
 
 [node name="DrawSpawnPoint" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
 position = Vector2(704, 159)
+
+[node name="DrawSpawnPoint35" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
+position = Vector2(437, 158)
 
 [node name="DrawSpawnPoint2" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
 position = Vector2(521, -90)
@@ -1604,6 +1607,7 @@ position = Vector2(1454, -801)
 
 [node name="CardUI" type="CanvasLayer" parent="CardEffectHandler"]
 process_mode = 3
+visible = false
 script = ExtResource("6_a6k1l")
 
 [node name="Deck" parent="CardEffectHandler/CardUI" instance=ExtResource("1_og2kh")]

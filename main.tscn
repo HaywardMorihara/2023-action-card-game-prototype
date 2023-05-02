@@ -1157,7 +1157,7 @@ y_sort_enabled = true
 script = ExtResource("6_2e4kp")
 
 [node name="NewCardPickup" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
-position = Vector2(1003, 193)
+position = Vector2(752, 184)
 cardId = 1
 
 [node name="NewCardPickup2" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
@@ -1194,9 +1194,6 @@ position = Vector2(808, -498)
 position = Vector2(1893, -644)
 cardId = 1
 
-[node name="DrawSpawnPoint" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(704, 159)
-
 [node name="DrawSpawnPoint35" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
 position = Vector2(437, 158)
 
@@ -1210,7 +1207,7 @@ position = Vector2(323, -100)
 position = Vector2(836, -62)
 
 [node name="DrawSpawnPoint5" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(876, 176)
+position = Vector2(943, 176)
 
 [node name="DrawSpawnPoint6" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
 position = Vector2(1155, 171)
@@ -1304,7 +1301,7 @@ y_sort_enabled = true
 script = ExtResource("6_m4i2h")
 
 [node name="Blob" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
-position = Vector2(698, 188)
+position = Vector2(648, 192)
 
 [node name="Blob2" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
 position = Vector2(814, 114)

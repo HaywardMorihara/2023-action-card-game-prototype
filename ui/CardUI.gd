@@ -66,8 +66,15 @@ func add_new_card_to_deck(cardId : ActionCardGameGlobal.CardId):
 	HealthUI.update_current(Deck.current_contents.size(), DiscardPile.contents.size())
 	_card_movement_animation(cardId, $Center.position, Deck.global_position)
 
+func add_new_card_to_hand(cardId : ActionCardGameGlobal.CardId):
+	Deck.total_cards += 1
+	Hand.add_card(cardId)
+	HealthUI.update_max(Deck.total_cards)
+	HealthUI.update_current(Deck.current_contents.size(), DiscardPile.contents.size())
+	_card_movement_animation(cardId, $Center.position, Hand.global_position)
+
 func _on_player_player_new_card(cardId : ActionCardGameGlobal.CardId):
-	add_new_card_to_deck(cardId)
+	add_new_card_to_hand(cardId)
 
 func _on_starting_hand_delay_timer_timeout():
 	if ActionCardGameGlobal.starting_hand_count:

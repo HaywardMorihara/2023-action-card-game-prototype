@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c3drbnmbj4qx5"]
+[gd_scene load_steps=23 format=3 uid="uid://c3drbnmbj4qx5"]
 
 [ext_resource type="PackedScene" uid="uid://dikl6yqyjpknd" path="res://action_card_game_library/Deck.tscn" id="1_og2kh"]
 [ext_resource type="Script" path="res://Main.gd" id="1_x4ye3"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://ui/CardUI.gd" id="6_a6k1l"]
 [ext_resource type="PackedScene" uid="uid://jgl22r8v5pfk" path="res://world/npcs/enemies/Blob.tscn" id="6_ej6qh"]
 [ext_resource type="Script" path="res://world/npcs/enemies/EnemiesManager.gd" id="6_m4i2h"]
+[ext_resource type="PackedScene" uid="uid://c0rsb1yvfh3v0" path="res://world/pickups/HealPickup.tscn" id="9_gqng0"]
 [ext_resource type="Script" path="res://ui/HealthUI.gd" id="10_2nmwd"]
 [ext_resource type="PackedScene" uid="uid://dbg4atggpqgvl" path="res://world/places/DrawSpawnPoint.tscn" id="10_e4nmw"]
 [ext_resource type="PackedScene" uid="uid://dexohf5ajlghx" path="res://action_card_game_library/DiscardPile.tscn" id="11_ko1bt"]
@@ -1305,6 +1306,51 @@ position = Vector2(376, -623)
 
 [node name="DrawSpawnPoint34" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
 position = Vector2(511, -745)
+
+[node name="HealPickup" parent="CardEffectHandler/World/Pickups" instance=ExtResource("9_gqng0")]
+position = Vector2(289, -57)
+
+[node name="HealPickup2" parent="CardEffectHandler/World/Pickups" instance=ExtResource("9_gqng0")]
+position = Vector2(908, -69)
+
+[node name="HealPickup3" parent="CardEffectHandler/World/Pickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1147, 261)
+
+[node name="HealPickup4" parent="CardEffectHandler/World/Pickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1142, -129)
+
+[node name="HealPickup5" parent="CardEffectHandler/World/Pickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1584, -134)
+
+[node name="HealPickup6" parent="CardEffectHandler/World/Pickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1239, 505)
+
+[node name="HealPickup7" parent="CardEffectHandler/World/Pickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1663, 540)
+
+[node name="HealPickup8" parent="CardEffectHandler/World/Pickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1362, -533)
+
+[node name="HealPickup9" parent="CardEffectHandler/World/Pickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1762, -526)
+
+[node name="HealPickup10" parent="CardEffectHandler/World/Pickups" instance=ExtResource("9_gqng0")]
+position = Vector2(879, -385)
+
+[node name="HealPickup11" parent="CardEffectHandler/World/Pickups" instance=ExtResource("9_gqng0")]
+position = Vector2(274, -287)
+
+[node name="HealPickup12" parent="CardEffectHandler/World/Pickups" instance=ExtResource("9_gqng0")]
+position = Vector2(276, -590)
+
+[node name="HealPickup13" parent="CardEffectHandler/World/Pickups" instance=ExtResource("9_gqng0")]
+position = Vector2(737, -709)
+
+[node name="HealPickup14" parent="CardEffectHandler/World/Pickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1250, -722)
+
+[node name="HealPickup15" parent="CardEffectHandler/World/Pickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1756, -715)
 
 [node name="Enemies" type="Node2D" parent="CardEffectHandler/World"]
 y_sort_enabled = true

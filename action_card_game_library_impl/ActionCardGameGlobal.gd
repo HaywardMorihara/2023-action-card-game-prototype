@@ -39,7 +39,51 @@ var card_id_to_card_scene = {
 
 var starting_hand_count = 5
 
-var starting_deck : Array[CardId] = [
+var hero_starting_deck : Array[CardId] = [
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.INJECTION_DRAW,
+	CardId.POTION_HEAL,
+	CardId.BANISH_REMOVAL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.INGREDIENT_2,
+	CardId.THUNDERBOLT_ATTACK,
+]
+
+var healer_starting_deck : Array[CardId] = [
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.INJECTION_DRAW,
+	CardId.POTION_HEAL,
+	CardId.BANISH_REMOVAL,
+	CardId.POTION_HEAL,
+	CardId.INGREDIENT_3,
+	CardId.QUICK_BANDAGE_HEAL,
+]
+
+var hustler_starting_deck : Array[CardId] = [
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.INJECTION_DRAW,
+	CardId.POTION_HEAL,
+	CardId.BANISH_REMOVAL,
+	CardId.INJECTION_DRAW,
+	CardId.INGREDIENT_1,
+	CardId.FAST_FEET,
+]
+
+var test_deck : Array[CardId] = [
 	CardId.FIREBALL,
 	CardId.FIREBALL,
 	CardId.FIREBALL,
@@ -62,3 +106,7 @@ var starting_deck : Array[CardId] = [
 	CardId.BERZERKER_DRAW,
 	CardId.QUICK_BANDAGE_HEAL,
 ]
+
+var starting_deck : Array[CardId] = hero_starting_deck
+
+

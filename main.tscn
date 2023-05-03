@@ -1157,200 +1157,341 @@ position = Vector2(857, -125)
 y_sort_enabled = true
 script = ExtResource("6_2e4kp")
 
-[node name="FireballNewCardPickup" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
+[node name="HealPickups" type="Node2D" parent="CardEffectHandler/World/Pickups"]
+
+[node name="HealPickup16" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(581, -132)
+
+[node name="HealPickup" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(256, -52)
+
+[node name="HealPickup17" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(287, -75)
+
+[node name="HealPickup18" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(252, -87)
+
+[node name="HealPickup2" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(908, -69)
+
+[node name="HealPickup3" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1147, 261)
+
+[node name="HealPickup4" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1142, -129)
+
+[node name="HealPickup5" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1584, -134)
+
+[node name="HealPickup24" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1550, -132)
+
+[node name="HealPickup25" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1574, -103)
+
+[node name="HealPickup26" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1506, -118)
+
+[node name="HealPickup27" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1520, -82)
+
+[node name="HealPickup28" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1556, -58)
+
+[node name="HealPickup29" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1529, -54)
+
+[node name="HealPickup6" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1239, 505)
+
+[node name="HealPickup19" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1161, 544)
+
+[node name="HealPickup20" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1155, 494)
+
+[node name="HealPickup21" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1132, 545)
+
+[node name="HealPickup22" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1203, 543)
+
+[node name="HealPickup23" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1171, 572)
+
+[node name="HealPickup7" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1663, 540)
+
+[node name="HealPickup8" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1362, -533)
+
+[node name="HealPickup9" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1762, -526)
+
+[node name="HealPickup10" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(879, -385)
+
+[node name="HealPickup11" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(274, -287)
+
+[node name="HealPickup30" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(303, -279)
+
+[node name="HealPickup31" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(300, -313)
+
+[node name="HealPickup32" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(247, -276)
+
+[node name="HealPickup33" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(256, -262)
+
+[node name="HealPickup34" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(264, -317)
+
+[node name="HealPickup35" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(281, -303)
+
+[node name="HealPickup12" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(177, -738)
+
+[node name="HealPickup36" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(221, -772)
+
+[node name="HealPickup37" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(198, -767)
+
+[node name="HealPickup38" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(232, -793)
+
+[node name="HealPickup39" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(232, -738)
+
+[node name="HealPickup40" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(203, -739)
+
+[node name="HealPickup41" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(258, -773)
+
+[node name="HealPickup42" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(266, -808)
+
+[node name="HealPickup13" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(737, -709)
+
+[node name="HealPickup14" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1250, -722)
+
+[node name="HealPickup15" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1859, -798)
+
+[node name="HealPickup43" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1862, -763)
+
+[node name="HealPickup44" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1859, -737)
+
+[node name="HealPickup45" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1883, -709)
+
+[node name="HealPickup46" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1878, -681)
+
+[node name="HealPickup47" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1896, -642)
+
+[node name="HealPickup48" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
+position = Vector2(1890, -736)
+
+[node name="DrawSpawnPoints" type="Node2D" parent="CardEffectHandler/World/Pickups"]
+
+[node name="DrawSpawnPoint35" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(437, 158)
+
+[node name="DrawSpawnPoint2" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(521, -90)
+
+[node name="DrawSpawnPoint3" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(323, -100)
+
+[node name="DrawSpawnPoint4" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(836, -62)
+
+[node name="DrawSpawnPoint5" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(943, 176)
+
+[node name="DrawSpawnPoint6" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(1155, 171)
+
+[node name="DrawSpawnPoint7" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(1145, -46)
+
+[node name="DrawSpawnPoint8" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(1456, 200)
+
+[node name="DrawSpawnPoint9" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(1762, 189)
+
+[node name="DrawSpawnPoint10" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(1710, 489)
+
+[node name="DrawSpawnPoint11" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(1446, 511)
+
+[node name="DrawSpawnPoint12" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(1202, 508)
+
+[node name="DrawSpawnPoint13" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(1612, -103)
+
+[node name="DrawSpawnPoint14" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(1764, -173)
+
+[node name="DrawSpawnPoint15" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(1524, -300)
+
+[node name="DrawSpawnPoint16" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(1235, -267)
+
+[node name="DrawSpawnPoint17" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(1432, -519)
+
+[node name="DrawSpawnPoint18" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(1646, -516)
+
+[node name="DrawSpawnPoint19" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(1830, -526)
+
+[node name="DrawSpawnPoint20" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(1041, -285)
+
+[node name="DrawSpawnPoint21" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(716, -266)
+
+[node name="DrawSpawnPoint22" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(506, -249)
+
+[node name="DrawSpawnPoint23" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(290, -260)
+
+[node name="DrawSpawnPoint24" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(682, -422)
+
+[node name="DrawSpawnPoint25" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(566, -511)
+
+[node name="DrawSpawnPoint26" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(980, -559)
+
+[node name="DrawSpawnPoint27" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(1123, -369)
+
+[node name="DrawSpawnPoint28" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(906, -701)
+
+[node name="DrawSpawnPoint29" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(1133, -738)
+
+[node name="DrawSpawnPoint30" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(1420, -740)
+
+[node name="DrawSpawnPoint31" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(1641, -738)
+
+[node name="DrawSpawnPoint32" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(276, -733)
+
+[node name="DrawSpawnPoint33" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(376, -623)
+
+[node name="DrawSpawnPoint34" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(511, -745)
+
+[node name="NewCards" type="Node2D" parent="CardEffectHandler/World/Pickups"]
+
+[node name="FireballNewCardPickup" parent="CardEffectHandler/World/Pickups/NewCards" instance=ExtResource("5_e8ga7")]
 position = Vector2(752, 184)
 cardId = 0
 
-[node name="InjectionDrawNewCardPickup2" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
+[node name="FireballNewCardPickup2" parent="CardEffectHandler/World/Pickups/NewCards" instance=ExtResource("5_e8ga7")]
+position = Vector2(923, -165)
+cardId = 0
+
+[node name="InjectionDrawNewCardPickup2" parent="CardEffectHandler/World/Pickups/NewCards" instance=ExtResource("5_e8ga7")]
 position = Vector2(752, 8)
 cardId = 2
 
-[node name="PotionHealNewCardPickup3" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
-position = Vector2(168, 2)
+[node name="InjectionDrawNewCardPickup3" parent="CardEffectHandler/World/Pickups/NewCards" instance=ExtResource("5_e8ga7")]
+position = Vector2(1891, 174)
+cardId = 2
+
+[node name="PotionHealNewCardPickup3" parent="CardEffectHandler/World/Pickups/NewCards" instance=ExtResource("5_e8ga7")]
+position = Vector2(937, 10)
 cardId = 1
 
-[node name="RegroupNewCardPickup11" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
-position = Vector2(1354, 89)
+[node name="PotionHealNewCardPickup4" parent="CardEffectHandler/World/Pickups/NewCards" instance=ExtResource("5_e8ga7")]
+position = Vector2(1891, 649)
+cardId = 1
+
+[node name="RegroupNewCardPickup11" parent="CardEffectHandler/World/Pickups/NewCards" instance=ExtResource("5_e8ga7")]
+position = Vector2(146, 15)
 cardId = 4
 
-[node name="ThunderboltAttackNewCardPickup5" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
-position = Vector2(1486, -48)
+[node name="RegroupNewCardPickup12" parent="CardEffectHandler/World/Pickups/NewCards" instance=ExtResource("5_e8ga7")]
+position = Vector2(1286, -594)
+cardId = 4
+
+[node name="ThunderboltAttackNewCardPickup5" parent="CardEffectHandler/World/Pickups/NewCards" instance=ExtResource("5_e8ga7")]
+position = Vector2(1053, 399)
 cardId = 5
 
-[node name="FastFeetNewCardPickup4" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
-position = Vector2(1059, 413)
+[node name="ThunderboltAttackNewCardPickup6" parent="CardEffectHandler/World/Pickups/NewCards" instance=ExtResource("5_e8ga7")]
+position = Vector2(1733, -422)
+cardId = 5
+
+[node name="FastFeetNewCardPickup4" parent="CardEffectHandler/World/Pickups/NewCards" instance=ExtResource("5_e8ga7")]
+position = Vector2(1166, -114)
 cardId = 6
 
-[node name="QuickBandageHealNewCardPickup7" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
-position = Vector2(178, -220)
+[node name="FastFeetNewCardPickup5" parent="CardEffectHandler/World/Pickups/NewCards" instance=ExtResource("5_e8ga7")]
+position = Vector2(145, -797)
+cardId = 6
+
+[node name="QuickBandageHealNewCardPickup7" parent="CardEffectHandler/World/Pickups/NewCards" instance=ExtResource("5_e8ga7")]
+position = Vector2(1490, -26)
 cardId = 8
 
-[node name="Ingredient1NewCardPickup9" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
-position = Vector2(808, -498)
+[node name="QuickBandageHealNewCardPickup8" parent="CardEffectHandler/World/Pickups/NewCards" instance=ExtResource("5_e8ga7")]
+position = Vector2(1901, -807)
+cardId = 8
+
+[node name="Ingredient1NewCardPickup9" parent="CardEffectHandler/World/Pickups/NewCards" instance=ExtResource("5_e8ga7")]
+position = Vector2(1171, -198)
 cardId = 10
 
-[node name="Ingredient2NewCardPickup10" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
-position = Vector2(1230, -424)
+[node name="Ingredient2NewCardPickup10" parent="CardEffectHandler/World/Pickups/NewCards" instance=ExtResource("5_e8ga7")]
+position = Vector2(1478, -58)
 cardId = 11
 
-[node name="Ingredient3NewCardPickup12" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
+[node name="Ingredient3NewCardPickup12" parent="CardEffectHandler/World/Pickups/NewCards" instance=ExtResource("5_e8ga7")]
 position = Vector2(1070, 650)
 cardId = 12
 
-[node name="BerzerkerDrawNewCardPickup6" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
-position = Vector2(1850, -637)
+[node name="BerzerkerDrawNewCardPickup6" parent="CardEffectHandler/World/Pickups/NewCards" instance=ExtResource("5_e8ga7")]
+position = Vector2(156, -217)
 cardId = 7
 
-[node name="DarkHoleDestoryNewCardPickup8" parent="CardEffectHandler/World/Pickups" instance=ExtResource("5_e8ga7")]
-position = Vector2(168, -800)
+[node name="BerzerkerDrawNewCardPickup7" parent="CardEffectHandler/World/Pickups/NewCards" instance=ExtResource("5_e8ga7")]
+position = Vector2(1894, -780)
+cardId = 7
+
+[node name="DarkHoleDestoryNewCardPickup8" parent="CardEffectHandler/World/Pickups/NewCards" instance=ExtResource("5_e8ga7")]
+position = Vector2(1234, -424)
 cardId = 9
 
-[node name="DrawSpawnPoint35" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(437, 158)
-
-[node name="DrawSpawnPoint2" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(521, -90)
-
-[node name="DrawSpawnPoint3" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(323, -100)
-
-[node name="DrawSpawnPoint4" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(836, -62)
-
-[node name="DrawSpawnPoint5" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(943, 176)
-
-[node name="DrawSpawnPoint6" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(1155, 171)
-
-[node name="DrawSpawnPoint7" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(1145, -46)
-
-[node name="DrawSpawnPoint8" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(1456, 200)
-
-[node name="DrawSpawnPoint9" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(1762, 189)
-
-[node name="DrawSpawnPoint10" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(1710, 489)
-
-[node name="DrawSpawnPoint11" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(1446, 511)
-
-[node name="DrawSpawnPoint12" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(1202, 508)
-
-[node name="DrawSpawnPoint13" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(1612, -103)
-
-[node name="DrawSpawnPoint14" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(1764, -173)
-
-[node name="DrawSpawnPoint15" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(1524, -300)
-
-[node name="DrawSpawnPoint16" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(1235, -267)
-
-[node name="DrawSpawnPoint17" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(1432, -519)
-
-[node name="DrawSpawnPoint18" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(1646, -516)
-
-[node name="DrawSpawnPoint19" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(1830, -526)
-
-[node name="DrawSpawnPoint20" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(1041, -285)
-
-[node name="DrawSpawnPoint21" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(716, -266)
-
-[node name="DrawSpawnPoint22" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(506, -249)
-
-[node name="DrawSpawnPoint23" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(290, -260)
-
-[node name="DrawSpawnPoint24" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(682, -422)
-
-[node name="DrawSpawnPoint25" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(566, -511)
-
-[node name="DrawSpawnPoint26" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(980, -559)
-
-[node name="DrawSpawnPoint27" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(1123, -369)
-
-[node name="DrawSpawnPoint28" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(906, -701)
-
-[node name="DrawSpawnPoint29" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(1133, -738)
-
-[node name="DrawSpawnPoint30" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(1420, -740)
-
-[node name="DrawSpawnPoint31" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(1641, -738)
-
-[node name="DrawSpawnPoint32" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(276, -733)
-
-[node name="DrawSpawnPoint33" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(376, -623)
-
-[node name="DrawSpawnPoint34" parent="CardEffectHandler/World/Pickups" instance=ExtResource("10_e4nmw")]
-position = Vector2(511, -745)
-
-[node name="HealPickup" parent="CardEffectHandler/World/Pickups" instance=ExtResource("9_gqng0")]
-position = Vector2(289, -57)
-
-[node name="HealPickup2" parent="CardEffectHandler/World/Pickups" instance=ExtResource("9_gqng0")]
-position = Vector2(908, -69)
-
-[node name="HealPickup3" parent="CardEffectHandler/World/Pickups" instance=ExtResource("9_gqng0")]
-position = Vector2(1147, 261)
-
-[node name="HealPickup4" parent="CardEffectHandler/World/Pickups" instance=ExtResource("9_gqng0")]
-position = Vector2(1142, -129)
-
-[node name="HealPickup5" parent="CardEffectHandler/World/Pickups" instance=ExtResource("9_gqng0")]
-position = Vector2(1584, -134)
-
-[node name="HealPickup6" parent="CardEffectHandler/World/Pickups" instance=ExtResource("9_gqng0")]
-position = Vector2(1239, 505)
-
-[node name="HealPickup7" parent="CardEffectHandler/World/Pickups" instance=ExtResource("9_gqng0")]
-position = Vector2(1663, 540)
-
-[node name="HealPickup8" parent="CardEffectHandler/World/Pickups" instance=ExtResource("9_gqng0")]
-position = Vector2(1362, -533)
-
-[node name="HealPickup9" parent="CardEffectHandler/World/Pickups" instance=ExtResource("9_gqng0")]
-position = Vector2(1762, -526)
-
-[node name="HealPickup10" parent="CardEffectHandler/World/Pickups" instance=ExtResource("9_gqng0")]
-position = Vector2(879, -385)
-
-[node name="HealPickup11" parent="CardEffectHandler/World/Pickups" instance=ExtResource("9_gqng0")]
-position = Vector2(274, -287)
-
-[node name="HealPickup12" parent="CardEffectHandler/World/Pickups" instance=ExtResource("9_gqng0")]
-position = Vector2(276, -590)
-
-[node name="HealPickup13" parent="CardEffectHandler/World/Pickups" instance=ExtResource("9_gqng0")]
-position = Vector2(737, -709)
-
-[node name="HealPickup14" parent="CardEffectHandler/World/Pickups" instance=ExtResource("9_gqng0")]
-position = Vector2(1250, -722)
-
-[node name="HealPickup15" parent="CardEffectHandler/World/Pickups" instance=ExtResource("9_gqng0")]
-position = Vector2(1756, -715)
+[node name="DarkHoleDestoryNewCardPickup9" parent="CardEffectHandler/World/Pickups/NewCards" instance=ExtResource("5_e8ga7")]
+position = Vector2(167, -819)
+cardId = 9
 
 [node name="Enemies" type="Node2D" parent="CardEffectHandler/World"]
 y_sort_enabled = true

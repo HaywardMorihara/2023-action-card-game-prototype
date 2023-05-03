@@ -107,6 +107,4 @@ var test_deck : Array[CardId] = [
 	CardId.QUICK_BANDAGE_HEAL,
 ]
 
-var starting_deck : Array[CardId] = healer_starting_deck
-
-
+var starting_deck : Array[CardId] = hustler_starting_deck

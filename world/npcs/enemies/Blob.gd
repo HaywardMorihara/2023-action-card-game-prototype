@@ -8,7 +8,7 @@ signal blob_queued_destroy
 @export var damage_to_player = 1
 @export var collision_bounce : float = 3.0
 @export var draw_drop_probability : float = 0.25
-@export var heal_drop_probability : float = 0.35
+@export var heal_drop_probability : float = 0.4
 
 @onready var animation : AnimatedSprite2D = get_node("AnimatedSprite2D")
 @onready var bounce_timer : Timer = get_node("BouceTimer")
@@ -41,12 +41,12 @@ func _physics_process(delta):
 			collision.get_collider().damage(damage_to_player)
 			
 			# Bounce
-#			is_bounced = true
-#			bounce_timer.start()
-#			velocity = velocity.bounce(collision.get_normal()) * collision_bounce
+			is_bounced = true
+			bounce_timer.start()
+			velocity = velocity.bounce(collision.get_normal()) * collision_bounce
 
 			# Trying destroy instead of balancing - so the Player has the option to run into a Blog if they run out of cards. At the cost of the top card of their Deck, they destory a Blob and have a 25% chance to Heal/Draw
-			queue_destroy()
+#			queue_destroy()
 		else:
 			velocity.slide(collision.get_normal())
 	_animate()

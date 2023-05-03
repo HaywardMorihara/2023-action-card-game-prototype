@@ -1801,7 +1801,6 @@ position = Vector2(1454, -801)
 
 [node name="CardUI" type="CanvasLayer" parent="CardEffectHandler"]
 process_mode = 3
-visible = false
 script = ExtResource("6_a6k1l")
 
 [node name="Deck" parent="CardEffectHandler/CardUI" instance=ExtResource("1_og2kh")]
@@ -1848,20 +1847,21 @@ color = Color(0, 1, 0.219608, 1)
 [node name="HealthLabel" type="Label" parent="CardEffectHandler/CardUI/HealthUI"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 572.0
-offset_top = 208.0
-offset_right = 624.0
-offset_bottom = 234.0
-text = "40 / 40"
+offset_left = 547.0
+offset_top = 209.0
+offset_right = 629.0
+offset_bottom = 235.0
+text = "Deck (Health): 40 / 40"
 label_settings = SubResource("LabelSettings_iuw7h")
 
 [node name="DiscardLabel" type="Label" parent="CardEffectHandler/CardUI/HealthUI"]
 layout_mode = 0
-offset_left = 29.0
-offset_top = 220.0
-offset_right = 69.0
-offset_bottom = 243.0
+offset_left = 32.0
+offset_top = 217.0
+offset_right = 72.0
+offset_bottom = 240.0
 theme_override_font_sizes/font_size = 8
+text = "Discard: 0"
 
 [node name="EnemyCountLabel" type="Label" parent="CardEffectHandler/CardUI"]
 offset_right = 40.0

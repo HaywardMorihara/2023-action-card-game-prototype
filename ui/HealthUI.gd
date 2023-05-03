@@ -21,8 +21,8 @@ func update_current(current : int, discard_count : int):
 
 
 func update():
-	$HealthLabel.text = "%s / %s" % [str(current_card_count), str(max_card_count)]
-	$DiscardLabel.text = "%s" % str(current_discard_count)
+	$HealthLabel.text = "Deck (Health): %s / %s" % [str(current_card_count), str(max_card_count)]
+	$DiscardLabel.text = "Discard: %s" % str(current_discard_count)
 	
 	var card_count_percentage = float(current_card_count) / float(max_card_count)
 	$HealthBar.size.x = max_bar_width * card_count_percentage

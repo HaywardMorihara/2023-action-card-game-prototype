@@ -1,0 +1,67 @@
+[gd_scene load_steps=2 format=3 uid="uid://coeinau7g2acb"]
+
+[ext_resource type="Script" path="res://menus/MainMenu.gd" id="1_mhl3m"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mhl3m")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -73.0
+offset_top = 50.0
+offset_right = 76.0
+offset_bottom = 76.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 20
+text = "The Legenday Hero"
+horizontal_alignment = 1
+
+[node name="Prompt" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -37.0
+offset_top = 137.0
+offset_right = 36.0
+offset_bottom = 162.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 15
+text = "Are you a:"
+
+[node name="Hero" type="Button" parent="."]
+layout_mode = 0
+offset_left = 128.0
+offset_top = 183.0
+offset_right = 174.0
+offset_bottom = 214.0
+text = "Hero"
+
+[node name="Healer" type="Button" parent="."]
+layout_mode = 0
+offset_left = 292.0
+offset_top = 182.0
+offset_right = 352.0
+offset_bottom = 213.0
+text = "Healer"
+
+[node name="Hustler" type="Button" parent="."]
+layout_mode = 0
+offset_left = 484.0
+offset_top = 186.0
+offset_right = 549.0
+offset_bottom = 217.0
+text = "Hustler"
+
+[connection signal="pressed" from="Hero" to="." method="_on_hero_pressed"]
+[connection signal="pressed" from="Healer" to="." method="_on_healer_pressed"]
+[connection signal="pressed" from="Hustler" to="." method="_on_hustler_pressed"]

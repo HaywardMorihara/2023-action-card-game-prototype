@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="2023-action-card-game-prototype"
-run/main_scene="res://Main.tscn"
+config/name="The Legendary Hero"
+run/main_scene="res://menus/MainMenu.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.png"
 

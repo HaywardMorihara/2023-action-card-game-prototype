@@ -3,7 +3,7 @@ class_name CardUI extends CanvasLayer
 signal deck_is_empty
 signal card_ui_current_animation_finished
 
-@export var card_tween_duration : float = 0.1
+@export var card_tween_duration : float = 0.25
 
 @onready var Deck := get_node("Deck")
 @onready var Hand := get_node("Hand")

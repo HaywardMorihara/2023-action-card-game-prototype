@@ -4,7 +4,7 @@ signal card_drawn(card_id : ActionCardGameGlobal.CardId)
 signal deck_discard(card_id : ActionCardGameGlobal.CardId)
 
 @export var is_click_to_draw : bool = false
-@export var draw_tween_duration : float = 0.1
+@export var draw_tween_duration : float = 0.25
 
 @onready var bottom_card : Sprite2D = get_node("Card1")
 @onready var middle_card : Sprite2D = get_node("Card2")

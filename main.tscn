@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c3drbnmbj4qx5"]
+[gd_scene load_steps=24 format=3 uid="uid://c3drbnmbj4qx5"]
 
 [ext_resource type="PackedScene" uid="uid://dikl6yqyjpknd" path="res://action_card_game_library/Deck.tscn" id="1_og2kh"]
 [ext_resource type="Script" path="res://Main.gd" id="1_x4ye3"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://dexohf5ajlghx" path="res://action_card_game_library/DiscardPile.tscn" id="11_ko1bt"]
 [ext_resource type="Script" path="res://ui/EnemyCountLabel.gd" id="16_em577"]
 [ext_resource type="PackedScene" uid="uid://bnyw7xdhldwog" path="res://action_card_game_library/CardPreview.tscn" id="18_tur63"]
+[ext_resource type="Texture2D" uid="uid://duammse3sk2rh" path="res://assets/parchment-menu.png" id="19_816ov"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xmfpn"]
 texture = ExtResource("4_a7jgr")
@@ -1801,6 +1802,7 @@ position = Vector2(1454, -801)
 
 [node name="CardUI" type="CanvasLayer" parent="CardEffectHandler"]
 process_mode = 3
+visible = false
 script = ExtResource("6_a6k1l")
 
 [node name="Deck" parent="CardEffectHandler/CardUI" instance=ExtResource("1_og2kh")]
@@ -1922,7 +1924,6 @@ text = "No"
 [node name="StartingHandDelayTimer" type="Timer" parent="CardEffectHandler/CardUI"]
 wait_time = 0.1
 one_shot = true
-autostart = true
 
 [node name="HealTimer" type="Timer" parent="CardEffectHandler/CardUI"]
 wait_time = 0.05
@@ -1930,6 +1931,37 @@ one_shot = true
 
 [node name="AnimationDelayTimer" type="Timer" parent="CardEffectHandler/CardUI"]
 wait_time = 0.1
+
+[node name="Tutorial" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="Tutorial"]
+offset_left = 128.0
+offset_top = 43.0
+offset_right = 518.0
+offset_bottom = 303.0
+texture = ExtResource("19_816ov")
+expand_mode = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Tutorial"]
+offset_left = 166.0
+offset_top = 86.0
+offset_right = 485.0
+offset_bottom = 248.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 14
+text = "Goals:
+1. Destroy all Blobs
+2. Do not run out of cards in your Deck (Health)
+
+Blob contact will send Cards from your Deck -> Discard."
+
+[node name="PlayButton" type="Button" parent="Tutorial"]
+process_mode = 3
+offset_left = 294.0
+offset_top = 235.0
+offset_right = 335.0
+offset_bottom = 266.0
+text = "Play"
 
 [connection signal="player_damage" from="CardEffectHandler/World/Player" to="CardEffectHandler" method="_on_player_player_damage"]
 [connection signal="player_draw_card" from="CardEffectHandler/World/Player" to="CardEffectHandler" method="_on_player_player_draw_card"]
@@ -1954,3 +1986,4 @@ wait_time = 0.1
 [connection signal="timeout" from="CardEffectHandler/CardUI/StartingHandDelayTimer" to="CardEffectHandler/CardUI" method="_on_starting_hand_delay_timer_timeout"]
 [connection signal="timeout" from="CardEffectHandler/CardUI/HealTimer" to="CardEffectHandler/CardUI" method="_on_heal_timer_timeout"]
 [connection signal="timeout" from="CardEffectHandler/CardUI/AnimationDelayTimer" to="CardEffectHandler/CardUI" method="_on_animation_delay_timer_timeout"]
+[connection signal="pressed" from="Tutorial/PlayButton" to="." method="_on_play_button_pressed"]

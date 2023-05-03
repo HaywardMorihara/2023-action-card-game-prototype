@@ -6,7 +6,7 @@ signal blob_queued_destroy
 @export var speed = 50
 @export var detection_radius = 200
 @export var damage_to_player = 1
-@export var collision_bounce : float = 3.0
+@export var collision_bounce : float = 5.0
 @export var draw_drop_probability : float = 0.25
 @export var heal_drop_probability : float = 0.4
 

@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var CardUINode : CardUI = get_node("CardUI")
-@onready var World = get_node("World")
+@onready var World := get_node("World")
 
 var fireball_scene = preload("res://world/effects/Fireball.tscn")
 var thunderbolt_scene = preload("res://world/effects/Thunderbolt.tscn")
@@ -9,6 +9,7 @@ var dark_hole_scene = preload("res://world/effects/DarkHoleDestroy.tscn")
 
 var is_in_card_selection_mode := false
 var is_canvas_changed_for_card_effect := false
+var is_low_deck_effect_playing := false
 var card_selection_mode := CardSelectionMode.NONE
 var card_played_for_selection_mode : ActionCardGameGlobal.CardId
 var cards_waiting_for_animation_to_finish : Array[ActionCardGameGlobal.CardId]
@@ -159,14 +160,14 @@ func _on_hand_card_in_hand_is_selected(card : Card):
 
 func _on_thunderbolt_strike_finished():
 	is_canvas_changed_for_card_effect = false
-	modulate_canvas(Color.WHITE)
+	var tween = create_tween().tween_property($World/CanvasModulate, "color", Color.WHITE, 1)
 	
 func _on_dark_hole_finished():
 	is_canvas_changed_for_card_effect = false
 	var tween = create_tween().tween_property($World/CanvasModulate, "color", Color.WHITE, 1)
 
 func modulate_canvas(color : Color):
-	if is_canvas_changed_for_card_effect:
+	if is_canvas_changed_for_card_effect or is_low_deck_effect_playing:
 		return
 	$World/CanvasModulate.color = color
 
@@ -199,3 +200,26 @@ func _on_card_ui_card_ui_current_animation_finished():
 		match next_card_id:
 			ActionCardGameGlobal.CardId.BERZERKER_DRAW:
 				CardUINode.draw_cards(7)
+
+
+func _on_deck_deck_low(is_low : bool):
+	if is_low && not is_low_deck_effect_playing:
+		is_low_deck_effect_playing = true
+		$LowHealthTimer.start()
+		return
+	if not is_low && is_low_deck_effect_playing:
+		is_low_deck_effect_playing = false
+		modulate_canvas(Color.WHITE)
+		return
+
+func _on_low_health_timer_timeout():
+	if not is_low_deck_effect_playing:
+		modulate_canvas(Color.WHITE)
+		return
+		
+	if World.get_node("CanvasModulate").color == Color.RED:
+		var tween = create_tween().tween_property($World/CanvasModulate, "color", Color.WHITE, 1)
+	if World.get_node("CanvasModulate").color == Color.WHITE:
+		var tween = create_tween().tween_property($World/CanvasModulate, "color", Color.RED, 1)
+			
+	$LowHealthTimer.start()

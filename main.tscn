@@ -1841,6 +1841,10 @@ offset_right = 628.0
 offset_bottom = 234.0
 color = Color(0, 1, 0.219608, 1)
 
+[node name="Timer" type="Timer" parent="CardEffectHandler/CardUI/HealthUI/HealthBar"]
+wait_time = 0.5
+one_shot = true
+
 [node name="HealthLabel" type="Label" parent="CardEffectHandler/CardUI/HealthUI"]
 texture_filter = 1
 layout_mode = 0
@@ -1933,6 +1937,9 @@ one_shot = true
 [node name="AnimationDelayTimer" type="Timer" parent="CardEffectHandler/CardUI"]
 wait_time = 0.1
 
+[node name="LowHealthTimer" type="Timer" parent="CardEffectHandler"]
+one_shot = true
+
 [node name="Tutorial" type="CanvasLayer" parent="."]
 
 [node name="TextureRect" type="TextureRect" parent="Tutorial"]
@@ -1973,6 +1980,7 @@ text = "Play"
 [connection signal="deck_is_empty" from="CardEffectHandler/CardUI" to="." method="_on_card_ui_deck_is_empty"]
 [connection signal="card_drawn" from="CardEffectHandler/CardUI/Deck" to="CardEffectHandler/CardUI/Hand" method="_on_deck_card_drawn"]
 [connection signal="deck_discard" from="CardEffectHandler/CardUI/Deck" to="CardEffectHandler/CardUI" method="_on_deck_deck_discard"]
+[connection signal="deck_low" from="CardEffectHandler/CardUI/Deck" to="CardEffectHandler" method="_on_deck_deck_low"]
 [connection signal="input_event" from="CardEffectHandler/CardUI/Deck" to="CardEffectHandler/CardUI/Deck" method="_on_input_event"]
 [connection signal="card_in_hand_is_being_looked_at" from="CardEffectHandler/CardUI/Hand" to="CardEffectHandler/CardUI/CardPreview" method="_on_hand_card_in_hand_is_being_looked_at"]
 [connection signal="card_in_hand_is_selected" from="CardEffectHandler/CardUI/Hand" to="CardEffectHandler" method="_on_hand_card_in_hand_is_selected"]
@@ -1981,10 +1989,12 @@ text = "Play"
 [connection signal="card_played" from="CardEffectHandler/CardUI/Hand" to="CardEffectHandler/CardUI" method="_on_hand_card_played"]
 [connection signal="card_preconditions_not_met" from="CardEffectHandler/CardUI/Hand" to="CardEffectHandler/CardUI" method="_on_hand_card_preconditions_not_met"]
 [connection signal="hand_is_up_toggled" from="CardEffectHandler/CardUI/Hand" to="CardEffectHandler" method="_on_hand_hand_is_up_toggled"]
+[connection signal="timeout" from="CardEffectHandler/CardUI/HealthUI/HealthBar/Timer" to="CardEffectHandler/CardUI/HealthUI" method="_on_timer_timeout"]
 [connection signal="timeout" from="CardEffectHandler/CardUI/Toast/ToastTimer" to="CardEffectHandler/CardUI" method="_on_toast_timer_timeout"]
 [connection signal="pressed" from="CardEffectHandler/CardUI/Popup/VBoxContainer/YesHealButton" to="CardEffectHandler/CardUI" method="_on_yes_heal_button_pressed"]
 [connection signal="pressed" from="CardEffectHandler/CardUI/Popup/VBoxContainer/NoHealButton" to="CardEffectHandler/CardUI" method="_on_no_heal_button_pressed"]
 [connection signal="timeout" from="CardEffectHandler/CardUI/StartingHandDelayTimer" to="CardEffectHandler/CardUI" method="_on_starting_hand_delay_timer_timeout"]
 [connection signal="timeout" from="CardEffectHandler/CardUI/HealTimer" to="CardEffectHandler/CardUI" method="_on_heal_timer_timeout"]
 [connection signal="timeout" from="CardEffectHandler/CardUI/AnimationDelayTimer" to="CardEffectHandler/CardUI" method="_on_animation_delay_timer_timeout"]
+[connection signal="timeout" from="CardEffectHandler/LowHealthTimer" to="CardEffectHandler" method="_on_low_health_timer_timeout"]
 [connection signal="pressed" from="Tutorial/PlayButton" to="." method="_on_play_button_pressed"]

@@ -29,7 +29,20 @@ func update():
 	
 	if card_count_percentage >= 0.51:
 		$HealthBar.color = Color.GREEN
+		$HealthBar.scale = Vector2(1,1)
 	if card_count_percentage < 0.51:
 		$HealthBar.color = Color.YELLOW
+		$HealthBar.scale = Vector2(1,1)
 	if card_count_percentage < 0.34:
 		$HealthBar.color = Color.RED
+		$HealthBar/Timer.start()
+
+
+func _on_timer_timeout():
+	if $HealthBar.scale == Vector2(1,1):
+		$HealthBar.scale = Vector2(1,2)
+	elif $HealthBar.scale == Vector2(1,2):
+		$HealthBar.scale = Vector2(1,1)
+	var card_count_percentage = float(current_card_count) / float(max_card_count)
+	if card_count_percentage < 0.34:
+		$HealthBar/Timer.start()

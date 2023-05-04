@@ -2,9 +2,11 @@ extends Area2D
 
 signal card_drawn(card_id : ActionCardGameGlobal.CardId)
 signal deck_discard(card_id : ActionCardGameGlobal.CardId)
+signal deck_low(is_low : bool)
 
 @export var is_click_to_draw : bool = false
 @export var draw_tween_duration : float = 0.25
+@export var low_deck_threshold : int = 3
 
 @onready var bottom_card : Sprite2D = get_node("Card1")
 @onready var middle_card : Sprite2D = get_node("Card2")
@@ -60,6 +62,10 @@ func discard_from_top(num_of_cards : int, to_position = null):
 		_card_movement_animation(next_card_id, to_position)
 
 func update_visibility():
+	if current_contents.size() <= low_deck_threshold:
+		deck_low.emit(true)
+	else:
+		deck_low.emit(false)
 	match current_contents.size():
 		2:
 			bottom_card.visible = true	

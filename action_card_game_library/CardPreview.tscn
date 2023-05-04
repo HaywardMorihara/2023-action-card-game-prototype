@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://bnyw7xdhldwog"]
+[gd_scene load_steps=4 format=3 uid="uid://bnyw7xdhldwog"]
 
 [ext_resource type="Script" path="res://action_card_game_library/CardPreview.gd" id="1_aw0vt"]
+[ext_resource type="Theme" uid="uid://cfuydtycu0852" path="res://assets/main_theme.tres" id="1_fninn"]
 [ext_resource type="Texture2D" uid="uid://p3f2n6ntcjvs" path="res://assets/card_template.png" id="2_13w8p"]
 
 [node name="CardPreview" type="VBoxContainer"]
@@ -10,6 +11,7 @@ offset_right = 105.0
 offset_bottom = 468.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("1_fninn")
 script = ExtResource("1_aw0vt")
 
 [node name="Image" type="TextureRect" parent="."]
@@ -21,7 +23,7 @@ stretch_mode = 3
 custom_minimum_size = Vector2(75, 20)
 layout_mode = 2
 size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 20
 text = "Title"
 horizontal_alignment = 1
 autowrap_mode = 2
@@ -30,6 +32,6 @@ autowrap_mode = 2
 clip_contents = true
 custom_minimum_size = Vector2(50, 150)
 layout_mode = 2
-theme_override_font_sizes/font_size = 7
+theme_override_font_sizes/font_size = 12
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 autowrap_mode = 2

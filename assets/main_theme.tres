@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cfuydtycu0852"]
+
+[ext_resource type="FontFile" uid="uid://cgalo3exbtivr" path="res://assets/font/MatchupPro.ttf" id="1_ry7sn"]
+
+[resource]
+default_font = ExtResource("1_ry7sn")
+default_font_size = 12

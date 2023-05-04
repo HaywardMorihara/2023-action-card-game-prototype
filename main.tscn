@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c3drbnmbj4qx5"]
+[gd_scene load_steps=23 format=3 uid="uid://c3drbnmbj4qx5"]
 
 [ext_resource type="PackedScene" uid="uid://dikl6yqyjpknd" path="res://action_card_game_library/Deck.tscn" id="1_og2kh"]
 [ext_resource type="Script" path="res://Main.gd" id="1_x4ye3"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dbg4atggpqgvl" path="res://world/places/DrawSpawnPoint.tscn" id="10_e4nmw"]
 [ext_resource type="PackedScene" uid="uid://dexohf5ajlghx" path="res://action_card_game_library/DiscardPile.tscn" id="11_ko1bt"]
 [ext_resource type="Script" path="res://ui/EnemyCountLabel.gd" id="16_em577"]
+[ext_resource type="Theme" uid="uid://cfuydtycu0852" path="res://assets/main_theme.tres" id="17_vqtb1"]
 [ext_resource type="PackedScene" uid="uid://bnyw7xdhldwog" path="res://action_card_game_library/CardPreview.tscn" id="18_tur63"]
 [ext_resource type="Texture2D" uid="uid://duammse3sk2rh" path="res://assets/parchment-menu.png" id="19_816ov"]
 
@@ -1002,13 +1003,6 @@ physics_layer_0/collision_layer = 9
 physics_layer_0/collision_mask = 31
 sources/0 = SubResource("TileSetAtlasSource_xmfpn")
 
-[sub_resource type="SystemFont" id="SystemFont_m1grw"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_iuw7h"]
-font = SubResource("SystemFont_m1grw")
-font_size = 8
-font_color = Color(0, 0, 0, 1)
-
 [node name="Main" type="Node2D"]
 position = Vector2(1, 0)
 script = ExtResource("1_x4ye3")
@@ -1828,6 +1822,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme = ExtResource("17_vqtb1")
 script = ExtResource("10_2nmwd")
 
 [node name="MaxHealthBar" type="ColorRect" parent="CardEffectHandler/CardUI/HealthUI"]
@@ -1849,12 +1844,13 @@ color = Color(0, 1, 0.219608, 1)
 [node name="HealthLabel" type="Label" parent="CardEffectHandler/CardUI/HealthUI"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 547.0
+offset_left = 526.0
 offset_top = 209.0
-offset_right = 629.0
+offset_right = 637.0
 offset_bottom = 235.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
 text = "Deck (Health): 40 / 40"
-label_settings = SubResource("LabelSettings_iuw7h")
 
 [node name="DiscardLabel" type="Label" parent="CardEffectHandler/CardUI/HealthUI"]
 layout_mode = 0
@@ -1862,12 +1858,17 @@ offset_left = 32.0
 offset_top = 217.0
 offset_right = 72.0
 offset_bottom = 240.0
-theme_override_font_sizes/font_size = 8
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 14
 text = "Discard: 0"
 
 [node name="EnemyCountLabel" type="Label" parent="CardEffectHandler/CardUI"]
 offset_right = 40.0
 offset_bottom = 40.0
+theme = ExtResource("17_vqtb1")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 20
+text = "Enemies Left: X"
 script = ExtResource("16_em577")
 
 [node name="Center" type="Marker2D" parent="CardEffectHandler/CardUI"]

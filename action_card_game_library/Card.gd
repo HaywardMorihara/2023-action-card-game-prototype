@@ -9,6 +9,8 @@ signal card_removed(card)
 @export var title : String
 @export var description : String
 
+@onready var SFX := get_node("SFX")
+
 var id : ActionCardGameGlobal.CardId
 var dragging := false
 var mouse_over := false
@@ -32,6 +34,7 @@ func move_to(to_global_pos : Vector2, duration : float, destroy_on_arrival := fa
 	to_be_destroyed = true
 	var tween = create_tween().tween_property(self, "global_position", to_global_pos, duration)
 	tween.finished.connect(_on_draw_tween_finished)
+	SFX.play()
 
 func check_preconditions() -> bool:
 	return true

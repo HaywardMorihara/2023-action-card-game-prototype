@@ -16,7 +16,6 @@ var total_cards : int
 func _ready():
 	if ActionCardGameGlobal.starting_deck:
 		current_contents = ActionCardGameGlobal.starting_deck.duplicate()
-	shuffle()
 	total_cards = current_contents.size()
 	update_visibility()
 
@@ -24,6 +23,7 @@ func shuffle():
 	$AnimationPlayer.play("shuffle")
 	randomize()
 	current_contents.shuffle()
+	$ShuffleSFX.play()
 
 func add_card_to_bottom_of_deck(card_id : ActionCardGameGlobal.CardId):
 	if current_contents.size() == 0:

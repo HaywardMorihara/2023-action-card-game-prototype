@@ -18,3 +18,4 @@ func _on_play_button_pressed():
 	$CardEffectHandler/CardUI.visible = true
 	$Tutorial.queue_free()
 	$CardEffectHandler/CardUI/StartingHandDelayTimer.start()
+	$CardEffectHandler/CardUI/Deck.shuffle()

@@ -19,6 +19,7 @@ layout_mode = 2
 text = "You Lose - you ran out of cards in your deck!"
 
 [node name="Button" type="Button" parent="VBoxContainer"]
+process_mode = 3
 custom_minimum_size = Vector2(60, 0)
 layout_mode = 2
 size_flags_horizontal = 4

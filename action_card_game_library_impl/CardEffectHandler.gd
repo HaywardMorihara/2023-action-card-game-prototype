@@ -220,7 +220,7 @@ func _on_low_health_timer_timeout():
 		
 	if World.get_node("CanvasModulate").color == Color.RED:
 		var tween = create_tween().tween_property($World/CanvasModulate, "color", Color.WHITE, 1)
-	if World.get_node("CanvasModulate").color == Color.WHITE:
+	if World.get_node("CanvasModulate").color == Color.WHITE or World.get_node("CanvasModulate").color == Color.DIM_GRAY:
 		var tween = create_tween().tween_property($World/CanvasModulate, "color", Color.RED, 1)
 			
 	$LowHealthTimer.start()

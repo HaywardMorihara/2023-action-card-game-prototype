@@ -134,6 +134,7 @@ func heal(num : int):
 	num_cards_to_heal = min(num, DiscardPile.contents.size())
 	current_animation = CurrentAnimation.HEALING
 	$AnimationDelayTimer.start()
+	$Deck/HealParticles.emitting = true
 
 func heal_from_bottom_of_deck(amount : int):
 	for i in amount:
@@ -143,6 +144,7 @@ func heal_from_bottom_of_deck(amount : int):
 			Deck.add_card_to_front_of_deck(next_discard_card_id)
 			Deck.shuffle()
 			HealthUI.update_current(Deck.current_contents.size(), DiscardPile.contents.size())
+	$Deck/HealParticles.emitting = true
 
 func _on_player_player_heal(amount):
 	heal_from_bottom_of_deck(amount)

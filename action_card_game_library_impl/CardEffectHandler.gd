@@ -30,6 +30,7 @@ func _on_hand_card_played(card, position):
 			World.add_child(fireball)
 		ActionCardGameGlobal.CardId.POTION_HEAL:
 			CardUINode.heal_from_bottom_of_deck(2)
+			$HealSFX.play()
 		ActionCardGameGlobal.CardId.INJECTION_DRAW:
 			CardUINode.draw_next_card()
 			CardUINode.draw_next_card()

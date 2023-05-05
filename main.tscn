@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c3drbnmbj4qx5"]
+[gd_scene load_steps=24 format=3 uid="uid://c3drbnmbj4qx5"]
 
 [ext_resource type="PackedScene" uid="uid://dikl6yqyjpknd" path="res://action_card_game_library/Deck.tscn" id="1_og2kh"]
 [ext_resource type="Script" path="res://Main.gd" id="1_x4ye3"]
@@ -20,6 +20,7 @@
 [ext_resource type="Theme" uid="uid://cfuydtycu0852" path="res://assets/main_theme.tres" id="17_vqtb1"]
 [ext_resource type="PackedScene" uid="uid://bnyw7xdhldwog" path="res://action_card_game_library/CardPreview.tscn" id="18_tur63"]
 [ext_resource type="Texture2D" uid="uid://duammse3sk2rh" path="res://assets/parchment-menu.png" id="19_816ov"]
+[ext_resource type="AudioStream" uid="uid://dsq68jci5ldy7" path="res://assets/sfx/8_rpg_heals_buffs_sfx_samples/02_Heal_02.wav" id="20_d2c2d"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xmfpn"]
 texture = ExtResource("4_a7jgr")
@@ -1796,11 +1797,25 @@ position = Vector2(1454, -801)
 
 [node name="CardUI" type="CanvasLayer" parent="CardEffectHandler"]
 process_mode = 3
-visible = false
 script = ExtResource("6_a6k1l")
 
 [node name="Deck" parent="CardEffectHandler/CardUI" instance=ExtResource("1_og2kh")]
 position = Vector2(585, 292)
+
+[node name="HealParticles" type="CPUParticles2D" parent="CardEffectHandler/CardUI/Deck"]
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 0.75
+emission_shape = 3
+emission_rect_extents = Vector2(16, 1)
+direction = Vector2(0, -1)
+gravity = Vector2(0, -100)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+damping_max = 100.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
 
 [node name="DiscardPile" parent="CardEffectHandler/CardUI" instance=ExtResource("11_ko1bt")]
 position = Vector2(34, 283)
@@ -1939,6 +1954,9 @@ wait_time = 0.1
 
 [node name="LowHealthTimer" type="Timer" parent="CardEffectHandler"]
 one_shot = true
+
+[node name="HealSFX" type="AudioStreamPlayer2D" parent="CardEffectHandler"]
+stream = ExtResource("20_d2c2d")
 
 [node name="Tutorial" type="CanvasLayer" parent="."]
 

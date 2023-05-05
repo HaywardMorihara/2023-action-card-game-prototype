@@ -1,7 +1,10 @@
-[gd_scene load_steps=33 format=3 uid="uid://onlch5eleds5"]
+[gd_scene load_steps=36 format=3 uid="uid://onlch5eleds5"]
 
 [ext_resource type="Script" path="res://world/effects/Thunderbolt.gd" id="1_ajayq"]
 [ext_resource type="Texture2D" uid="uid://l62rwesdhcvu" path="res://assets/effects/thunderbolt.png" id="2_3x6af"]
+[ext_resource type="AudioStream" uid="uid://b8pjrph5m851u" path="res://assets/sfx/thunder/rock_breaking.wav" id="3_5e2b6"]
+[ext_resource type="AudioStream" uid="uid://b42mu61o6084c" path="res://assets/sfx/thunder/rock_breaking_fast.wav" id="3_sqxw5"]
+[ext_resource type="PackedScene" uid="uid://cpm0m367k23c0" path="res://world/effects/HitFrameTimer.tscn" id="5_h8xo3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vfytr"]
 atlas = ExtResource("2_3x6af")
@@ -232,4 +235,35 @@ position = Vector2(0, 50)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_k0760")
 
+[node name="FastThunderSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_sqxw5")
+volume_db = -15.0
+
+[node name="ThunderSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_5e2b6")
+
+[node name="FirstBoltDelayTimer" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+autostart = true
+
+[node name="FirstBoltInterruptionTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="ThunderSFXDelayTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="DelayQueueFreeTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="HitFrameTimer" parent="." instance=ExtResource("5_h8xo3")]
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="timeout" from="FirstBoltDelayTimer" to="." method="_on_first_bolt_delay_timer_timeout"]
+[connection signal="timeout" from="FirstBoltInterruptionTimer" to="." method="_on_first_bolt_interruption_timer_timeout"]
+[connection signal="timeout" from="ThunderSFXDelayTimer" to="." method="_on_thunder_sfx_delay_timer_timeout"]
+[connection signal="timeout" from="DelayQueueFreeTimer" to="." method="_on_delay_queue_free_timer_timeout"]

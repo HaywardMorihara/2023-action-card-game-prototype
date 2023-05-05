@@ -1,10 +1,11 @@
-[gd_scene load_steps=41 format=3 uid="uid://btqph5qtxwixc"]
+[gd_scene load_steps=42 format=3 uid="uid://btqph5qtxwixc"]
 
 [ext_resource type="Script" path="res://world/player/Player.gd" id="1_m6pf8"]
 [ext_resource type="Texture2D" uid="uid://xmhtfl05xtcd" path="res://assets/peaceful_pixels_chapter00/Character_Animations/character00_spritesheet-Sheet1x82.png" id="2_msstl"]
 [ext_resource type="Texture2D" uid="uid://dfl1afxxyu13j" path="res://assets/peaceful_pixels_chapter00/Character_Animations/character00_spritesheet.png" id="3_dbk67"]
 [ext_resource type="AudioStream" uid="uid://cnhu300chst7w" path="res://assets/sfx/punches_and_hits/Socapex - new_hits.wav" id="4_741rp"]
 [ext_resource type="PackedScene" uid="uid://cpm0m367k23c0" path="res://world/effects/HitFrameTimer.tscn" id="5_4q3vo"]
+[ext_resource type="AudioStream" uid="uid://qvk3ylq8x3b7" path="res://assets/sfx/magic/13_Ice_explosion_01.wav" id="6_8w532"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ry8g2"]
 radius = 6.0
@@ -300,5 +301,23 @@ horizontal_alignment = 1
 stream = ExtResource("4_741rp")
 
 [node name="HitFrameTimer" parent="." instance=ExtResource("5_4q3vo")]
+
+[node name="SpeedBoostSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_8w532")
+
+[node name="SpeedBoostParticles" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 20
+one_shot = true
+explosiveness = 0.75
+emission_shape = 3
+emission_rect_extents = Vector2(16, 1)
+direction = Vector2(0, -1)
+gravity = Vector2(0, -100)
+initial_velocity_min = 200.0
+initial_velocity_max = 200.0
+damping_max = 100.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
 
 [connection signal="timeout" from="SpeedBostTimer" to="." method="_on_speed_bost_timer_timeout"]

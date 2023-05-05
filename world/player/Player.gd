@@ -33,6 +33,12 @@ func change_speed(amount : float, time_limit = null):
 	if time_limit:
 		$Label.visible = true
 		$SpeedBostTimer.start(time_limit)
+	$SpeedBoostSFX.play()
+	if velocity != Vector2.ZERO:
+		$SpeedBoostParticles.direction = -velocity
+	else:
+		$SpeedBoostParticles.direction = Vector2(0,-1)
+	$SpeedBoostParticles.emitting = true
 
 func _physics_process(delta):
 	velocity = _get_input_direction() * speed

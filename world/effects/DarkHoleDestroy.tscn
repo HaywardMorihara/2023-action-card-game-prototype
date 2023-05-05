@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://djrvact5wu36x"]
+[gd_scene load_steps=7 format=3 uid="uid://djrvact5wu36x"]
 
 [ext_resource type="Texture2D" uid="uid://cysdenwsnujot" path="res://assets/large_black_particle.png" id="1_npqgu"]
 [ext_resource type="Script" path="res://world/effects/DarkHoleDestroy.gd" id="1_q6c4p"]
 [ext_resource type="Texture2D" uid="uid://do8kgbdg2xicm" path="res://assets/black_particle.png" id="2_3j3hh"]
+[ext_resource type="AudioStream" uid="uid://bf6eawrph7cg8" path="res://assets/sfx/space_ambience/31904__yewbic__ambience01.wav" id="4_lxiy8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wdoxf"]
 radius = 117.004
@@ -80,6 +81,10 @@ autostart = true
 
 [node name="CollapseTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_lxiy8")
+autoplay = true
 
 [connection signal="body_entered" from="GravitationalPullArea" to="." method="_on_gravitational_pull_area_body_entered"]
 [connection signal="body_entered" from="EventHorizonArea" to="." method="_on_event_horizon_area_body_entered"]

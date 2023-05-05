@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://brpfimrjn8tuq"]
+[gd_scene load_steps=6 format=3 uid="uid://brpfimrjn8tuq"]
 
 [ext_resource type="Texture2D" uid="uid://dw1b8c4umgpi4" path="res://assets/fireball_particle_red.png" id="1_kpos6"]
 [ext_resource type="Script" path="res://world/effects/Fireball.gd" id="1_lbqct"]
+[ext_resource type="AudioStream" uid="uid://csn6jf1d4f1g1" path="res://assets/sfx/magic/04_Fire_explosion_04_medium.wav" id="3_4c6qb"]
+[ext_resource type="AudioStream" uid="uid://dyqelredjt45v" path="res://assets/sfx/magic/25_Wind_01.wav" id="4_x1fhi"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_aeehc"]
 
@@ -31,8 +33,36 @@ emission_sphere_radius = 8.0
 direction = Vector2(0, 0)
 spread = 20.0
 gravity = Vector2(0, 0)
+scale_amount_max = 2.0
+
+[node name="ExplosionCPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 100
+lifetime = 0.25
+one_shot = true
+explosiveness = 0.9
+texture = ExtResource("1_kpos6")
+emission_shape = 1
+emission_sphere_radius = 8.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 500.0
+initial_velocity_max = 500.0
+damping_min = 100.0
+damping_max = 100.0
+scale_amount_max = 2.0
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 
+[node name="EmissionSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_4c6qb")
+autoplay = true
+
+[node name="ExplosionSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_x1fhi")
+volume_db = -11.648
+
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="finished" from="ExplosionSFX" to="." method="_on_explosion_sfx_finished"]

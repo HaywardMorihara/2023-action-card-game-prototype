@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://rjodhdas7m70"
+path="res://.godot/imported/Socapex - Evol Online all.mp3-53262d76c38db9f97be7df60523d1767.mp3str"
+
+[deps]
+
+source_file="res://assets/sfx/punches_and_hits/Socapex - Evol Online all.mp3"
+dest_files=["res://.godot/imported/Socapex - Evol Online all.mp3-53262d76c38db9f97be7df60523d1767.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

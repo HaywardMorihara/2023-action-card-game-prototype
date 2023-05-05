@@ -23,7 +23,10 @@ func pickup(pickup):
 		player_heal.emit(1)
 
 func damage(amount : int):
+	$EnemyContactSFX.play()
 	player_damage.emit(amount)
+	get_tree().paused = true
+	$HitFrameTimer.start()
 
 func change_speed(amount : float, time_limit = null):
 	speed += amount

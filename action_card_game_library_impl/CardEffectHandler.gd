@@ -101,6 +101,8 @@ func _on_player_player_draw_card():
 
 func _on_player_player_damage(amount):
 	CardUINode.discard_from_deck(amount)
+	World.get_node("CanvasModulate").color = Color.RED
+	$LowHealthTimer.start(0.1)
 
 func _on_hand_hand_is_up_toggled(is_hand_up : bool):
 	if not is_in_card_selection_mode and PlayerSettings.pause_when_hand_up:
@@ -200,7 +202,6 @@ func _on_card_ui_card_ui_current_animation_finished():
 		match next_card_id:
 			ActionCardGameGlobal.CardId.BERZERKER_DRAW:
 				CardUINode.draw_cards(7)
-
 
 func _on_deck_deck_low(is_low : bool):
 	if is_low && not is_low_deck_effect_playing:

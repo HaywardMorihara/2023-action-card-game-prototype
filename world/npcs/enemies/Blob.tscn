@@ -1,7 +1,9 @@
-[gd_scene load_steps=27 format=3 uid="uid://jgl22r8v5pfk"]
+[gd_scene load_steps=29 format=3 uid="uid://jgl22r8v5pfk"]
 
 [ext_resource type="Script" path="res://world/npcs/enemies/Blob.gd" id="1_1rjua"]
 [ext_resource type="Texture2D" uid="uid://sfhgdf8s8h4a" path="res://assets/peaceful_pixels_chapter00/Character_Animations/slime_spritesheet.png" id="1_4tc7r"]
+[ext_resource type="AudioStream" uid="uid://xe4lsttes743" path="res://assets/sfx/punches_and_hits/Socapex - slow squish.wav" id="3_cbrec"]
+[ext_resource type="PackedScene" uid="uid://cpm0m367k23c0" path="res://world/effects/HitFrameTimer.tscn" id="4_gtpgr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qjapn"]
 atlas = ExtResource("1_4tc7r")
@@ -208,6 +210,12 @@ one_shot = true
 
 [node name="DisableTimer" type="Timer" parent="."]
 
+[node name="SquishSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_cbrec")
+
+[node name="HitFrameTimer" parent="." instance=ExtResource("4_gtpgr")]
+
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="BouceTimer" to="." method="_on_bouce_timer_timeout"]
 [connection signal="timeout" from="DisableTimer" to="." method="_on_disable_timer_timeout"]
+[connection signal="finished" from="SquishSFX" to="." method="_on_squish_sfx_finished"]

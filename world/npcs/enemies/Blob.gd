@@ -19,6 +19,8 @@ var heal_pickup_scene = preload("res://world/pickups/HealPickup.tscn")
 var is_queued_destroy := false
 var is_bounced := false
 var is_disabled := false
+var is_destroy_animation_finished := false
+var is_destroy_sfx_finished := false
 
 func _ready():
 	randomize()
@@ -72,6 +74,8 @@ func _decide_direction() -> Vector2:
 	return global_position.direction_to(player_pos)
 
 func queue_destroy():
+	$HitFrameTimer.start()
+	get_tree().paused = true
 	is_queued_destroy = true
 	animation.play("DestroyedRight")
 	var draw_pickup
@@ -87,9 +91,13 @@ func queue_destroy():
 	if draw_pickup and heal_pickup:
 		draw_pickup.global_position -= Vector2(8, 0)
 		heal_pickup.global_position += Vector2(8, 0)
+	$SquishSFX.play(0.5)
 
 func _on_animated_sprite_2d_animation_finished():
-	if is_queued_destroy and animation.get_animation() == "DestroyedRight":
+	is_destroy_animation_finished = true
+	visible = false
+	collision_layer = 8
+	if is_queued_destroy and animation.get_animation() == "DestroyedRight" and is_destroy_animation_finished and is_destroy_sfx_finished:
 		queue_free()
 		blob_queued_destroy.emit()
 
@@ -102,3 +110,10 @@ func disable(seconds : float):
 
 func _on_disable_timer_timeout():
 	is_disabled = false
+
+
+func _on_squish_sfx_finished():
+	is_destroy_sfx_finished = true
+	if is_queued_destroy and animation.get_animation() == "DestroyedRight" and is_destroy_animation_finished and is_destroy_sfx_finished:
+		queue_free()
+		blob_queued_destroy.emit()

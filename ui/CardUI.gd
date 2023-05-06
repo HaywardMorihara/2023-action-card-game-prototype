@@ -28,6 +28,10 @@ func _ready():
 	HealthUI.update_max(Deck.total_cards)
 	HealthUI.update_current(Deck.current_contents.size(), DiscardPile.contents.size())
 
+func _process(delta):
+	if Deck.current_contents.size() == 0:
+		deck_is_empty.emit()
+
 func draw_next_card():
 	Deck.draw_next_card(Hand.global_position)
 	HealthUI.update_current(Deck.current_contents.size(), DiscardPile.contents.size())

@@ -33,9 +33,10 @@ func update():
 	if card_count_percentage < 0.51:
 		$HealthBar.color = Color.YELLOW
 		$HealthBar.scale = Vector2(1,1)
-	if card_count_percentage < 0.34:
-		$HealthBar.color = Color.RED
-		$HealthBar/Timer.start()
+		# TODO Refactor: '3' is set on the Deck
+		if current_card_count <=3:
+			$HealthBar.color = Color.RED
+			$HealthBar/Timer.start()
 
 
 func _on_timer_timeout():

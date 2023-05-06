@@ -56,6 +56,8 @@ func _on_hand_card_played(card, position):
 	DiscardPile.add(card.id)
 	HealthUI.update_current(Deck.current_contents.size(), DiscardPile.contents.size())
 	_card_movement_animation(card.id, position, DiscardPile.global_position)
+	# Note: having to set this here too because for some reason it isn't going away when it should
+	$CardPreview.visible = false
 
 func _on_healing_station_healing_station_entered_by_player():
 	$Popup.show()

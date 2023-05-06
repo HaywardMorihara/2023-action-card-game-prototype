@@ -7,13 +7,17 @@ signal card_in_hand_is_selected(card : Card)
 signal card_in_hand_removed(card)
 signal card_preconditions_not_met(card)
 
-@export var hand_up_y := 50
+@export var hand_up_y := 45
+@export var hand_up_background_color := Color(1,1,1,1)
 
+var resting_background_color : Color
 var at_rest_y : float
 var is_hand_up : bool = false
 var is_card_being_held : bool = false
+var is_mouse_hovering_over_hand := false
 
 func _ready():
+	resting_background_color = $ColorRect.color
 	at_rest_y = position.y
 	for card in get_tree().get_nodes_in_group("cards"):
 		card.card_placed.connect(_on_card_card_placed)
@@ -58,6 +62,8 @@ func _move_hand_up(up := true):
 	hand_is_up_toggled.emit(is_hand_up)
 
 func _on_mouse_entered():
+	is_mouse_hovering_over_hand = true
+	$ColorRect.color = hand_up_background_color
 	var cards_in_hand = get_tree().get_nodes_in_group("cards_in_hand")
 	var num_cards_in_hand = cards_in_hand.size()
 	if num_cards_in_hand == 0:
@@ -65,12 +71,14 @@ func _on_mouse_entered():
 	_move_hand_up(true)
 
 func _on_mouse_exited():
+	is_mouse_hovering_over_hand = false
+	$ColorRect.color = resting_background_color
 	if is_card_being_held:
 		return
 	_move_hand_up(false)
 
 func _on_card_card_placed(card, position):
-	if position.y > self.position.y:
+	if is_mouse_hovering_over_hand:
 		card.return_to_initial_position()
 	else:
 		if not card.check_preconditions():

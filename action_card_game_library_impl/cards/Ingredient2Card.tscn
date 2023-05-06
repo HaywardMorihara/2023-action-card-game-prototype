@@ -7,7 +7,7 @@
 [node name="Ingredient2Card" instance=ExtResource("1_xpodi")]
 script = ExtResource("2_yrx32")
 title = "Ingredient: Dragon's Blood"
-description = "Combine with “Mandrake Root” to permanently increase your speed 1.25x OR Combine with “Belladonna” to add 5 “Fireball” cards to your Deck. Both Cards will be removed from play."
+description = "Combine with Mandrake Root to permanently increase your speed 1.25x OR Combine with Belladonna to add 5 Fireball cards to your Deck. Both Cards will be removed from play."
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("3_ev0is")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://c3drbnmbj4qx5"]
+[gd_scene load_steps=25 format=3 uid="uid://c3drbnmbj4qx5"]
 
 [ext_resource type="PackedScene" uid="uid://dikl6yqyjpknd" path="res://action_card_game_library/Deck.tscn" id="1_og2kh"]
 [ext_resource type="Script" path="res://Main.gd" id="1_x4ye3"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://bnyw7xdhldwog" path="res://action_card_game_library/CardPreview.tscn" id="18_tur63"]
 [ext_resource type="Texture2D" uid="uid://duammse3sk2rh" path="res://assets/parchment-menu.png" id="19_816ov"]
 [ext_resource type="AudioStream" uid="uid://dsq68jci5ldy7" path="res://assets/sfx/8_rpg_heals_buffs_sfx_samples/02_Heal_02.wav" id="20_d2c2d"]
+[ext_resource type="AudioStream" uid="uid://crd0mkm8gint5" path="res://assets/music/The Adventure Begins 8-bit remix.ogg" id="22_ejqpl"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xmfpn"]
 texture = ExtResource("4_a7jgr")
@@ -1988,6 +1989,11 @@ offset_top = 235.0
 offset_right = 335.0
 offset_bottom = 266.0
 text = "Play"
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("22_ejqpl")
+volume_db = -20.0
 
 [connection signal="player_damage" from="CardEffectHandler/World/Player" to="CardEffectHandler" method="_on_player_player_damage"]
 [connection signal="player_draw_card" from="CardEffectHandler/World/Player" to="CardEffectHandler" method="_on_player_player_draw_card"]

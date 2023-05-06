@@ -1232,17 +1232,11 @@ position = Vector2(1142, -129)
 [node name="HealPickup5" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
 position = Vector2(1584, -134)
 
-[node name="HealPickup24" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
-position = Vector2(1550, -132)
-
 [node name="HealPickup25" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
 position = Vector2(1574, -103)
 
 [node name="HealPickup26" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
 position = Vector2(1506, -118)
-
-[node name="HealPickup27" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
-position = Vector2(1520, -82)
 
 [node name="HealPickup28" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
 position = Vector2(1556, -58)
@@ -1295,15 +1289,6 @@ position = Vector2(274, -287)
 [node name="HealPickup30" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
 position = Vector2(303, -279)
 
-[node name="HealPickup31" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
-position = Vector2(300, -313)
-
-[node name="HealPickup32" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
-position = Vector2(247, -276)
-
-[node name="HealPickup33" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
-position = Vector2(256, -262)
-
 [node name="HealPickup34" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
 position = Vector2(264, -317)
 
@@ -1316,35 +1301,17 @@ position = Vector2(177, -738)
 [node name="HealPickup36" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
 position = Vector2(221, -772)
 
-[node name="HealPickup37" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
-position = Vector2(198, -767)
-
-[node name="HealPickup38" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
-position = Vector2(232, -793)
-
 [node name="HealPickup39" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
 position = Vector2(232, -738)
 
-[node name="HealPickup40" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
-position = Vector2(203, -739)
-
 [node name="HealPickup41" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
 position = Vector2(258, -773)
-
-[node name="HealPickup42" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
-position = Vector2(266, -808)
 
 [node name="HealPickup13" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
 position = Vector2(737, -709)
 
 [node name="HealPickup14" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
 position = Vector2(1250, -722)
-
-[node name="HealPickup15" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
-position = Vector2(1859, -798)
-
-[node name="HealPickup43" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
-position = Vector2(1862, -763)
 
 [node name="HealPickup44" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
 position = Vector2(1859, -737)
@@ -1354,9 +1321,6 @@ position = Vector2(1883, -709)
 
 [node name="HealPickup46" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
 position = Vector2(1878, -681)
-
-[node name="HealPickup47" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
-position = Vector2(1896, -642)
 
 [node name="HealPickup48" parent="CardEffectHandler/World/Pickups/HealPickups" instance=ExtResource("9_gqng0")]
 position = Vector2(1890, -736)
@@ -1775,6 +1739,39 @@ position = Vector2(894, -317)
 [node name="Blob68" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
 position = Vector2(950, -266)
 
+[node name="Blob141" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(744, -236)
+
+[node name="Blob142" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(782, -321)
+
+[node name="Blob143" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(1040, -406)
+
+[node name="Blob144" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(1126, -457)
+
+[node name="Blob145" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(967, -543)
+
+[node name="Blob146" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(828, -475)
+
+[node name="Blob147" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(751, -555)
+
+[node name="Blob148" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(636, -506)
+
+[node name="Blob149" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(1094, -569)
+
+[node name="Blob150" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(539, -483)
+
+[node name="Blob151" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(935, -642)
+
 [node name="Blob69" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
 position = Vector2(1112, -401)
 
@@ -1786,9 +1783,6 @@ position = Vector2(245, -310)
 
 [node name="Blob72" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
 position = Vector2(410, -256)
-
-[node name="Blob73" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
-position = Vector2(610, -261)
 
 [node name="Blob74" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
 position = Vector2(578, -336)
@@ -1855,6 +1849,126 @@ position = Vector2(1439, -658)
 
 [node name="Blob95" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
 position = Vector2(1514, -737)
+
+[node name="Blob101" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(1521, -678)
+
+[node name="Blob102" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(1390, -719)
+
+[node name="Blob103" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(1590, -733)
+
+[node name="Blob104" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(1749, -643)
+
+[node name="Blob105" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(1809, -670)
+
+[node name="Blob106" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(1776, -706)
+
+[node name="Blob107" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(1843, -705)
+
+[node name="Blob108" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(1699, -751)
+
+[node name="Blob109" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(1654, -788)
+
+[node name="Blob110" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(1809, -811)
+
+[node name="Blob111" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(1557, -800)
+
+[node name="Blob112" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(1467, -759)
+
+[node name="Blob113" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(1400, -798)
+
+[node name="Blob114" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(1303, -795)
+
+[node name="Blob115" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(1353, -663)
+
+[node name="Blob116" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(259, -570)
+
+[node name="Blob117" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(148, -574)
+
+[node name="Blob118" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(167, -682)
+
+[node name="Blob119" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(189, -764)
+
+[node name="Blob120" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(359, -720)
+
+[node name="Blob121" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(386, -630)
+
+[node name="Blob122" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(298, -638)
+
+[node name="Blob123" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(309, -729)
+
+[node name="Blob124" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(413, -799)
+
+[node name="Blob125" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(343, -821)
+
+[node name="Blob127" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(482, -786)
+
+[node name="Blob128" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(444, -600)
+
+[node name="Blob129" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(539, -681)
+
+[node name="Blob130" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(351, -303)
+
+[node name="Blob131" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(227, -242)
+
+[node name="Blob132" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(182, -258)
+
+[node name="Blob133" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(350, -267)
+
+[node name="Blob134" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(314, -326)
+
+[node name="Blob135" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(220, -334)
+
+[node name="Blob136" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(374, -334)
+
+[node name="Blob137" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(289, -334)
+
+[node name="Blob138" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(149, -332)
+
+[node name="Blob139" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(376, -303)
+
+[node name="Blob140" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(446, -327)
+
+[node name="Blob126" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
+position = Vector2(481, -711)
 
 [node name="Blob96" parent="CardEffectHandler/World/Enemies" instance=ExtResource("6_ej6qh")]
 position = Vector2(1604, -686)
@@ -1954,30 +2068,29 @@ one_shot = true
 [node name="HealthLabel" type="Label" parent="CardEffectHandler/CardUI/HealthUI"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 526.0
-offset_top = 209.0
-offset_right = 637.0
-offset_bottom = 235.0
+offset_left = 510.0
+offset_top = 208.0
+offset_right = 636.0
+offset_bottom = 234.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
 text = "Deck (Health): 40 / 40"
 
 [node name="DiscardLabel" type="Label" parent="CardEffectHandler/CardUI/HealthUI"]
 layout_mode = 0
-offset_left = 32.0
+offset_left = 30.0
 offset_top = 217.0
-offset_right = 72.0
+offset_right = 88.0
 offset_bottom = 240.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 14
 text = "Discard: 0"
 
 [node name="EnemyCountLabel" type="Label" parent="CardEffectHandler/CardUI"]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 11.0
+offset_top = 10.0
+offset_right = 101.0
+offset_bottom = 50.0
 theme = ExtResource("17_vqtb1")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 20
 text = "Enemies Left: X"
 script = ExtResource("16_em577")
 
@@ -2085,6 +2198,7 @@ text = "Play"
 process_mode = 3
 stream = ExtResource("22_ejqpl")
 volume_db = -20.0
+autoplay = true
 
 [connection signal="player_damage" from="CardEffectHandler/World/Player" to="CardEffectHandler" method="_on_player_player_damage"]
 [connection signal="player_draw_card" from="CardEffectHandler/World/Player" to="CardEffectHandler" method="_on_player_player_draw_card"]

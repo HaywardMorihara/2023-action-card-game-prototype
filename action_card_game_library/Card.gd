@@ -66,7 +66,7 @@ func _on_mouse_entered():
 func _on_mouse_exited():
 	mouse_over = false
 	position.y += 10
-	card_being_looked_at.emit(false, null)
+	card_being_looked_at.emit(false, self)
 	
 func _on_draw_tween_finished():
 	is_moving = false

@@ -33,7 +33,8 @@ func _process(delta):
 		deck_is_empty.emit()
 
 func draw_next_card():
-	Deck.draw_next_card(Hand.global_position)
+	if Deck.current_contents.size() > 1:
+		Deck.draw_next_card(Hand.global_position)
 	HealthUI.update_current(Deck.current_contents.size(), DiscardPile.contents.size())
 	
 func discard_from_deck(num_of_cards : int):

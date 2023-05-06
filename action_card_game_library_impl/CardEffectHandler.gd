@@ -106,7 +106,7 @@ func _on_player_player_damage(amount):
 	$LowHealthTimer.start(0.1)
 
 func _on_hand_hand_is_up_toggled(is_hand_up : bool):
-	if not is_in_card_selection_mode and PlayerSettings.pause_when_hand_up:
+	if not is_in_card_selection_mode and PlayerSettings.pause_when_hand_up and not is_low_deck_effect_playing:
 		get_tree().paused = is_hand_up
 		if is_hand_up:
 			modulate_canvas(Color.DIM_GRAY)

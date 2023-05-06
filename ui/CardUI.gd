@@ -90,17 +90,16 @@ func add_new_card_to_hand(cardId : ActionCardGameGlobal.CardId):
 func _on_player_player_new_card(cardId : ActionCardGameGlobal.CardId):
 	$NewCardPreview/NewCardPreviewTimer.start()
 	var card : Card = ActionCardGameGlobal.card_id_to_card_scene[cardId].instantiate()
+	card.id = cardId
 	$NewCardPreview.set_card(card)
 	$NewCardPreview.visible = true
 	get_tree().paused = true
-	
 
 func _on_new_card_preview_timer_timeout():
 	get_tree().paused = false
-	if $NewCardPreview.current_card_id != null:
-		add_new_card_to_hand($NewCardPreview.current_card_id)
-		$NewCardPreview.visible = false
-		$NewCardPreview.set_card(null)
+	add_new_card_to_hand($NewCardPreview.current_card_id)
+	$NewCardPreview.visible = false
+	$NewCardPreview.set_card(null)
 
 func _on_starting_hand_delay_timer_timeout():
 	if ActionCardGameGlobal.starting_hand_count:

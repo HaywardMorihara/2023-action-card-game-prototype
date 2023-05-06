@@ -1491,6 +1491,10 @@ cardId = 0
 position = Vector2(752, 8)
 cardId = 2
 
+[node name="InjectionDrawNewCardPickup4" parent="CardEffectHandler/World/Pickups/NewCards" instance=ExtResource("5_e8ga7")]
+position = Vector2(-1277, 194)
+cardId = 2
+
 [node name="InjectionDrawNewCardPickup3" parent="CardEffectHandler/World/Pickups/NewCards" instance=ExtResource("5_e8ga7")]
 position = Vector2(1891, 174)
 cardId = 2
@@ -1917,6 +1921,7 @@ offset_bottom = 332.0
 
 [node name="NewCardPreviewTimer" type="Timer" parent="CardEffectHandler/CardUI/NewCardPreview"]
 process_mode = 3
+one_shot = true
 
 [node name="HealthUI" type="Control" parent="CardEffectHandler/CardUI"]
 layout_mode = 3

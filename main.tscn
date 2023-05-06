@@ -1483,10 +1483,6 @@ position = Vector2(511, -745)
 position = Vector2(185, 210)
 cardId = 0
 
-[node name="FireballNewCardPickup3" parent="CardEffectHandler/World/Pickups/NewCards" instance=ExtResource("5_e8ga7")]
-position = Vector2(-1190, 184)
-cardId = 0
-
 [node name="FireballNewCardPickup2" parent="CardEffectHandler/World/Pickups/NewCards" instance=ExtResource("5_e8ga7")]
 position = Vector2(923, -165)
 cardId = 0
@@ -1905,7 +1901,7 @@ position = Vector2(326, 337)
 anchors_preset = -1
 anchor_left = 1.69062
 anchor_right = 1.69062
-offset_left = -583.997
+offset_left = -615.997
 offset_top = -1.0
 offset_right = -440.997
 offset_bottom = 273.0

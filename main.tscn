@@ -1483,6 +1483,10 @@ position = Vector2(511, -745)
 position = Vector2(185, 210)
 cardId = 0
 
+[node name="FireballNewCardPickup3" parent="CardEffectHandler/World/Pickups/NewCards" instance=ExtResource("5_e8ga7")]
+position = Vector2(-1190, 184)
+cardId = 0
+
 [node name="FireballNewCardPickup2" parent="CardEffectHandler/World/Pickups/NewCards" instance=ExtResource("5_e8ga7")]
 position = Vector2(923, -165)
 cardId = 0
@@ -1871,7 +1875,6 @@ position = Vector2(1454, -801)
 
 [node name="CardUI" type="CanvasLayer" parent="CardEffectHandler"]
 process_mode = 3
-visible = false
 script = ExtResource("6_a6k1l")
 
 [node name="Deck" parent="CardEffectHandler/CardUI" instance=ExtResource("1_og2kh")]
@@ -1906,6 +1909,18 @@ offset_left = -583.997
 offset_top = -1.0
 offset_right = -440.997
 offset_bottom = 273.0
+
+[node name="NewCardPreview" parent="CardEffectHandler/CardUI" instance=ExtResource("18_tur63")]
+anchors_preset = -1
+anchor_left = 1.69062
+anchor_right = 1.69062
+offset_left = -837.997
+offset_top = 58.0
+offset_right = -694.997
+offset_bottom = 332.0
+
+[node name="NewCardPreviewTimer" type="Timer" parent="CardEffectHandler/CardUI/NewCardPreview"]
+process_mode = 3
 
 [node name="HealthUI" type="Control" parent="CardEffectHandler/CardUI"]
 layout_mode = 3
@@ -2088,6 +2103,7 @@ volume_db = -20.0
 [connection signal="card_played" from="CardEffectHandler/CardUI/Hand" to="CardEffectHandler/CardUI" method="_on_hand_card_played"]
 [connection signal="card_preconditions_not_met" from="CardEffectHandler/CardUI/Hand" to="CardEffectHandler/CardUI" method="_on_hand_card_preconditions_not_met"]
 [connection signal="hand_is_up_toggled" from="CardEffectHandler/CardUI/Hand" to="CardEffectHandler" method="_on_hand_hand_is_up_toggled"]
+[connection signal="timeout" from="CardEffectHandler/CardUI/NewCardPreview/NewCardPreviewTimer" to="CardEffectHandler/CardUI" method="_on_new_card_preview_timer_timeout"]
 [connection signal="timeout" from="CardEffectHandler/CardUI/HealthUI/HealthBar/Timer" to="CardEffectHandler/CardUI/HealthUI" method="_on_timer_timeout"]
 [connection signal="timeout" from="CardEffectHandler/CardUI/Toast/ToastTimer" to="CardEffectHandler/CardUI" method="_on_toast_timer_timeout"]
 [connection signal="pressed" from="CardEffectHandler/CardUI/Popup/VBoxContainer/YesHealButton" to="CardEffectHandler/CardUI" method="_on_yes_heal_button_pressed"]

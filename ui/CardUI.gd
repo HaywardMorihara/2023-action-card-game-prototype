@@ -34,7 +34,12 @@ func _process(delta):
 
 func draw_next_card():
 	if Deck.current_contents.size() > 1:
-		Deck.draw_next_card(Hand.global_position)
+		var cards_in_hand = get_tree().get_nodes_in_group("cards_in_hand")
+		if cards_in_hand.size() > 0:
+			var last_card_in_hand = cards_in_hand[cards_in_hand.size() - 1]
+			Deck.draw_next_card(last_card_in_hand.global_position)
+		else:
+			Deck.draw_next_card(Hand.global_position)
 	HealthUI.update_current(Deck.current_contents.size(), DiscardPile.contents.size())
 	
 func discard_from_deck(num_of_cards : int):
@@ -76,10 +81,24 @@ func add_new_card_to_hand(cardId : ActionCardGameGlobal.CardId):
 	Hand.add_card(cardId)
 	HealthUI.update_max(Deck.total_cards)
 	HealthUI.update_current(Deck.current_contents.size(), DiscardPile.contents.size())
-	_card_movement_animation(cardId, $Center.position, Hand.global_position)
+	var cards_in_hand = get_tree().get_nodes_in_group("cards_in_hand")
+	var last_card_in_hand = cards_in_hand[cards_in_hand.size() - 1]
+	_card_movement_animation(cardId, $Center.position, last_card_in_hand.global_position)
 
 func _on_player_player_new_card(cardId : ActionCardGameGlobal.CardId):
-	add_new_card_to_hand(cardId)
+	$NewCardPreview/NewCardPreviewTimer.start()
+	var card : Card = ActionCardGameGlobal.card_id_to_card_scene[cardId].instantiate()
+	$NewCardPreview.set_card(card)
+	$NewCardPreview.visible = true
+	get_tree().paused = true
+	
+
+func _on_new_card_preview_timer_timeout():
+	get_tree().paused = false
+	if $NewCardPreview.current_card_id != null:
+		add_new_card_to_hand($NewCardPreview.current_card_id)
+		$NewCardPreview.visible = false
+		$NewCardPreview.set_card(null)
 
 func _on_starting_hand_delay_timer_timeout():
 	if ActionCardGameGlobal.starting_hand_count:

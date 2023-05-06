@@ -4,16 +4,19 @@ extends Control
 @onready var title : Label = get_node("Title")
 @onready var description : Label = get_node("Description")
 
+var current_card_id
+
 func _ready():
 	visible = false
 
-
 func set_card(card : Card):
 	if card:
+		current_card_id = card.id
 		image.texture = card.get_node("Sprite2D").texture
 		title.text = card.title
 		description.text = card.description
 	else:
+		current_card_id = null
 		image.texture = null
 		title.text = ""
 		description.text = ""
@@ -22,3 +25,4 @@ func set_card(card : Card):
 func _on_hand_card_in_hand_is_being_looked_at(is_being_looked_at : bool, card : Card):
 	visible = is_being_looked_at
 	set_card(card)
+

@@ -7,7 +7,7 @@
 [node name="Ingredient3Card" instance=ExtResource("1_8m037")]
 script = ExtResource("2_krucq")
 title = "Ingredient: Belladonna"
-description = "Combine with Mandrake Root to duplicate the contents of your Deck (if ≤ 5 cards) OR Combine with Dragon's Blood to add 5 Fireball cards to your Deck. Both Cards will be removed from play. "
+description = "Combine with Mandrake Root to duplicate the contents of your Deck (if less than 6 cards) OR Combine with Dragon's Blood to add 5 Fireball cards to your Deck. Both Cards will be removed from play. "
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("3_1e61h")

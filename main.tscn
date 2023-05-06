@@ -1455,10 +1455,6 @@ cardId = 0
 position = Vector2(752, 8)
 cardId = 2
 
-[node name="InjectionDrawNewCardPickup4" parent="CardEffectHandler/World/Pickups/NewCards" instance=ExtResource("5_e8ga7")]
-position = Vector2(-1277, 194)
-cardId = 2
-
 [node name="InjectionDrawNewCardPickup3" parent="CardEffectHandler/World/Pickups/NewCards" instance=ExtResource("5_e8ga7")]
 position = Vector2(1891, 174)
 cardId = 2
@@ -2182,9 +2178,9 @@ theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 14
 text = "Goals:
 1. Destroy all Blobs
-2. Do not run out of cards in your Deck (Health)
+2. Do not run out of Health (cards in your Deck)
 
-Blob contact will send Cards from your Deck -> Discard."
+When Blobs run into you, you take damage (Cards are sent from your Deck to the Discard)"
 
 [node name="PlayButton" type="Button" parent="Tutorial"]
 process_mode = 3

@@ -7,8 +7,8 @@ signal blob_queued_destroy
 @export var detection_radius = 200
 @export var damage_to_player = 1
 @export var collision_bounce : float = 5.0
-@export var draw_drop_probability : float = 0.25
-@export var heal_drop_probability : float = 0.4
+@export var draw_drop_probability : float = 0.35
+@export var heal_drop_probability : float = 0.5
 
 @onready var animation : AnimatedSprite2D = get_node("AnimatedSprite2D")
 @onready var bounce_timer : Timer = get_node("BouceTimer")

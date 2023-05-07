@@ -48,10 +48,13 @@ var hero_starting_deck : Array[CardId] = [
 	CardId.INJECTION_DRAW,
 	CardId.POTION_HEAL,
 	CardId.BANISH_REMOVAL,
-	CardId.FIREBALL,
-	CardId.FIREBALL,
-	CardId.FIREBALL,
+	
 	CardId.INGREDIENT_2,
+	
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	CardId.FIREBALL,
+	
 	CardId.THUNDERBOLT_ATTACK,
 ]
 
@@ -64,8 +67,13 @@ var healer_starting_deck : Array[CardId] = [
 	CardId.INJECTION_DRAW,
 	CardId.POTION_HEAL,
 	CardId.BANISH_REMOVAL,
-	CardId.POTION_HEAL,
+	
 	CardId.INGREDIENT_3,
+	
+	CardId.POTION_HEAL,
+	CardId.INJECTION_DRAW,
+	CardId.FIREBALL,
+	
 	CardId.QUICK_BANDAGE_HEAL,
 ]
 
@@ -78,8 +86,13 @@ var hustler_starting_deck : Array[CardId] = [
 	CardId.INJECTION_DRAW,
 	CardId.POTION_HEAL,
 	CardId.BANISH_REMOVAL,
-	CardId.INJECTION_DRAW,
+	
 	CardId.INGREDIENT_1,
+	
+	CardId.INJECTION_DRAW,
+	CardId.POTION_HEAL,
+	CardId.FIREBALL,
+	
 	CardId.FAST_FEET,
 ]
 

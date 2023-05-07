@@ -22,7 +22,7 @@ offset_right = 76.0
 offset_bottom = 76.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 20
-text = "The Legenday Hero"
+text = "The Legendary Hero"
 horizontal_alignment = 1
 
 [node name="Prompt" type="Label" parent="."]

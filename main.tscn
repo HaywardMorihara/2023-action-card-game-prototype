@@ -1345,6 +1345,21 @@ position = Vector2(836, -62)
 [node name="DrawSpawnPoint5" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
 position = Vector2(943, 176)
 
+[node name="DrawSpawnPoint40" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(817, 157)
+
+[node name="DrawSpawnPoint41" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(864, 269)
+
+[node name="DrawSpawnPoint42" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(1099, 159)
+
+[node name="DrawSpawnPoint43" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(755, 250)
+
+[node name="DrawSpawnPoint44" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
+position = Vector2(1169, 225)
+
 [node name="DrawSpawnPoint6" parent="CardEffectHandler/World/Pickups/DrawSpawnPoints" instance=ExtResource("10_e4nmw")]
 position = Vector2(1155, 171)
 

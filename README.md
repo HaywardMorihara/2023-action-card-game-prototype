@@ -1,1 +1,3 @@
-# 2023-action-card-game-prototype
+# The Legendary Hero
+
+https://murphysdad.itch.io/the-legendary-hero
